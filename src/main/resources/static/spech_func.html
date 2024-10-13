@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Специальные функции</title>
+  <link rel="stylesheet" href="./scss/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+<div class="header" id="bar">
+  <h3 class="header_logo">ЛР1 Лесных С. И.</h3>
+  <div class="header_right">
+    <a class="header_right_sp_func_btn button_dark" href="index.html">База данных</a>
+    <h4 class="header_right_user_name">Jennifer</h4>
+    <h4 class="header_right_user_job">Пользователь</h4>
+  </div>
+</div>
+<body class="body">
+<div class="wrapper">
+
+
+
+  <h1 class="title_sp">Специальные функции</h1>
+    <div class="first_line">
+  <div class="card_del">
+    <h3 class="card_del_title">Удалить один(любой) объект</h3>
+    <div class="card_del_input_p_btn">
+      <div class="card_del_input_p_t">
+        <p class="card_del_input_t">groupAdmin</p>
+        <input class="card_del_input" type="text" maxlength=10 >
+      </div>
+      <button class="card_del_btn">
+        <img src="./pics/Frame%20202.png" alt="" class="">
+      </button>
+    </div>
+    <div class="wrapper_btn">
+      <button class="card_del_del_btn button_dark">Удалить</button>
+    </div>
+  </div>
+
+  <div class="card_del">
+    <h3 class="card_del_title">Вернуть количество объектов</h3>
+    <div class="card_del_input_p_btn">
+      <div class="card_del_input_p_t">
+        <p class="card_del_input_t">shouldBeExpelled</p>
+        <input class="card_del_input w115" type="text" maxlength=10 >
+      </div>
+      <button class="card_del_btn">
+        <img src="./pics/Frame%20202.png" alt="" class="">
+      </button>
+      <button id="return_btn" class="card_del_del_btn button_dark">Вернуть</button>
+    </div>
+    <div class="wrapper_btn">
+      <p class="card_del_value">не введено shouldBeExpelled</p>
+    </div>
+  </div>
+
+      <div class="card_del">
+        <h3 class="card_del_title">Вернуть массив объектов</h3>
+        <div class="card_del_input_p_btn">
+          <div class="card_del_input_p_t">
+            <p class="card_del_input_t">name</p>
+            <input class="card_del_input" type="text" maxlength=10 >
+          </div>
+          <button class="card_del_btn">
+            <img src="./pics/Frame%20202.png" alt="" class="">
+          </button>
+          <button id="return_btnArr" class="card_del_del_btn button_dark">Вернуть</button>
+        </div>
+        <div class="wrapper_btn">
+          <p class="card_del_value">не введено name</p>
+        </div>
+      </div>
+</div>
+  <div class="second_line">
+    <div class="card_del">
+      <h3 class="card_del_title">Отчислить студентов из указанной группы</h3>
+      <div class="card_del_input_p_btn remove">
+        <div class="card_del_input_p_t">
+          <p class="card_del_input_t">Группа</p>
+          <input class="card_del_input" type="text" maxlength=10 >
+        </div>
+        <button class="card_del_btn">
+          <img src="./pics/Frame%20202.png" alt="" class="">
+        </button>
+      </div>
+      <div class="wrapper_btn">
+        <button class="card_del_del_btn button_dark">Отчислить</button>
+      </div>
+    </div>
+    <div class="card_del">
+      <h3 class="card_del_title">Переместить студентов</h3>
+      <div class="card_del_input_p_btn">
+        <div class="card_del_input_p_t">
+          <p class="card_del_input_t">Из группы</p>
+          <input class="card_del_input" type="text" maxlength=10 >
+        </div>
+
+        <button class="card_del_btn">
+          <img src="./pics/Frame%20202.png" alt="" class="">
+        </button>
+        <div class="change">
+          <div class="card_del_input_p_t ">
+            <p class="card_del_input_t">В группу</p>
+            <input class="card_del_input" type="text" maxlength=10 >
+          </div>
+
+          <button class="card_del_btn">
+            <img src="./pics/Frame%20202.png" alt="" class="">
+          </button>
+        </div>
+
+      </div>
+      <div class="wrapper_btn">
+        <button class="card_del_del_btn button_dark">Переместить</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
