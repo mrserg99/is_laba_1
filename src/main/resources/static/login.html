@@ -16,28 +16,30 @@
     <div class="login_wrapper_1 mb60">
       <div class="popup_input_wrapper">
         <p class="popup_input_text">Логин</p>
-        <input class="popup_input_input w300 br150015" type="text" maxlength=90 >
+        <input id="login_txt" class="popup_input_input w300 br150015" type="text" maxlength=90 >
       </div>
-      <button class="popup_input_del_btn br015150">
+      <button id="login_clear" class="popup_input_del_btn br015150" onclick="clear_login()">
         <img src="./pics/Frame%20202.png" alt="" class="">
       </button>
     </div>
     <div class="login_wrapper_2 mb60">
       <div class="popup_input_wrapper">
         <p class="popup_input_text">Пароль</p>
-        <input class="popup_input_input w300 br150015" type="text" maxlength=90 >
+        <input id="password_txt" class="popup_input_input w300 br150015" type="text" maxlength=90 >
       </div>
-      <button class="popup_input_del_btn br015150">
+      <button id="password_clear" class="popup_input_del_btn br015150" onclick="clear_password()">
         <img src="./pics/Frame%20202.png" alt="" class="">
       </button>
     </div>
   </div>
-  <p class="error_massage">Упс, что-то пошло не так</p>
-  <button id="enter" class="popup_btn_create button_dark">Войти</button>
+  <p id="error_message" class="error_massage">Упс, что-то пошло не так</p>
+  <button id="enter" class="popup_btn_create button_dark" onclick="enter()">Войти</button>
 
 
 </div>
 
 
 </body>
+<script src="scripts.js"></script>
+<script src="controlers.js"></script>
 </html>

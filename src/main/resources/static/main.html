@@ -22,13 +22,13 @@
 <div id="popup_create_group" class="popup display_none">
     <div class="popup_first_line">
         <div class="popup_first_line_wrapper">
-            <h2 class="popup_title">Создаем группу</h2>
+            <h2 class="popup_title" id="popup_group_title">Создаем группу</h2>
             <p class="popup_date">19/03/2024 12:24:11</p>
-            <button class="popup_del_btn button_dark">
+            <button class="popup_del_btn button_dark" onclick="del_group()">
                 <img class="rubbish" src="./pics/Mask%20group.png" alt="">
             </button>
         </div>
-        <button class="popup_close">
+        <button class="popup_close" onclick="close_popup()">
             <img src="./pics/Frame%20202.png" alt="">
         </button>
     </div>
@@ -200,12 +200,12 @@
 <div id="popup_create_stud" class="popup display_none">
     <div class="popup_first_line">
         <div class="popup_first_line_wrapper">
-            <h2 class="popup_title">Создаем студента</h2>
-            <button class="popup_del_btn button_dark">
+            <h2 class="popup_title"  id="popup_stud_title">Создаем студента</h2>
+            <button class="popup_del_btn button_dark" onclick="del_stud()">
                 <img class="rubbish" src="./pics/Mask%20group.png" alt="">
             </button>
         </div>
-        <button class="popup_close">
+        <button class="popup_close" onclick="close_popup()">
             <img src="./pics/Frame%20202.png" alt="">
         </button>
     </div>
@@ -319,7 +319,7 @@
 
 
 
-<div class="dark_shade display_none"></div>
+<div id="dark_overlay" class="dark_shade display_none"></div>
 <div class="sub_header">
     <div class="left_side">
         <h1 class="sub_header_base">База данных:</h1>
@@ -329,7 +329,7 @@
                 <option value="group">Группы</option>
             </select>
         </form>
-        <button class="sub_header_create button_light">Создать объект</button>
+        <button id="create_object" class="sub_header_create button_light" onclick="create_obj()">Создать объект</button>
     </div>
   <div class="right_side">
       <button class="sub_header_sort button_light">Сортировать</button>
@@ -361,7 +361,7 @@
     </tr>
     <!-- 10 строк и новая страница -->
     <tr align="center">
-        <td class="var_tab" >263879</td>
+        <td class="var_tab" id="1_std_id" >263879</td>
         <td class="var_tab" >P3311</td>
         <td class="var_tab" >22</td>
         <td class="var_tab" >22</td>
@@ -375,7 +375,7 @@
         <td class="var_tab" >4.5</td>
         <td class="var_tab" >Лебедева А.И.</td>
         <td class="var_tab" >6</td>
-        <td class="var_tab" ><button class="change button_dark">Изменить</button></td>
+        <td class="var_tab" ><button class="change button_dark" onclick="change(1)">Изменить</button></td>
         <td class="var_tab" >
             <button class="del button_dark popup_del_btn">
                 <img class="rubbish" src="./pics/Mask%20group.png" alt="">
@@ -383,7 +383,7 @@
         </td>
     </tr>
     <tr align="center">
-        <td class="var_tab" >263879</td>
+        <td class="var_tab"  id="2_std_id">263879</td>
         <td class="var_tab" >P3311</td>
         <td class="var_tab" >22</td>
         <td class="var_tab" >22</td>
@@ -397,7 +397,7 @@
         <td class="var_tab" >4.5</td>
         <td class="var_tab" >Лебедева А.И.</td>
         <td class="var_tab" >6</td>
-        <td class="var_tab" ><button class="change button_dark">Изменить</button></td>
+        <td class="var_tab" ><button class="change button_dark" onclick="change(2)">Изменить</button></td>
         <td class="var_tab" >
             <button class="del button_dark popup_del_btn">
                 <img class="rubbish" src="./pics/Mask%20group.png" alt="">
@@ -592,4 +592,6 @@
 
 
 </body>
+<script src="scripts.js"></script>
+<script src="controlers.js"></script>
 </html>

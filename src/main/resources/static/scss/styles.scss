@@ -42,7 +42,7 @@ li, a, ul{
       //Button shape & animation
       box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
       background-image: linear-gradient(to right, #E1FF00 0%, #E1FF00 50%, #89D8F7 100%);
-      transition: 0.5s;
+      transition: 6s;
       &:hover {
         background-position: right center;
       }
@@ -542,4 +542,10 @@ li, a, ul{
 .popup_del_btn{
   padding: 8px;
   border-radius: 8px;
+}
+#login_clear, #password_clear{
+  &:hover{
+    cursor: pointer;
+  }
+
 }
