@@ -10,49 +10,49 @@ open class StudyGroupEntity (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
-    val id: Int,
+    open var id: Int? = null,
 
     @Basic
     @Column(name = "name", nullable = false, length = -1)
-    val name: String,
+    open var name: String? = null,
 
     @Basic
     @Column(name = "coordinates", nullable = false)
-    val coordinates: Int,
+    open var coordinates: Int? = null,
 
     @Basic
     @Column(name = "creation_date", nullable = false)
-    val creationDate: OffsetDateTime,
+    open var creationDate: OffsetDateTime? = null,
 
     @Basic
     @Column(name = "students_count", nullable = true)
-    val studentsCount: Int,
+    open var studentsCount: Int? = null,
 
     @Basic
     @Column(name = "expelled_students", nullable = true)
-    val expelledStudents: Int,
+    open var expelledStudents: Int? = null,
 
     @Basic
     @Column(name = "transferred_students", nullable = true)
-    val transferredStudents: Long,
+    open var transferredStudents: Long? = null,
 
     @Basic
     @Column(name = "form_of_education", nullable = false)
-    val formOfEducation: Int,
+    open var formOfEducation: Int? = null,
 
     @Basic
     @Column(name = "should_be_expelled", nullable = true)
-    val shouldBeExpelled: Int,
+    open var shouldBeExpelled: Int? = null,
 
     @Basic
     @Column(name = "average_mark", nullable = false, precision = 0)
-    val averageMark: BigInteger,
+    open var averageMark: BigInteger? = null,
 
     @Basic
     @Column(name = "semester_enum", nullable = false)
-    val semesterEnum: Int,
+    open var semesterEnum: Int? = null,
 
     @Basic
     @Column(name = "group_admin", nullable = false)
-    val groupAdmin: Int,
+    open var groupAdmin: Int? = null,
 )

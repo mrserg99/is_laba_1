@@ -9,17 +9,17 @@ open class LocationEntity (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
-    val id: Int,
+    open var id: Int? = null,
 
     @Basic
     @Column(name = "x", nullable = true, precision = 0)
-    val x: BigInteger,
+    open var x: BigInteger? = null,
 
     @Basic
     @Column(name = "y", nullable = true, precision = 0)
-    val y: Double,
+    open var y: Double? = null,
 
     @Basic
     @Column(name = "name", nullable = false, length = -1)
-    val name: String,
+    open var name: String? = null,
 )

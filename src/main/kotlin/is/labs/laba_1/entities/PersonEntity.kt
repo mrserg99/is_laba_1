@@ -9,33 +9,33 @@ open class PersonEntity (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
-    val id: Int,
+    open var id: Int? = null,
 
     @Basic
     @Column(name = "name", nullable = false, length = -1)
-    val name: String,
+    open var name: String? = null,
 
     @Basic
     @Column(name = "eye_color", nullable = false)
-    val eyeColor: Int,
+    open var eyeColor: Int? = null,
 
     @Basic
     @Column(name = "hair_color", nullable = false)
-    val hairColor: Int,
+    open var hairColor: Int? = null,
 
     @Basic
     @Column(name = "location", nullable = false)
-    val location: Int,
+    open var location: Int? = null,
 
     @Basic
     @Column(name = "birthday", nullable = false)
-    val birthday: OffsetDateTime,
+    open var birthday: OffsetDateTime? = null,
 
     @Basic
     @Column(name = "height", nullable = false)
-    val height: Int,
+    open var height: Int? = null,
 
     @Basic
     @Column(name = "weight", nullable = false)
-    val weight: Long,
+    open var weight: Long? = null,
 )

@@ -1,14 +1,21 @@
 package `is`.labs.laba_1.utils
 
+import `is`.labs.laba_1.entities.*
 import org.hibernate.cfg.Configuration
 
-@Deprecated("Оставил на тот случай если уйду от spring-jpa")
 class HibernateSessionFactory {
 
     companion object {
-        @Deprecated("Оставил на тот случай если уйду от spring-jpa")
         val sessionFactory by lazy {
-             Configuration().configure()
+            Configuration()
+                .configure()
+                .addAnnotatedClass(ColorEntity::class.java)
+                .addAnnotatedClass(CoordinatesEntity::class.java)
+                .addAnnotatedClass(FormOfEducationEntity::class.java)
+                .addAnnotatedClass(LocationEntity::class.java)
+                .addAnnotatedClass(PersonEntity::class.java)
+                .addAnnotatedClass(SemesterEntity::class.java)
+                .addAnnotatedClass(StudyGroupEntity::class.java)
                 .buildSessionFactory()
         }
     }

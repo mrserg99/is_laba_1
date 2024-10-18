@@ -8,9 +8,9 @@ open class FormOfEducationEntity (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
-    val id: Int,
+    open var id: Int? = null,
 
     @Basic
     @Column(name = "value", nullable = true, length = -1)
-    val value: String,
+    open var value: String? = null,
 )

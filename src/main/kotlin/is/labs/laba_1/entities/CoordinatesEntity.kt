@@ -9,13 +9,13 @@ open class CoordinatesEntity (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
-    val id: Int,
+    open var id: Int? = null,
 
     @Basic
     @Column(name = "x", nullable = true, precision = 0)
-    val x: BigInteger,
+    open var x: BigInteger? = null,
 
     @Basic
     @Column(name = "y", nullable = false)
-    val y: Int,
+    open var y: Int? = null,
 )
