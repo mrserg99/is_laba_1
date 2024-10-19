@@ -8,6 +8,6 @@ class WelcomeHttpController {
 
     @GetMapping("/")
     fun init(): String {
-        return "index"
+        return "login.html"
     }
 }
