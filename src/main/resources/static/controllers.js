@@ -20,7 +20,7 @@ async function registration(){
     /*Метод на кнопке войти на странице Логин */
     let user = document.getElementById("login_txt").value
     let password = document.getElementById("password_txt").value
-    let responsePromise = await getRequest("/authorization/login", {
+    let responsePromise = await getRequest("/authorization/registration", {
         'Authorization': 'Basic ' + textToBase64(user + ':' + password)
     }).then(response => {
         return response.ok
