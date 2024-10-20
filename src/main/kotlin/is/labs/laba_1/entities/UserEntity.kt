@@ -17,4 +17,8 @@ open class UserEntity(
         @Basic
         @Column(name = "password", nullable = false, length = -1)
         open var password: String? = null,
+
+        @Basic
+        @Column(name = "is_admin", nullable = false)
+        open var isAdmin: Boolean = false
 )

@@ -17,10 +17,11 @@ class AuthorizationService @Autowired constructor(
         ))
     }
 
-    fun registration(login: String, pass: String): Boolean {
+    fun registration(login: String, pass: String, isAdmin: Boolean): Boolean {
         return repository.registration(UserEntity(
                 login = login,
                 password = HashGenerate.createSHA512(pass),
+                isAdmin = isAdmin,
         ))
     }
 }

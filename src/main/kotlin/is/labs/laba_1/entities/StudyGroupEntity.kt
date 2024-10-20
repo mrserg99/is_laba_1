@@ -16,9 +16,10 @@ open class StudyGroupEntity (
     @Column(name = "name", nullable = false, length = -1)
     open var name: String? = null,
 
-    @Basic
+
     @Column(name = "coordinates", nullable = false)
-    open var coordinates: Int? = null,
+    @ManyToOne
+    open var coordinates: CoordinatesEntity? = null,
 
     @Basic
     @Column(name = "creation_date", nullable = false)
