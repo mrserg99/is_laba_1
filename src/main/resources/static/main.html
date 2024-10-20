@@ -325,8 +325,8 @@
         <h1 class="sub_header_base">База данных:</h1>
         <form class="sub_header_form">
             <select name="DB" id="DB" class="sub_header_form_select">
-                <option value="stud">Студенты</option>
                 <option value="group">Группы</option>
+                <option value="stud">Студенты</option>
             </select>
         </form>
         <button id="create_object" class="sub_header_create button_light" onclick="create_obj()">Создать объект</button>
@@ -337,12 +337,13 @@
       <button class="sub_header_update button_light" onclick="add_stroks()">Обновить</button>
   </div>
 </div>
-<table id="table" class="table" cellpadding="4" cellspacing="0">
+<table id="table_group" class="table display_none" cellpadding="4" cellspacing="0">
         <tr>
             <th class="shapcka" colspan="1" rowspan="2">ID</th>
             <th class="shapcka" colspan="1" rowspan="2">Название</th>
-            <th class="shapcka" colspan="2">Координаты</th>
+            <th class="shapcka" colspan="2">Местонахождение</th>
             <th class="shapcka" colspan="1" rowspan="2">Кол-во студентов</th>
+
             <th class="shapcka" colspan="1" rowspan="2">Кол-во отчисленных</th>
             <th class="shapcka" colspan="1" rowspan="2">Кол-во переведенных</th>
             <th class="shapcka" colspan="1" rowspan="2">Будут исключены</th>
@@ -356,7 +357,8 @@
             <th class="shapcka" colspan="1" rowspan="2"></th>
         </tr>
     <tr align="center">
-        <td class="shapcka" style="font-weight: 600">X</td><td class="shapcka" style="font-weight: 600">Y</td>
+        <td class="shapcka" style="font-weight: 600">X</td>
+        <td class="shapcka" style="font-weight: 600">Y</td>
 
     </tr>
     <!-- 10 строк и новая страница -->
@@ -372,6 +374,41 @@
     <tr id="table_wrapper9"></tr>
     <tr id="table_wrapper10"></tr>
     </table>
+<table id="table_stud" class="table" cellpadding="4" cellspacing="0">
+    <tr>
+        <th class="shapcka" colspan="1" rowspan="2">ID</th>
+        <th class="shapcka" colspan="1" rowspan="2">Группа</th>
+
+        <th class="shapcka" colspan="1" rowspan="2">ФИО</th>
+        <th class="shapcka" colspan="1" rowspan="2">Цвет глаз</th>
+
+        <th class="shapcka" colspan="1" rowspan="2">Цвет волос</th>
+        <th class="shapcka" colspan="3">Местонахождения</th>
+        <th class="shapcka" colspan="1" rowspan="2">День рождения</th>
+        <th class="shapcka" colspan="1" rowspan="2">Рост(см)</th>
+        <th class="shapcka" colspan="1" rowspan="2">Вес (кг)</th>
+        <th class="shapcka" colspan="1" rowspan="2"></th>
+        <th class="shapcka" colspan="1" rowspan="2"></th>
+    </tr>
+    <tr align="center">
+        <td class="shapcka" style="font-weight: 600">Название</td>
+        <td class="shapcka" style="font-weight: 600">X</td>
+        <td class="shapcka" style="font-weight: 600">Y</td>
+    </tr>
+    <!-- 10 строк и новая страница -->
+
+    <tr id="table_s_wrapper1"></tr>
+    <tr id="table_s_wrapper2"></tr>
+    <tr id="table_s_wrapper3"></tr>
+    <tr id="table_s_wrapper4"></tr>
+    <tr id="table_s_wrapper5"></tr>
+    <tr id="table_s_wrapper6"></tr>
+    <tr id="table_s_wrapper7"></tr>
+    <tr id="table_s_wrapper8"></tr>
+    <tr id="table_s_wrapper9"></tr>
+    <tr id="table_s_wrapper10"></tr>
+</table>
+
 
 <div class="pagination">
     <button class="to_first"><<</button>
