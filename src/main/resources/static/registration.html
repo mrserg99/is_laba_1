@@ -34,10 +34,42 @@
   </div>
   <p id="error_message" class="error_massage"></p>
   <div class="checkbox">
-    <input type="checkbox" id="admin" name="scales" class="custom-checkbox"/>
+    <input onchange="checkbox_click()" type="checkbox" id="admin" name="scales" class="custom-checkbox"/>
     <label class="checkbox_text" for="admin">Хочу быть админом!</label>
   </div>
 
+<div id="registrationFill" class="reg_reg display_none">
+  <h4 class="admin_param">Укажите следующие параметры:</h4>
+  <div class="dop_reg">
+    <div class="popup_input_wrapper">
+      <p class="popup_input_text">Имя</p>
+      <input id="name_txt" class="popup_input_input w300 br150015" type="text" maxlength=90 >
+    </div>
+    <button id="name_clear" class="popup_input_del_btn br015150" onclick="clear_name()">
+      <img src="./pics/Frame%20202.png" alt="" class="">
+    </button>
+  </div>
+  <div class="dop_reg">
+    <div class="popup_input_wrapper">
+      <p class="popup_input_text">Фамилия</p>
+      <input id="soname_txt" class="popup_input_input w300 br150015" type="text" maxlength=90 >
+    </div>
+    <button id="soname_clear" class="popup_input_del_btn br015150" onclick="clear_soname()">
+      <img src="./pics/Frame%20202.png" alt="" class="">
+    </button>
+  </div>
+
+  <div class="dop_reg">
+    <div class="popup_input_wrapper">
+      <p class="popup_input_text">Почта</p>
+      <input id="mail_txt" class="popup_input_input w300 br150015" type="email" maxlength=90 >
+    </div>
+    <button id="mail_clear" class="popup_input_del_btn br015150" onclick="clear_mail()">
+      <img src="./pics/Frame%20202.png" alt="" class="">
+    </button>
+  </div>
+
+</div>
 
   <button id="enter" class="popup_btn_create button_dark" onclick="registration()">Регистрация</button>
   <a href="login.html" class="link">Уже есть аккаунт?</a>
