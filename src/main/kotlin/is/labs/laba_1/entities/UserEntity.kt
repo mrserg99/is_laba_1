@@ -11,11 +11,11 @@ open class UserEntity(
         open var id: Int? = null,
 
         @Basic
-        @Column(name = "login", nullable = false, length = -1, unique = true)
+        @Column(name = "login", nullable = false, unique = true)
         open var login: String? = null,
 
         @Basic
-        @Column(name = "password", nullable = false, length = -1)
+        @Column(name = "password", nullable = false)
         open var password: String? = null,
 
         @Basic

@@ -1,6 +1,8 @@
 package `is`.labs.laba_1.entities
 
+import `is`.labs.laba_1.dto.Color
 import jakarta.persistence.*
+import jakarta.validation.constraints.Min
 import java.time.OffsetDateTime
 
 @Entity
@@ -17,15 +19,15 @@ open class PersonEntity (
 
     @Basic
     @Column(name = "eye_color", nullable = false)
-    open var eyeColor: Int? = null,
+    open var eyeColor: Color? = null,
 
     @Basic
     @Column(name = "hair_color", nullable = false)
-    open var hairColor: Int? = null,
+    open var hairColor: Color? = null,
 
-    @Basic
     @Column(name = "location", nullable = false)
-    open var location: Int? = null,
+    @ManyToOne
+    open var location: LocationEntity? = null,
 
     @Basic
     @Column(name = "birthday", nullable = false)
@@ -33,9 +35,11 @@ open class PersonEntity (
 
     @Basic
     @Column(name = "height", nullable = false)
+    @Min(1)
     open var height: Int? = null,
 
     @Basic
     @Column(name = "weight", nullable = false)
+    @Min(1)
     open var weight: Long? = null,
 )

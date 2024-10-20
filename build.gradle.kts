@@ -33,6 +33,7 @@ dependencies {
     }
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.hibernate:hibernate-core:6.6.1.Final")
+    implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")
     compileOnly("org.jetbrains.kotlin:kotlin-reflect")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("com.h2database:h2")
