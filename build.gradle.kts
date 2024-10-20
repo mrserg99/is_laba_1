@@ -29,7 +29,7 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web") {
-        exclude(group = "ch.qos.logback", module = "logback-classic")
+//        exclude(group = "ch.qos.logback", module = "logback-classic")
     }
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.hibernate:hibernate-core:6.6.1.Final")

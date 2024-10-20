@@ -16,6 +16,7 @@ class HibernateSessionFactory {
                 .addAnnotatedClass(PersonEntity::class.java)
                 .addAnnotatedClass(SemesterEntity::class.java)
                 .addAnnotatedClass(StudyGroupEntity::class.java)
+                .addAnnotatedClass(UserEntity::class.java)
                 .buildSessionFactory()
         }
     }
