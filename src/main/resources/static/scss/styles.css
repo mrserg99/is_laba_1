@@ -558,7 +558,7 @@ th, td {
 }
 
 .wrapper_l {
-  margin-top: 15%;
+  margin-top: 5%;
   margin-left: 35em;
   width: 660px;
   align-items: center;
@@ -687,6 +687,21 @@ th, td {
   -webkit-text-security: disc;
   -moz-text-security: disc;
   text-security: disc;
+}
+
+.dop_reg {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.reg_reg {
+  padding-top: 20px;
+  background: none;
+}
+
+.admin_param {
+  margin-bottom: 10px;
+  margin-top: 15px;
 }
 
 /*# sourceMappingURL=styles.css.map */

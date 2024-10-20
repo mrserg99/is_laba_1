@@ -60,3 +60,20 @@ function change(p){
 
 
 }
+function clear_name(){
+    document.getElementById("name_txt").value = "";
+}
+function clear_soname(){
+    document.getElementById("soname_txt").value = "";
+}
+function clear_mail(){
+    document.getElementById("mail_txt").value = "";
+}
+function checkbox_click(){
+    if(document.getElementById("admin").checked){
+        document.getElementById("registrationFill").classList.remove("display_none")
+    }else{
+        document.getElementById("registrationFill").classList.add("display_none")
+    }
+
+}
