@@ -683,4 +683,10 @@ th, td {
   background-color: #e9ecef;
 }
 
+#password_txt {
+  -webkit-text-security: disc;
+  -moz-text-security: disc;
+  text-security: disc;
+}
+
 /*# sourceMappingURL=styles.css.map */
