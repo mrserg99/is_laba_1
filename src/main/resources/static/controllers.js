@@ -93,3 +93,7 @@ function add_stroks(){
 
 
 }
+
+function exit(){
+
+}

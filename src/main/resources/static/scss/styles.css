@@ -78,13 +78,13 @@ li, a, ul {
 .header_right_user_name {
   margin-top: 0.5em;
   width: 100px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
 }
 .header_right_user_job {
   margin-top: 0.5em;
   width: 100px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
 }
 
@@ -702,6 +702,12 @@ th, td {
 .admin_param {
   margin-bottom: 10px;
   margin-top: 15px;
+}
+
+#exit_btn {
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 /*# sourceMappingURL=styles.css.map */
