@@ -334,10 +334,10 @@
   <div class="right_side">
       <button class="sub_header_sort button_light">Сортировать</button>
       <button class="sub_header_filter button_light">Фильтровать</button>
-      <button class="sub_header_update button_light">Обновить</button>
+      <button class="sub_header_update button_light" onclick="add_stroks()">Обновить</button>
   </div>
 </div>
-<table class="table" cellpadding="4" cellspacing="0">
+<table id="table" class="table" cellpadding="4" cellspacing="0">
         <tr>
             <th class="shapcka" colspan="1" rowspan="2">ID</th>
             <th class="shapcka" colspan="1" rowspan="2">Название</th>
@@ -360,226 +360,17 @@
 
     </tr>
     <!-- 10 строк и новая страница -->
-    <tr align="center">
-        <td class="var_tab" id="1_std_id" >263879</td>
-        <td class="var_tab" >P3311</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >12</td>
-        <td class="var_tab" >19/09/2024 12:24:11</td>
-        <td class="var_tab" >очная</td>
-        <td class="var_tab" >KOT3CHKa</td>
-        <td class="var_tab" >4.5</td>
-        <td class="var_tab" >Лебедева А.И.</td>
-        <td class="var_tab" >6</td>
-        <td class="var_tab" ><button class="change button_dark" onclick="change(1)">Изменить</button></td>
-        <td class="var_tab" >
-            <button class="del button_dark popup_del_btn">
-                <img class="rubbish" src="./pics/Mask%20group.png" alt="">
-            </button>
-        </td>
-    </tr>
-    <tr align="center">
-        <td class="var_tab"  id="2_std_id">263879</td>
-        <td class="var_tab" >P3311</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >12</td>
-        <td class="var_tab" >19/09/2024 12:24:11</td>
-        <td class="var_tab" >очная</td>
-        <td class="var_tab" >KOT3CHKa</td>
-        <td class="var_tab" >4.5</td>
-        <td class="var_tab" >Лебедева А.И.</td>
-        <td class="var_tab" >6</td>
-        <td class="var_tab" ><button class="change button_dark" onclick="change(2)">Изменить</button></td>
-        <td class="var_tab" >
-            <button class="del button_dark popup_del_btn">
-                <img class="rubbish" src="./pics/Mask%20group.png" alt="">
-            </button>
-        </td>
-    </tr>
-    <tr align="center">
-        <td class="var_tab" >263879</td>
-        <td class="var_tab" >P3311</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >12</td>
-        <td class="var_tab" >19/09/2024 12:24:11</td>
-        <td class="var_tab" >очная</td>
-        <td class="var_tab" >KOT3CHKa</td>
-        <td class="var_tab" >4.5</td>
-        <td class="var_tab" >Лебедева А.И.</td>
-        <td class="var_tab" >6</td>
-        <td class="var_tab" ><button class="change button_dark">Изменить</button></td>
-        <td class="var_tab" >
-            <button class="del button_dark popup_del_btn">
-                <img class="rubbish" src="./pics/Mask%20group.png" alt="">
-            </button>
-        </td>
-    </tr>
-    <tr align="center">
-        <td class="var_tab" >263879</td>
-        <td class="var_tab" >P3311</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >12</td>
-        <td class="var_tab" >19/09/2024 12:24:11</td>
-        <td class="var_tab" >очная</td>
-        <td class="var_tab" >KOT3CHKa</td>
-        <td class="var_tab" >4.5</td>
-        <td class="var_tab" >Лебедева А.И.</td>
-        <td class="var_tab" >6</td>
-        <td class="var_tab" ><button class="change button_dark">Изменить</button></td>
-        <td class="var_tab" >
-            <button class="del button_dark popup_del_btn">
-                <img class="rubbish" src="./pics/Mask%20group.png" alt="">
-            </button>
-        </td>
-    </tr>
-    <tr align="center">
-        <td class="var_tab" >263879</td>
-        <td class="var_tab" >P3311</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >12</td>
-        <td class="var_tab" >19/09/2024 12:24:11</td>
-        <td class="var_tab" >очная</td>
-        <td class="var_tab" >KOT3CHKa</td>
-        <td class="var_tab" >4.5</td>
-        <td class="var_tab" >Лебедева А.И.</td>
-        <td class="var_tab" >6</td>
-        <td class="var_tab" ><button class="change button_dark">Изменить</button></td>
-        <td class="var_tab" >
-            <button class="del button_dark popup_del_btn">
-                <img class="rubbish" src="./pics/Mask%20group.png" alt="">
-            </button>
-        </td>
-    </tr>
 
-    <tr align="center">
-        <td class="var_tab" >263879</td>
-        <td class="var_tab" >P3311</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >12</td>
-        <td class="var_tab" >19/09/2024 12:24:11</td>
-        <td class="var_tab" >очная</td>
-        <td class="var_tab" >KOT3CHKa</td>
-        <td class="var_tab" >4.5</td>
-        <td class="var_tab" >Лебедева А.И.</td>
-        <td class="var_tab" >6</td>
-        <td class="var_tab" ><button class="change button_dark">Изменить</button></td>
-        <td class="var_tab" >
-            <button class="del button_dark popup_del_btn">
-                <img class="rubbish" src="./pics/Mask%20group.png" alt="">
-            </button>
-        </td>
-    </tr><tr align="center">
-    <td class="var_tab" >263879</td>
-    <td class="var_tab" >P3311</td>
-    <td class="var_tab" >22</td>
-    <td class="var_tab" >22</td>
-    <td class="var_tab" >22</td>
-    <td class="var_tab" >2</td>
-    <td class="var_tab" >2</td>
-    <td class="var_tab" >12</td>
-    <td class="var_tab" >19/09/2024 12:24:11</td>
-    <td class="var_tab" >очная</td>
-    <td class="var_tab" >KOT3CHKa</td>
-    <td class="var_tab" >4.5</td>
-    <td class="var_tab" >Лебедева А.И.</td>
-    <td class="var_tab" >6</td>
-    <td class="var_tab" ><button class="change button_dark">Изменить</button></td>
-    <td class="var_tab" >
-        <button class="del button_dark popup_del_btn">
-            <img class="rubbish" src="./pics/Mask%20group.png" alt="">
-        </button>
-    </td>
-</tr>
-    <tr align="center">
-        <td class="var_tab" >263879</td>
-        <td class="var_tab" >P3311</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >12</td>
-        <td class="var_tab" >19/09/2024 12:24:11</td>
-        <td class="var_tab" >очная</td>
-        <td class="var_tab" >KOT3CHKa</td>
-        <td class="var_tab" >4.5</td>
-        <td class="var_tab" >Лебедева А.И.</td>
-        <td class="var_tab" >6</td>
-        <td class="var_tab" ><button class="change button_dark">Изменить</button></td>
-        <td class="var_tab" >
-            <button class="del button_dark popup_del_btn">
-                <img class="rubbish" src="./pics/Mask%20group.png" alt="">
-            </button>
-        </td>
-    </tr>
-    <tr align="center">
-        <td class="var_tab" >263879</td>
-        <td class="var_tab" >P3311</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >12</td>
-        <td class="var_tab" >19/09/2024 12:24:11</td>
-        <td class="var_tab" >очная</td>
-        <td class="var_tab" >KOT3CHKa</td>
-        <td class="var_tab" >4.5</td>
-        <td class="var_tab" >Лебедева А.И.</td>
-        <td class="var_tab" >6</td>
-        <td class="var_tab" ><button class="change button_dark">Изменить</button></td>
-        <td class="var_tab" >
-            <button class="del button_dark popup_del_btn">
-                <img class="rubbish" src="./pics/Mask%20group.png" alt="">
-            </button>
-        </td>
-    </tr>
-    <tr align="center">
-        <td class="var_tab" >263879</td>
-        <td class="var_tab" >P3311</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >22</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >2</td>
-        <td class="var_tab" >12</td>
-        <td class="var_tab" >19/09/2024 12:24:11</td>
-        <td class="var_tab" >очная</td>
-        <td class="var_tab" >KOT3CHKa</td>
-        <td class="var_tab" >4.5</td>
-        <td class="var_tab" >Лебедева А.И.</td>
-        <td class="var_tab" >6</td>
-        <td class="var_tab" ><button class="change button_dark">Изменить</button></td>
-        <td class="var_tab" >
-            <button class="del button_dark popup_del_btn">
-                <img class="rubbish" src="./pics/Mask%20group.png" alt="">
-            </button>
-        </td>
-    </tr>
+   <tr id="table_wrapper1"></tr>
+    <tr id="table_wrapper2"></tr>
+    <tr id="table_wrapper3"></tr>
+    <tr id="table_wrapper4"></tr>
+    <tr id="table_wrapper5"></tr>
+    <tr id="table_wrapper6"></tr>
+    <tr id="table_wrapper7"></tr>
+    <tr id="table_wrapper8"></tr>
+    <tr id="table_wrapper9"></tr>
+    <tr id="table_wrapper10"></tr>
     </table>
 
 <div class="pagination">

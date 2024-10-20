@@ -603,4 +603,10 @@ th, td {
   cursor: pointer;
 }
 
+#reg {
+  margin-left: 3em;
+  background: #F4F5F7;
+  color: #292929;
+}
+
 /*# sourceMappingURL=styles.css.map */
