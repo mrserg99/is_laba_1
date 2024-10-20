@@ -19,13 +19,14 @@ open class PersonEntity (
 
     @Basic
     @Column(name = "eye_color", nullable = false)
+    @Enumerated(EnumType.STRING)
     open var eyeColor: Color? = null,
 
     @Basic
     @Column(name = "hair_color", nullable = false)
+    @Enumerated(EnumType.STRING)
     open var hairColor: Color? = null,
 
-    @Column(name = "location", nullable = false)
     @ManyToOne
     open var location: LocationEntity? = null,
 

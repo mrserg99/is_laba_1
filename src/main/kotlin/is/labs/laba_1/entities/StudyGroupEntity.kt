@@ -18,8 +18,6 @@ open class StudyGroupEntity(
         @Column(name = "name", nullable = false, length = -1)
         open var name: String? = null,
 
-
-        @Column(name = "coordinates", nullable = false)
         @ManyToOne
         open var coordinates: CoordinatesEntity? = null,
 
@@ -44,6 +42,7 @@ open class StudyGroupEntity(
 
         @Basic
         @Column(name = "form_of_education", nullable = false)
+        @Enumerated(EnumType.STRING)
         open var formOfEducation: FormOfEducation? = null,
 
         @Basic
@@ -58,9 +57,9 @@ open class StudyGroupEntity(
 
         @Basic
         @Column(name = "semester_enum", nullable = false)
+        @Enumerated(EnumType.STRING)
         open var semesterEnum: Semester? = null,
 
-        @Column(name = "group_admin", nullable = false)
         @OneToOne
         open var groupAdmin: PersonEntity? = null,
 )
