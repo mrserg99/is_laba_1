@@ -324,7 +324,7 @@
     <div class="left_side">
         <h1 class="sub_header_base">База данных:</h1>
         <form class="sub_header_form">
-            <select name="DB" id="DB" class="sub_header_form_select">
+            <select onclick="tables_check()" name="DB" id="DB" class="sub_header_form_select">
                 <option value="group">Группы</option>
                 <option value="stud">Студенты</option>
             </select>
@@ -337,7 +337,7 @@
       <button class="sub_header_update button_light" onclick="add_stroks()">Обновить</button>
   </div>
 </div>
-<table id="table_group" class="table display_none" cellpadding="4" cellspacing="0">
+<table id="table_group" class="table" cellpadding="4" cellspacing="0">
         <tr>
             <th class="shapcka" colspan="1" rowspan="2">ID</th>
             <th class="shapcka" colspan="1" rowspan="2">Название</th>
@@ -374,7 +374,7 @@
     <tr id="table_wrapper9"></tr>
     <tr id="table_wrapper10"></tr>
     </table>
-<table id="table_stud" class="table" cellpadding="4" cellspacing="0">
+<table id="table_stud" class="table display_none" cellpadding="4" cellspacing="0">
     <tr>
         <th class="shapcka" colspan="1" rowspan="2">ID</th>
         <th class="shapcka" colspan="1" rowspan="2">Группа</th>
@@ -420,6 +420,7 @@
 
 
 </body>
+<script src="forTable.js"></script>
 <script src="scripts.js"></script>
 <script src="controllers.js"></script>
 </html>
