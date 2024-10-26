@@ -670,11 +670,17 @@ li, a, ul{
   padding-right: 15px;
 }
 .select_coord{
+  padding-right: 11px;
+  height: 150px;
   position: absolute;
-  max-height: 300px;
   margin-top: 10px;
   background: #Ffffff;
   border: #292929 1px solid;
+
+}
+.select_coord_wrapper{
+  overflow-y:scroll;
+  height: 150px;
 }
 .select_coord_child{
   display: flex;
@@ -695,10 +701,10 @@ li, a, ul{
   background-color: #caced1;
   cursor: pointer;
   &:first-child{
-    border-radius:  15px 15px 0 0px;
+    border-radius:  15px 0px 0 0px;
   }
   &:last-child{
-    border-radius:  0 0 15px 15px ;
+    border-radius:  0 0 0px 15px ;
   }
 }
 .clear_location_btn:hover{

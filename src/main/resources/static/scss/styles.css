@@ -736,11 +736,17 @@ th, td {
 }
 
 .select_coord {
+  padding-right: 11px;
+  height: 150px;
   position: absolute;
-  max-height: 300px;
   margin-top: 10px;
   background: #Ffffff;
   border: #292929 1px solid;
+}
+
+.select_coord_wrapper {
+  overflow-y: scroll;
+  height: 150px;
 }
 
 .select_coord_child {
@@ -767,10 +773,10 @@ th, td {
   cursor: pointer;
 }
 .select_coord_child:hover:first-child {
-  border-radius: 15px 15px 0 0px;
+  border-radius: 15px 0px 0 0px;
 }
 .select_coord_child:hover:last-child {
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 0px 15px;
 }
 
 .clear_location_btn:hover {
