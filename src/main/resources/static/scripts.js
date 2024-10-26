@@ -1,4 +1,3 @@
-
 function clear_login(){
         document.getElementById("login_txt").value = "";
 }
@@ -35,31 +34,6 @@ function close_popup(){
 
 }
 
-function change(p){
-    if (p===1) {
-        var a = document.getElementById("1_std_id").value;
-    }
-    if(p===2){
-        var a = document.getElementById("2_std_id").value;
-    }
-    var valueA = a;
-
-    document.getElementById("dark_overlay").classList.remove("display_none")
-
-    var e = document.getElementById("DB");
-    var value = e.value;
-
-    if (e.value === "stud"){
-        document.getElementById("popup_create_stud").classList.remove("display_none")
-        document.getElementById("popup_stud_title").innerHTML=valueA;
-    }
-    if (e.value === "group"){
-        document.getElementById("popup_create_group").classList.remove("display_none")
-        document.getElementById("popup_group_title").innerHTML=valueA;
-    }
-
-
-}
 function clear_name(){
     document.getElementById("name_txt").value = "";
 }

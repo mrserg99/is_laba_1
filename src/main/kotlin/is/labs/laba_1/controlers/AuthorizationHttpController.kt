@@ -22,14 +22,15 @@ class AuthorizationHttpController @Autowired constructor(
     @GetMapping("/login")
     fun login(
             @RequestHeader headers: Map<String, String>,
-    ): ResponseEntity<HttpStatus> {
-        val loginAndPass = getUserAndPass(headers) ?: return ResponseEntity<HttpStatus>(HttpStatus.BAD_REQUEST)
+    ): ResponseEntity<Boolean> {
+        val loginAndPass = getLoginAndPass(headers) ?: return ResponseEntity(HttpStatus.BAD_REQUEST)
 
         if (authorizationService.login(loginAndPass.first, loginAndPass.second)) {
             httpSession.setAttribute(loginAndPass.first, true)
-            return ResponseEntity<HttpStatus>(HttpStatus.OK)
+            val isAdmin = authorizationService.isAdmin(loginAndPass.first)
+            return ResponseEntity(isAdmin, HttpStatus.OK)
         } else {
-            return ResponseEntity<HttpStatus>(HttpStatus.BAD_REQUEST)
+            return ResponseEntity(HttpStatus.BAD_REQUEST)
         }
     }
 
@@ -38,7 +39,7 @@ class AuthorizationHttpController @Autowired constructor(
             @RequestHeader headers: Map<String, String>,
             @RequestParam(value = "isAdmin") isAdmin: Boolean,
     ): ResponseEntity<HttpStatus> {
-        val loginAndPass = getUserAndPass(headers) ?: return ResponseEntity<HttpStatus>(HttpStatus.BAD_REQUEST)
+        val loginAndPass = getLoginAndPass(headers) ?: return ResponseEntity<HttpStatus>(HttpStatus.BAD_REQUEST)
 
         if (authorizationService.registration(loginAndPass.first, loginAndPass.second, isAdmin)) {
             httpSession.setAttribute(loginAndPass.first, true)
@@ -48,7 +49,7 @@ class AuthorizationHttpController @Autowired constructor(
         }
     }
 
-    private fun getUserAndPass(headers: Map<String, String>): Pair<String, String>? {
+    private fun getLoginAndPass(headers: Map<String, String>): Pair<String, String>? {
         val loginPassEncode =
                 headers[AUTHENTICATE]?.split(" ")?.get(1) ?: return null
         val loginPassDecode = String(Base64.getDecoder().decode(loginPassEncode)).split(":")

@@ -24,4 +24,8 @@ class AuthorizationService @Autowired constructor(
                 isAdmin = isAdmin,
         ))
     }
+
+    fun isAdmin(login: String): Boolean {
+        return repository.isAdmin(login)
+    }
 }

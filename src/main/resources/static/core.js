@@ -21,17 +21,17 @@ async function postRequest(url, header, body) {
     })
 }
 
-async function deleteRequest(url, header, body) {
+async function putRequest(url, header, body) {
     return await fetch(url, {
-        method: 'DELETE',
+        method: 'PUT',
         headers: header,
         body: body
     })
 }
 
-async function putRequest(url, header, body) {
+async function deleteRequest(url, header, body) {
     return await fetch(url, {
-        method: 'PUT',
+        method: 'DELETE',
         headers: header,
         body: body
     })
@@ -47,4 +47,12 @@ function textToBase64(text) {
     const bytes = new TextEncoder().encode(text)
     const binString = String.fromCodePoint(...bytes);
     return btoa(binString);
+}
+
+function toJson(object){
+    return JSON.stringify(object)
+}
+
+function fromJson(json){
+    return JSON.parse(json)
 }
