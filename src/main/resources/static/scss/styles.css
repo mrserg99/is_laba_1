@@ -487,10 +487,27 @@ th, td {
   width: 125px;
 }
 
+.w350 {
+  width: 350px;
+}
+
+.w100 {
+  width: 100px;
+}
+
 .popup_five_line {
   margin-top: 20px;
   display: flex;
-  gap: 80px;
+  gap: 83px;
+}
+
+#coordinate_stud {
+  font: inherit;
+  letter-spacing: inherit;
+  word-spacing: 22px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .popup_btn_create {
@@ -539,6 +556,14 @@ th, td {
 
 .w260 {
   width: 260px;
+}
+
+.w185 {
+  width: 185px;
+}
+
+.br15 {
+  border-radius: 15px;
 }
 
 .aprove {
@@ -708,6 +733,52 @@ th, td {
   border-radius: 15px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.select_coord {
+  position: absolute;
+  max-height: 300px;
+  margin-top: 10px;
+  background: #Ffffff;
+  border: #292929 1px solid;
+}
+
+.select_coord_child {
+  display: flex;
+}
+
+.place {
+  width: 140px;
+  text-align: center;
+}
+
+.coord_X {
+  width: 90px;
+  text-align: center;
+}
+
+.coord_Y {
+  width: 90px;
+  text-align: center;
+}
+
+.select_coord_child:hover {
+  background-color: #caced1;
+  cursor: pointer;
+}
+.select_coord_child:hover:first-child {
+  border-radius: 15px 15px 0 0px;
+}
+.select_coord_child:hover:last-child {
+  border-radius: 0 0 15px 15px;
+}
+
+.clear_location_btn:hover {
+  cursor: pointer;
+}
+
+.select_loc_btn:hover {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=styles.css.map */

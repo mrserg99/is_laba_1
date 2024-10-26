@@ -59,5 +59,42 @@ function checkbox_click(){
     }else{
         document.getElementById("registrationFill").classList.add("display_none")
     }
+}
 
+function stud_coord_checkbox(){
+    if (document.getElementById('stud_coord_checkbox').checked) {
+        document.getElementById("select_loc_btn").classList.remove("display_none")
+
+    } else {
+        document.getElementById("select_loc_btn").classList.add("display_none")
+
+    }
+
+
+}
+function setLocation(location){
+    /*появления селекта по локации на странице main*/
+    let place = location.children[0].textContent;
+    let coord_X = location.children[1].textContent;
+    let coord_Y = location.children[2].textContent;
+
+    document.getElementById('locationName_input').value = place;
+    document.getElementById('locationCoordinateX_input').value = coord_X;
+    document.getElementById('locationCoordinateY_input').value = coord_Y;
+
+    document.getElementById("select_location").classList.add("display_none")
+    document.getElementById("seagal").style.transform = "rotate(0deg)";
+
+}
+
+function select_visible(){
+    /*Появление галочки для селекта*/
+    document.getElementById("select_location").classList.remove("display_none")
+    document.getElementById("seagal").style.transform = "rotate(180deg)";
+}
+function clear_location(){
+    /*Очистка поля селекта */
+    document.getElementById('locationName_input').value = "";
+    document.getElementById('locationCoordinateX_input').value = "";
+    document.getElementById('locationCoordinateY_input').value = "";
 }

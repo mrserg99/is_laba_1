@@ -77,8 +77,8 @@
                 </button>
             </div>
             <div class="popup_checkbox">
-                <input type="checkbox" id="new_coordinates" name="new_coordinates" checked />
-                <label for="new_coordinates">Выбор новых значений</label>
+                <input type="checkbox" id="new_coordinates" name="new_coordinates"/>
+                <label for="new_coordinates">Выбор из существующих</label>
             </div>
         </div>
 </div>
@@ -167,7 +167,7 @@
 
     </div>
     <div class="popup_seven_line">
-        <p class="error_massage">Упс, что-то пошло не так</p>
+        <p class="error_massage"></p>
     </div>
 <div class="popup_six_line_1">
     <button id="create_group_btn" class="popup_btn_create button_dark" onclick="createGroup()">Создать</button>
@@ -192,7 +192,7 @@
 
     </div>
     <div class="popup_seven_line">
-        <p class="error_massage">Упс, что-то пошло не так</p>
+        <p class="error_massage"></p>
     </div>
 </div>
 
@@ -227,18 +227,51 @@
                     <p class="popup_input_text">Координата Y</p>
                     <input id="locationCoordinateY_input" class="popup_input_input w74" type="text" maxlength=10 >
                 </div>
-                <button class="popup_input_link_btn">
-                    <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button class="popup_input_link_btn display_none" id="select_loc_btn" onclick="select_visible()">
+                    <svg id="seagal" width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 1L7.97056 7.97056C8.36109 8.36109 8.99425 8.36109 9.38478 7.97056L16.3553 1" stroke="#292929" stroke-width="2" stroke-linecap="round"/>
                     </svg>
+
                 </button>
-                <button class="popup_input_del_btn br015150">
+                <button id="clear_location_btn" class="popup_input_del_btn br015150" onclick="clear_location()">
                     <img src="./pics/Frame%20202.png" alt="" class="">
                 </button>
+
             </div>
-            <div class="popup_checkbox">
-                <input type="checkbox" name="new_coordinates" checked />
-                <label for="new_coordinates">Выбор новых значений</label>
+            <div id="select_location" class="select_coord w350 br15 display_none">
+
+                <div class="select_coord_child" onclick="setLocation(this)">
+                    <p class="place">Кронверсикий пр.1</p>
+                    <p class="coord_X">2</p>
+                    <p class="coord_Y">2</p>
+                </div>
+
+                <div class="select_coord_child" onclick="setLocation(this)">
+                    <p class="place">Кронверсикий пр.2</p>
+                    <p class="coord_X">11</p>
+                    <p class="coord_Y">11</p>
+                </div>
+
+                <div class="select_coord_child" onclick="setLocation(this)">
+                    <p class="place">Кронверсикий пр.3</p>
+                    <p class="coord_X">211</p>
+                    <p class="coord_Y">222</p>
+                </div>
+
+                <div class="select_coord_child" onclick="setLocation(this)">
+                    <p class="place">Кронверсикий пр.4</p>
+                    <p class="coord_X">2</p>
+                    <p class="coord_Y">222</p>
+                </div>
+                <div class="select_coord_child" onclick="setLocation(this)">
+                    <p class="place">Кронверсикий пр.5</p>
+                    <p class="coord_X">222</p>
+                    <p class="coord_Y">2</p>
+                </div>
+            </div>
+            <div class="popup_checkbox" onclick="stud_coord_checkbox()">
+                <input type="checkbox" id="stud_coord_checkbox" name="new_coordinates"/>
+                <label for="new_coordinates">Выбор из существующих</label>
             </div>
         </div>
     </div>
@@ -267,11 +300,13 @@
         <div class="popup_input">
             <div class="popup_input_wrapper">
                 <p class="popup_input_text">Цвет волос</p>
-                <input id="eyeColor_input" class="popup_input_input w115 br150015" type="text" maxlength=90 >
+                <select id="hairColor_input" class="popup_input_input w185 br15">
+                    <option value="">Выберите цвет волос</option>
+                    <option value="red">Красный</option>
+                    <option value="green">Зеленый</option>
+                </select>
+
             </div>
-            <button class="popup_input_del_btn br015150">
-                <img src="./pics/Frame%20202.png" alt="" class="">
-            </button>
         </div>
 
         <div class="popup_input">
@@ -288,11 +323,13 @@
         <div class="popup_input">
             <div class="popup_input_wrapper">
                 <p class="popup_input_text">Цвет глаз</p>
-                <input id="hairColor_input" class="popup_input_input w115 br150015" type="text" maxlength=90 >
+                <select id="eyeColor_input" class="popup_input_input w185 br15">
+                    <option value="">Выберите цвет волос</option>
+                    <option value="red">Красный</option>
+                    <option value="green">Зеленый</option>
+                </select>
             </div>
-            <button class="popup_input_del_btn br015150">
-                <img src="./pics/Frame%20202.png" alt="" class="">
-            </button>
+
         </div>
         <div class="popup_input">
             <div class="popup_input_wrapper">
@@ -307,7 +344,7 @@
 
     </div>
     <div class="popup_seven_line">
-        <p class="error_massage">Упс, что-то пошло не так</p>
+        <p class="error_massage"></p>
     </div>
     <div class="popup_six_line_2">
         <button id="create_stud_btn" class="popup_btn_create button_dark" onclick="createPerson()">Создать</button>
