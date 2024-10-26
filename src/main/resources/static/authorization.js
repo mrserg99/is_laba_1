@@ -1,9 +1,9 @@
-function login(){
+async function login(){
     /*Метод на кнопке войти на странице Логин */
     let user = document.getElementById("login_txt").value
     let password = document.getElementById("password_txt").value
 
-    let result = loginRequest(user, password)
+    let result = await loginRequest(user, password)
 
     if (result.ok === true) {
         setValue(storageVocabulary.user, user)
@@ -16,13 +16,13 @@ function login(){
     }
 }
 
-function registration() {
+async function registration() {
     /*Метод на кнопке войти на странице Логин */
     let isAdmin = document.getElementById("admin").checked
     let user = document.getElementById("login_txt").value
     let password = document.getElementById("password_txt").value
 
-    let result = registrationRequest(isAdmin, user, password)
+    let result = await registrationRequest(isAdmin, user, password)
 
     if (result === true) {
         window.location.href = 'login.html'

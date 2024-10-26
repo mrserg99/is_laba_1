@@ -16,9 +16,11 @@ function create_obj(){
 
     if (e.value === "stud"){
         document.getElementById("popup_create_stud").classList.remove("display_none")
+        document.getElementById("user_change_stud").innerHTML = getValue(storageVocabulary.user)
     }
     if (e.value === "group"){
         document.getElementById("popup_create_group").classList.remove("display_none")
+        document.getElementById("user_change_group").innerHTML = getValue(storageVocabulary.user)
     }
 }
 
