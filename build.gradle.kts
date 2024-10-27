@@ -1,11 +1,12 @@
 plugins {
-    kotlin("jvm") version "1.9.25"
+    kotlin("jvm") version "2.0.20"
     kotlin("plugin.spring") version "1.9.25"
     war
     id("org.springframework.boot") version "3.3.4"
     id("io.spring.dependency-management") version "1.1.6"
     kotlin("plugin.jpa") version "1.9.25"
     id("mx.com.inftel.wildfly") version "1.0.2"
+    kotlin("plugin.serialization") version "2.0.20"
 }
 
 group = "is.labs"
@@ -31,7 +32,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web") {
 //        exclude(group = "ch.qos.logback", module = "logback-classic")
     }
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     implementation("org.hibernate:hibernate-core:6.6.1.Final")
     implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")
     compileOnly("org.jetbrains.kotlin:kotlin-reflect")

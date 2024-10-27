@@ -13,6 +13,16 @@ async function registrationRequest(isAdmin, user, password){
     })
 }
 
+/**
+ * @param {Person} person
+ * @param type - Person, Group, Coordinate, Location
+ */
+async function create(person, type) {
+    let url = "/repository/create/"+type
+    return await postRequest(url, {}, toJson(person))
+}
+
+
 function del_stud(){
     /* Удаляет объект студент*/
 }

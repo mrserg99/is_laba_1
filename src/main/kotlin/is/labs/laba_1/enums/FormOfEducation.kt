@@ -1,4 +1,4 @@
-package `is`.labs.laba_1.dto
+package `is`.labs.laba_1.enums
 
 enum class FormOfEducation(
     val form: String,

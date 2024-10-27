@@ -1,9 +1,11 @@
 package `is`.labs.laba_1.entities
 
 import jakarta.persistence.*
+import kotlinx.serialization.Serializable
 
 @Entity
 @Table(name = "coordinates", schema = "is_lab_one", catalog = "postgres")
+@Serializable
 open class CoordinatesEntity (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

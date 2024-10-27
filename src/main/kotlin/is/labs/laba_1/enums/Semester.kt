@@ -1,7 +1,7 @@
-package `is`.labs.laba_1.dto
+package `is`.labs.laba_1.enums
 
 enum class Semester(
-    val colorValue: String,
+        val semester: String,
 ) {
     FIRST("первый"),
     THIRD("третий"),

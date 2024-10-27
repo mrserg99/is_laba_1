@@ -1,13 +1,16 @@
 package `is`.labs.laba_1.entities
 
-import `is`.labs.laba_1.dto.FormOfEducation
-import `is`.labs.laba_1.dto.Semester
+import `is`.labs.laba_1.enums.FormOfEducation
+import `is`.labs.laba_1.enums.Semester
+import `is`.labs.laba_1.serializer.KOffsetDateTimeSerializer
 import jakarta.persistence.*
 import jakarta.validation.constraints.Min
+import kotlinx.serialization.Serializable
 import java.time.OffsetDateTime
 
 @Entity
 @Table(name = "studygroup", schema = "is_lab_one", catalog = "postgres")
+@Serializable
 open class StudyGroupEntity(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Id
@@ -23,6 +26,7 @@ open class StudyGroupEntity(
 
         @Basic
         @Column(name = "creation_date", nullable = false)
+        @Serializable(KOffsetDateTimeSerializer::class)
         open var creationDate: OffsetDateTime = OffsetDateTime.now(),
 
         @Basic

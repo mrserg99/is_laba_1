@@ -1,21 +1,29 @@
+const removeByClass = (sel) => document.querySelectorAll(sel).forEach(el => el.remove());
+
 function clear_login(){
     /*Очистка поля логин в странице Login*/
         document.getElementById("login_txt").value = "";
 }
+
 function clear_password(){
     /*Очистка поля пароль в странице Login*/
     document.getElementById("password_txt").value = "";
 }
 
-function create_obj(){
+async function create_obj(){
     /*Появление popup окна создания объекта*/
     document.getElementById("dark_overlay").classList.remove("display_none")
 
-    var e = document.getElementById("DB");
-    var value = e.value;
+    let e = document.getElementById("DB");
+    let value = e.value;
 
     if (e.value === "stud"){
         document.getElementById("popup_create_stud").classList.remove("display_none")
+        let colors = await getEntity(Type.COLOR.description)
+        colors.forEach(value => {
+            document.querySelector("#hairColor_input").insertAdjacentHTML("beforeend", '<option>'+value+'</option>')
+            document.querySelector("#eyeColor_input").insertAdjacentHTML("beforeend", '<option>'+value+'</option>')
+        })
         document.getElementById("user_change_stud").innerHTML = getValue(storageVocabulary.user)
     }
     if (e.value === "group"){
@@ -39,7 +47,6 @@ function close_popup(){
     document.getElementById("dark_overlay").classList.add("display_none")
 
 }
-
 function clear_name(){
     /*Очистка поля имя на странице Main*/
     document.getElementById("name_txt").value = "";
@@ -52,6 +59,7 @@ function clear_mail(){
     /*Очистка поля почта на странице Main*/
     document.getElementById("mail_txt").value = "";
 }
+
 function checkbox_click(){
     /*Появление второстепенных параметров на странице Регистрации для админа*/
     if(document.getElementById("admin").checked){
@@ -61,17 +69,25 @@ function checkbox_click(){
     }
 }
 
-function stud_coord_checkbox(){
+async function stud_coord_checkbox(){
     if (document.getElementById('stud_coord_checkbox').checked) {
+        let locations = await getEntity(Type.LOCATION.description)
         document.getElementById("select_loc_btn").classList.remove("display_none")
-
+        locations.forEach(value => {
+            let location = '<div id = '+value.id+' class="select_coord_child" onclick="setLocation(this)">\n' +
+                '                        <p class="place">'+value.name+'</p>\n' +
+                '                        <p class="coord_X">'+value.x+'</p>\n' +
+                '                        <p class="coord_Y">'+value.y+'</p>\n' +
+                '                    </div>'
+            document.querySelector("#select_location_list").insertAdjacentHTML("beforeend", location)
+        })
     } else {
+        document.querySelector("#select_location_list").innerHTML = ''
         document.getElementById("select_loc_btn").classList.add("display_none")
 
     }
-
-
 }
+
 function setLocation(location){
     /*появления селекта по локации на странице main*/
     let place = location.children[0].textContent;
@@ -86,15 +102,36 @@ function setLocation(location){
     document.getElementById("seagal").style.transform = "rotate(0deg)";
 
 }
-
-function select_visible(){
+async function select_visible(){
     /*Появление галочки для селекта*/
     document.getElementById("select_location").classList.remove("display_none")
     document.getElementById("seagal").style.transform = "rotate(180deg)";
 }
+
 function clear_location(){
     /*Очистка поля селекта */
     document.getElementById('locationName_input').value = "";
     document.getElementById('locationCoordinateX_input').value = "";
     document.getElementById('locationCoordinateY_input').value = "";
+}
+
+async function tables_check() {
+    var e = document.getElementById("DB");
+    var value = e.value;
+
+    if (e.value === "stud") {
+        document.getElementById("table_stud").classList.remove("display_none")
+        document.getElementById("table_group").classList.add("display_none")
+        let persons = await getEntity(Type.PERSON.description)
+        persons.forEach(value => {
+            let person = createPersonRowByTemplate(value)
+            document.querySelector("#table_stud").insertAdjacentHTML("beforeend", person)
+        })
+
+    }
+    if (e.value === "group") {
+        removeByClass(".person_tab")
+        document.getElementById("table_group").classList.remove("display_none")
+        document.getElementById("table_stud").classList.add("display_none")
+    }
 }

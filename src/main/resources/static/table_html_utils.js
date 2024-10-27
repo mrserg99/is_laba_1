@@ -33,8 +33,8 @@ function createStudyGroupRowByTemplate(studyGroup) {
     return "<tr>\n" +
         "        <td class=\"var_tab\"  id=" + studyGroup.id + ">" + studyGroup.id + "</td>\n" +
         "        <td class=\"var_tab\" >" + studyGroup.name + "</td>\n" +
-        "        <td class=\"var_tab\" >" + studyGroup.coordinateX + "</td>\n" +
-        "        <td class=\"var_tab\" >" + studyGroup.coordinateY + "</td>\n" +
+        "        <td class=\"var_tab\" >" + studyGroup.coordinate.x + "</td>\n" +
+        "        <td class=\"var_tab\" >" + studyGroup.coordinate.y + "</td>\n" +
         "        <td class=\"var_tab\" >" + studyGroup.numberOfStudents + "</td>\n" +
         "        <td class=\"var_tab\" >" + studyGroup.numberOfExpelled + "</td>\n" +
         "        <td class=\"var_tab\" >" + studyGroup.numberOfTransferred + "</td>\n" +
@@ -45,7 +45,7 @@ function createStudyGroupRowByTemplate(studyGroup) {
         "        <td class=\"var_tab\" >" + studyGroup.averageMark + "</td>\n" +
         "        <td class=\"var_tab\" >" + studyGroup.groupAdmin + "</td>\n" +
         "        <td class=\"var_tab\" >" + studyGroup.semester + "</td>\n" +
-        "        <td class=\"var_tab\" ><button class=\"change button_dark\" onclick=\"change(this)\">Изменить</button></td>\n" +
+        "        <td class=\"var_tab\" ><button class=\"change button_dark\" onclick=\"change(this.parentElement.parentElement, Type.GROUP)\">Изменить</button></td>\n" +
         "        <td class=\"var_tab\" >\n" +
         "            <button class=\"del button_dark popup_del_btn\" onclick=\"deleteRow(this)\">\n" +
         "                <img class=\"rubbish\" src=\"./pics/Mask%20group.png\" alt=\"\">\n" +
@@ -58,19 +58,19 @@ function createStudyGroupRowByTemplate(studyGroup) {
  * @param {Person} person
  */
 function createPersonRowByTemplate(person) {
-    return "<tr>\n" +
-        "        <td class=\"var_tab\"  id=\"2_std_id\">" + person.id + "</td>\n" +
+    return "<tr class='person_tab'>\n" +
+        "        <td class=\"var_tab\" >" + person.id + "</td>\n" +
         "        <td class=\"var_tab\" >" + person.group + "</td>\n" +
         "        <td class=\"var_tab\" >" + person.FIO + "</td>\n" +
         "        <td class=\"var_tab\" >" + person.eyeColor + "</td>\n" +
         "        <td class=\"var_tab\" >" + person.hairColor + "</td>\n" +
-        "        <td class=\"var_tab\" >" + person.locationName + "</td>\n" +
-        "        <td class=\"var_tab\" >" + person.locationCoordinateX + "</td>\n" +
-        "        <td class=\"var_tab\" >" + person.locationCoordinateY + "</td>\n" +
+        "        <td class=\"var_tab\" >" + person.location.name + "</td>\n" +
+        "        <td class=\"var_tab\" >" + person.location.x + "</td>\n" +
+        "        <td class=\"var_tab\" >" + person.location.y + "</td>\n" +
         "        <td class=\"var_tab\" >" + person.birthday + "</td>\n" +
         "        <td class=\"var_tab\" >" + person.height + "</td>\n" +
         "        <td class=\"var_tab\" >" + person.weight + "</td>\n" +
-        "        <td class=\"var_tab\" ><button class=\"change button_dark\" onclick=\"change(this)\">Изменить</button></td>\n" +
+        "        <td class=\"var_tab\" ><button class=\"change button_dark\" onclick=\"change(this.parentElement.parentElement, Type.PERSON)\">Изменить</button></td>\n" +
         "        <td class=\"var_tab\" >\n" +
         "            <button class=\"del button_dark popup_del_btn\" onclick=\"deleteRow(this)\">\n" +
         "                <img class=\"rubbish\" src=\"./pics/Mask%20group.png\" alt=\"\">\n" +

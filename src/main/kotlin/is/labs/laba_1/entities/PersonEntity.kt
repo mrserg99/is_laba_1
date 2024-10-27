@@ -1,12 +1,15 @@
 package `is`.labs.laba_1.entities
 
-import `is`.labs.laba_1.dto.Color
+import `is`.labs.laba_1.enums.Color
+import `is`.labs.laba_1.serializer.KOffsetDateTimeSerializer
 import jakarta.persistence.*
 import jakarta.validation.constraints.Min
+import kotlinx.serialization.Serializable
 import java.time.OffsetDateTime
 
 @Entity
 @Table(name = "person", schema = "is_lab_one", catalog = "postgres")
+@Serializable
 open class PersonEntity (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -15,7 +18,7 @@ open class PersonEntity (
 
     @Basic
     @Column(name = "name", nullable = false, length = -1)
-    open var name: String? = null,
+    open var FIO: String? = null,
 
     @Basic
     @Column(name = "eye_color", nullable = false)
@@ -32,6 +35,7 @@ open class PersonEntity (
 
     @Basic
     @Column(name = "birthday", nullable = false)
+    @Serializable(KOffsetDateTimeSerializer::class)
     open var birthday: OffsetDateTime? = null,
 
     @Basic
