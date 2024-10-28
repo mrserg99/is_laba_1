@@ -73,6 +73,8 @@ async function stud_coord_checkbox(){
     if (document.getElementById('stud_coord_checkbox').checked) {
         let locations = await getEntity(Type.LOCATION.description)
         document.getElementById("select_loc_btn").classList.remove("display_none")
+        document.getElementById("location_ID_wr").classList.remove("display_none");
+
         locations.forEach(value => {
             let location = '<div id = '+value.id+' class="select_coord_child" onclick="setLocation(this)">\n' +
                 '                        <p class="place">'+value.name+'</p>\n' +
@@ -84,6 +86,7 @@ async function stud_coord_checkbox(){
     } else {
         document.querySelector("#select_location_list").innerHTML = ''
         document.getElementById("select_loc_btn").classList.add("display_none")
+        document.getElementById("location_ID_wr").classList.add("display_none");
 
     }
 }
@@ -100,14 +103,23 @@ function setLocation(location){
 
     document.getElementById("select_location").classList.add("display_none")
     document.getElementById("seagal").style.transform = "rotate(0deg)";
-
+    document.getElementById("location_ID_wr").classList.add("display_none")
 }
 async function select_visible(){
     /*Появление галочки для селекта*/
+    document.getElementById("select_location_wrapper").classList.remove("display_none");
     document.getElementById("select_location").classList.remove("display_none")
     document.getElementById("seagal").style.transform = "rotate(180deg)";
+    document.getElementById("location_ID_wr").classList.remove("display_none");
+
 }
 
+function close_select_coord(){
+    /*Закрытие выбора локаций при нажатии во вне селекта*/
+    document.getElementById("select_location").classList.add("display_none");
+    document.getElementById("seagal").style.transform = "rotate(0deg)";
+    document.getElementById("select_location_wrapper").classList.add("display_none");
+}
 function clear_location(){
     /*Очистка поля селекта */
     document.getElementById('locationName_input').value = "";
