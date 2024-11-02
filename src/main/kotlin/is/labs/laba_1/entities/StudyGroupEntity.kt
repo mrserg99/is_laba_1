@@ -6,6 +6,8 @@ import `is`.labs.laba_1.serializer.KOffsetDateTimeSerializer
 import jakarta.persistence.*
 import jakarta.validation.constraints.Min
 import kotlinx.serialization.Serializable
+import org.hibernate.annotations.OnDelete
+import org.hibernate.annotations.OnDeleteAction
 import java.time.OffsetDateTime
 
 @Entity
@@ -22,6 +24,7 @@ open class StudyGroupEntity(
         open var name: String? = null,
 
         @ManyToOne
+        @OnDelete(action = OnDeleteAction.RESTRICT)
         open var coordinates: CoordinatesEntity? = null,
 
         @Basic
@@ -65,5 +68,6 @@ open class StudyGroupEntity(
         open var semesterEnum: Semester? = null,
 
         @OneToOne
+        @OnDelete(action = OnDeleteAction.RESTRICT)
         open var groupAdmin: PersonEntity? = null,
 )

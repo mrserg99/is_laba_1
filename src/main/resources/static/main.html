@@ -13,13 +13,13 @@
     <h3 class="header_logo">ЛР1 Лесных С. И.</h3>
     <div class="header_right">
         <a class="header_right_sp_func_btn button_dark" href="spech_func.html">Спец функции</a>
-        <h4 class="header_right_user_name">Jennifer</h4>
+        <h4 id="user_name_in_header" class="header_right_user_name"></h4>
         <h4 class="header_right_user_job">Пользователь</h4>
         <button onclick="exit()" id="exit_btn" class="button_dark exit">Выйти</button>
 
     </div>
 </div>
-<body class="body">
+<body class="body" onload="loadMain()">
 
 <div id="popup_create_group" class="popup display_none">
     <div class="popup_first_line">
@@ -325,7 +325,7 @@
 
     </div>
     <div class="popup_seven_line">
-        <p class="error_massage"></p>
+        <p id="popup_create_stud_error" class="error_massage"></p>
     </div>
     <div class="popup_six_line_2">
         <button id="create_stud_btn" class="popup_btn_create button_dark" onclick="createPerson()">Создать</button>

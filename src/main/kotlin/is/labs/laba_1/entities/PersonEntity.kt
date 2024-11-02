@@ -5,6 +5,8 @@ import `is`.labs.laba_1.serializer.KOffsetDateTimeSerializer
 import jakarta.persistence.*
 import jakarta.validation.constraints.Min
 import kotlinx.serialization.Serializable
+import org.hibernate.annotations.OnDelete
+import org.hibernate.annotations.OnDeleteAction
 import java.time.OffsetDateTime
 
 @Entity
@@ -31,6 +33,7 @@ open class PersonEntity (
     open var hairColor: Color? = null,
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.RESTRICT)
     open var location: LocationEntity? = null,
 
     @Basic

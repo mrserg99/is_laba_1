@@ -12,7 +12,16 @@ async function createPerson() {
         weight: document.getElementById("weight_input").value,
     })
 
-    let result = await create(newPerson, Type.PERSON.description)
+    await create(newPerson, Type.PERSON.description).then(result => {
+            if (result.ok) {
+                document.getElementById("popup_create_stud").classList.add("display_none")
+                document.getElementById("dark_overlay").classList.add("display_none")
+                document.getElementById("popup_create_stud_error").innerHTML = ""
+            } else {
+                document.getElementById("popup_create_stud_error").innerHTML = "Ошибка"
+            }
+        }
+    )
 }
 
 function createGroup() {

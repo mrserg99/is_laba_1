@@ -1,28 +1,30 @@
 function change(p){
     if (p===1) {
-        var a = document.getElementById("1_std_id").value;
+        let a = document.getElementById("1_std_id").value
     }
     if(p===2){
-        var a = document.getElementById("2_std_id").value;
+        let a = document.getElementById("2_std_id").value
     }
-    var valueA = a;
+    let valueA = a
 
     document.getElementById("dark_overlay").classList.remove("display_none")
 
-    var e = document.getElementById("DB");
-    var value = e.value;
+    let e = document.getElementById("DB")
+    let value = e.value
 
     if (e.value === "stud"){
         document.getElementById("popup_create_stud").classList.remove("display_none")
-        document.getElementById("popup_stud_title").innerHTML=valueA;
+        document.getElementById("popup_stud_title").innerHTML=valueA
     }
     if (e.value === "group"){
         document.getElementById("popup_create_group").classList.remove("display_none")
-        document.getElementById("popup_group_title").innerHTML=valueA;
+        document.getElementById("popup_group_title").innerHTML=valueA
     }
 }
 
-function deleteRow(p){
+function deleteRow(row, type){
+    let id = row.querySelector("#row")[0].value
+
 
 }
 
@@ -45,9 +47,9 @@ function createStudyGroupRowByTemplate(studyGroup) {
         "        <td class=\"var_tab\" >" + studyGroup.averageMark + "</td>\n" +
         "        <td class=\"var_tab\" >" + studyGroup.groupAdmin + "</td>\n" +
         "        <td class=\"var_tab\" >" + studyGroup.semester + "</td>\n" +
-        "        <td class=\"var_tab\" ><button class=\"change button_dark\" onclick=\"change(this.parentElement.parentElement, Type.GROUP)\">Изменить</button></td>\n" +
+        "        <td class=\"var_tab\" ><button class=\"change button_dark\" onclick=\"change(this.parentElement.parentElement, Type.GROUP.description)\">Изменить</button></td>\n" +
         "        <td class=\"var_tab\" >\n" +
-        "            <button class=\"del button_dark popup_del_btn\" onclick=\"deleteRow(this)\">\n" +
+        "            <button class=\"del button_dark popup_del_btn\" onclick=\"deleteRow(this.parentElement.parentElement, Type.GROUP.description)\">\n" +
         "                <img class=\"rubbish\" src=\"./pics/Mask%20group.png\" alt=\"\">\n" +
         "            </button>\n" +
         "        </td>\n" +

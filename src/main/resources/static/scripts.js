@@ -147,3 +147,7 @@ async function tables_check() {
         document.getElementById("table_stud").classList.add("display_none")
     }
 }
+
+function loadMain(){
+    document.getElementById("user_name_in_header").innerHTML = getValue(storageVocabulary.user)
+}

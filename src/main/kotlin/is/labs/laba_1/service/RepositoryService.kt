@@ -16,24 +16,6 @@ import org.springframework.stereotype.Service
 class RepositoryService @Autowired constructor(
     private val repositoryPg: RepositoryPg
 ) {
-    fun <T> create(entity: T) {
-        when(entity){
-            is PersonEntity -> {
-                if (entity.location?.id == null){
-                    val id = repositoryPg.create(entity.location)?.id
-                    entity.location?.id = id
-                }
-            }
-            is StudyGroupEntity -> {
-                if (entity.coordinates?.id == null) {
-                    val id = repositoryPg.create(entity.coordinates)?.id
-                    entity.coordinates?.id = id
-                }
-            }
-        }
-        repositoryPg.create(entity)
-    }
-
     fun getData(type: String, limit: Int? = null, offset: Int? = null): String {
         return when(type) {
             Type.PERSON.type -> {
@@ -56,4 +38,63 @@ class RepositoryService @Autowired constructor(
         }
     }
 
+    fun <T> create(entity: T): T {
+        when(entity){
+            is PersonEntity -> {
+                if (entity.location?.id == null){
+                    val id = repositoryPg.create(entity.location)?.id
+                    entity.location?.id = id
+                }
+            }
+            is StudyGroupEntity -> {
+                if (entity.coordinates?.id == null) {
+                    val id = repositoryPg.create(entity.coordinates)?.id
+                    entity.coordinates?.id = id
+                }
+            }
+        }
+        return repositoryPg.create(entity)
+    }
+
+    fun <T> update(entity: T) {
+        when(entity){
+            is PersonEntity -> {
+                if (entity.location?.id == null){
+                    val id = repositoryPg.create(entity.location)?.id
+                    entity.location?.id = id
+                } else {
+                    val id = repositoryPg.update(entity.location)?.id
+                    entity.location?.id = id
+                }
+            }
+            is StudyGroupEntity -> {
+                if (entity.coordinates?.id == null) {
+                    val id = repositoryPg.create(entity.coordinates)?.id
+                    entity.coordinates?.id = id
+                } else {
+                    val id = repositoryPg.update(entity.coordinates)?.id
+                    entity.coordinates?.id = id
+                }
+            }
+        }
+        repositoryPg.update(entity)
+    }
+
+    fun delete(id: Int, type: String): Boolean{
+        return when(type) {
+            Type.PERSON.type -> {
+                repositoryPg.delete(id ,PersonEntity::class.java)
+            }
+            Type.GROUP.type -> {
+                repositoryPg.delete(id, StudyGroupEntity::class.java)
+            }
+            Type.COORDINATE.type -> {
+                repositoryPg.delete(id, CoordinatesEntity::class.java)
+            }
+            Type.LOCATION.type -> {
+                repositoryPg.delete(id, LocationEntity::class.java)
+            }
+            else -> throw UnsupportedTypeException("Не поддерживаемый тип")
+        }
+    }
 }

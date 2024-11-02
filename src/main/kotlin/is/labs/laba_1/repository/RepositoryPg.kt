@@ -1,10 +1,5 @@
 package `is`.labs.laba_1.repository
 
-import `is`.labs.laba_1.entities.CoordinatesEntity
-import `is`.labs.laba_1.entities.LocationEntity
-import `is`.labs.laba_1.entities.PersonEntity
-import `is`.labs.laba_1.entities.StudyGroupEntity
-import `is`.labs.laba_1.error.UnsupportedTypeException
 import `is`.labs.laba_1.utils.HibernateSessionFactory
 import org.hibernate.SessionFactory
 import org.springframework.stereotype.Repository
@@ -13,30 +8,14 @@ import org.springframework.stereotype.Repository
 @Repository
 class RepositoryPg {
 
-    companion object{
+    companion object {
     }
 
     fun <T> select(type: Class<T>, limit: Int? = null, offset: Int? = null): List<*> {
-        var SELECT = "from :type "
-
         val sessionFactory: SessionFactory = HibernateSessionFactory.sessionFactory
-        when(type) {
-            PersonEntity::class.java -> {
-                SELECT = SELECT.replace(":type", type.name)
-            }
-            StudyGroupEntity::class.java -> {
-                SELECT = SELECT.replace(":type", type.name)
-            }
-            CoordinatesEntity::class.java -> {
-                SELECT = SELECT.replace(":type", type.name)
-            }
-            LocationEntity::class.java -> {
-                SELECT = SELECT.replace(":type", type.name)
-            }
-            else -> throw UnsupportedTypeException("Не поддерживаемый тип")
-        }
 
         sessionFactory.openSession().use {
+            val SELECT = "from ${type.name} "
             val query = it.createSelectionQuery(SELECT, type)
             if (limit != null) {
                 if (limit > 0) {
@@ -62,4 +41,42 @@ class RepositoryPg {
             return entity
         }
     }
+
+    fun <T> update(entity: T): T {
+        val sessionFactory: SessionFactory = HibernateSessionFactory.sessionFactory
+
+        sessionFactory.openSession().use {
+            val trans = it.beginTransaction()
+            it.merge(entity)
+            trans.commit()
+            return entity
+        }
+    }
+
+    fun <T> delete(id: Int, type: Class<T>): Boolean {
+        val sessionFactory: SessionFactory = HibernateSessionFactory.sessionFactory
+
+        sessionFactory.openSession().use {
+            try {
+                val trans = it.beginTransaction()
+                val deleteEntity = it.merge(id.toString(), type)
+                it.remove(deleteEntity)
+                trans.commit()
+            } catch (ex: Exception) {
+                ex.stackTrace
+            }
+        }
+        return true
+    }
+
+//    fun checkRelation(id: Int, ): Boolean {
+//        val sessionFactory: SessionFactory = HibernateSessionFactory.sessionFactory
+//
+//        sessionFactory.openSession().use {
+//            val trans = it.beginTransaction()
+//            it.remove(entity)
+//            trans.commit()
+//            return entity
+//        }
+//    }
 }
