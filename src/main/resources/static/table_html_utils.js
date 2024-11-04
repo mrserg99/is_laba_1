@@ -13,10 +13,12 @@ function change(p){
     let value = e.value
 
     if (e.value === "stud"){
+        setValue(storageVocabulary.type, Type.PERSON.description)
         document.getElementById("popup_create_stud").classList.remove("display_none")
         document.getElementById("popup_stud_title").innerHTML=valueA
     }
     if (e.value === "group"){
+        setValue(storageVocabulary.type, Type.GROUP.description)
         document.getElementById("popup_create_group").classList.remove("display_none")
         document.getElementById("popup_group_title").innerHTML=valueA
     }

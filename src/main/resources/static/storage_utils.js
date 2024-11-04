@@ -1,6 +1,7 @@
 const storageVocabulary = {
     user: "user",
-    isAdmin: "isAdmin"
+    isAdmin: "isAdmin",
+    type: "type",
 }
 
 // возвращает куки с указанным name,

@@ -227,7 +227,6 @@ li, a, ul{
   }
 }
 .page_numb{
-  border: 0.8px #292929 solid;
   padding-top: 5px;
   padding-right: 10px;
   padding-left: 16px;
@@ -738,4 +737,39 @@ li, a, ul{
   width: 110%;
   height: 80%;
   margin-left: -5%;
+}
+.disabled_button{
+  background-color: #686868 !important;
+  border: #686868 !important;
+  color: #B2B0B0 !important;
+
+}
+.shapka_wrapper{
+  display: flex;
+  font-size: 14px;
+}
+
+.arrows{
+  margin-top: -6px;
+  margin-left: 2px;
+  position: relative;
+  &:hover{
+    cursor: pointer;
+  }
+}
+.arrows_2{
+  &:hover{
+    cursor: pointer;
+  }
+}
+.arrow{
+  transition: 0.2s;
+  stroke-width: 2px;
+  stroke: #767575;
+  &:hover{
+    width: 22px;
+    stroke: #292929;
+    transition: 0.2s;
+    stroke-width: 3.5px;
+  }
 }

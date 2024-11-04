@@ -57,4 +57,27 @@ function fromJson(json){
     return JSON.parse(json)
 }
 
-
+function textToColumnName(text){
+    switch (text) {
+        case 'ID': return 'id'
+        case 'ФИО':
+        case 'Название': return 'name'
+        case 'Кол-во студентов': return 'students_count'
+        case 'Кол-во отчисленных': return 'expelled_students'
+        case 'Кол-во переведенных': return 'transferred_students'
+        case 'Будут исключены': return 'should_be_expelled'
+        case 'Дата создания': return 'creation_date'
+        case 'Форма обучения': return 'form_of_education'
+        case 'Староста': return 'groupadmin_id'
+        case 'Автор': return 'user_id'
+        case 'Средняя оценка': return 'average_mark'
+        case 'Семестр': return 'semester_enum'
+        case 'X': return 'x'
+        case 'Y': return 'y'
+        case 'Цвет глаз': return 'eye_color'
+        case 'Цвет волос': return 'hair_color'
+        case 'День рождения': return 'birthday'
+        case 'Рост(см)': return 'height'
+        case 'Вес (кг)': return 'weight'
+    }
+}

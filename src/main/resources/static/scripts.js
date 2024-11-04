@@ -151,3 +151,29 @@ async function tables_check() {
 function loadMain(){
     document.getElementById("user_name_in_header").innerHTML = getValue(storageVocabulary.user)
 }
+
+function pagination_one_right(){
+    /*Функция для пагинации на одну страницу вправо*/
+
+}
+function pagination_one_left(){
+    /*Функция для пагинации на одну страницу влево*/
+
+}
+function pagination_all_right(){
+    /*Функция для пагинации на последнюю справа страницу*/
+
+}
+function pagination_all_left(){
+    /*Функция для пагинации на первую слева страницу*/
+
+}
+function sort_up(value){
+alert(value+" UP")
+ /* отсортировать от меньшего к большему*/
+
+}
+function sort_down(value){
+    alert(value+" Down")
+    /* отсортировать от большего к меньшему*/
+}
