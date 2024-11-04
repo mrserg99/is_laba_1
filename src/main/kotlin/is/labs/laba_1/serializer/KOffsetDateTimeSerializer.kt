@@ -20,7 +20,7 @@ object KOffsetDateTimeSerializer : KSerializer<OffsetDateTime> {
 
     override fun deserialize(decoder: Decoder): OffsetDateTime {
         val string = decoder.decodeString()
-        val time = string.split('.')
-        return OffsetDateTime.of(time[2].toInt(), time[1].toInt(), time[0].toInt(), 0, 0, 0, 0, ZoneOffset.of("+03:00"))
+        val time = string.split('-')
+        return OffsetDateTime.of(time[0].toInt(), time[1].toInt(), time[2].toInt(), 0, 0, 0, 0, ZoneOffset.of("+03:00"))
     }
 }

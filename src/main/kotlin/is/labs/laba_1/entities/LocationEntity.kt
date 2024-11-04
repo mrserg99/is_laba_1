@@ -4,7 +4,7 @@ import jakarta.persistence.*
 import kotlinx.serialization.Serializable
 
 @Entity
-@Table(name = "location", schema = "is_lab_one", catalog = "postgres")
+@Table(name = "location")
 @Serializable
 open class LocationEntity (
     @GeneratedValue(strategy = GenerationType.IDENTITY)

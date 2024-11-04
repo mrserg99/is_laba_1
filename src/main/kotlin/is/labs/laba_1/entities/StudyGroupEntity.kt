@@ -11,7 +11,7 @@ import org.hibernate.annotations.OnDeleteAction
 import java.time.OffsetDateTime
 
 @Entity
-@Table(name = "studygroup", schema = "is_lab_one", catalog = "postgres")
+@Table(name = "studygroup")
 @Serializable
 open class StudyGroupEntity(
         @GeneratedValue(strategy = GenerationType.IDENTITY)

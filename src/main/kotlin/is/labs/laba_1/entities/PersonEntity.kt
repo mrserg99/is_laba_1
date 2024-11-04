@@ -10,7 +10,7 @@ import org.hibernate.annotations.OnDeleteAction
 import java.time.OffsetDateTime
 
 @Entity
-@Table(name = "person", schema = "is_lab_one", catalog = "postgres")
+@Table(name = "person")
 @Serializable
 open class PersonEntity (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
