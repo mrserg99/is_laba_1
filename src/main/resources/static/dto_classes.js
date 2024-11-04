@@ -63,6 +63,7 @@ class Person {
                     FIO,
                     eyeColor,
                     hairColor,
+                    locationId,
                     locationName,
                     locationCoordinateX,
                     locationCoordinateY,
@@ -76,6 +77,7 @@ class Person {
         this.eyeColor = eyeColor;
         this.hairColor = hairColor;
         this.location = {
+            id: locationId,
             name: locationName,
             x: locationCoordinateX,
             y: locationCoordinateY,

@@ -1,24 +1,24 @@
 async function createPerson() {
     let newPerson = new Person({
-        FIO: document.getElementById("FIO_input").value,
-        eyeColor: document.getElementById("eyeColor_input").value,
-        hairColor: document.getElementById("hairColor_input").value,
-        locationId: document.getElementById("hairColor_input").value,
-        locationName: document.getElementById("locationName_input").value,
-        locationCoordinateX: document.getElementById("locationCoordinateX_input").value,
-        locationCoordinateY: document.getElementById("locationCoordinateY_input").value,
-        birthday: document.getElementById("birthday_input").value,
-        height: document.getElementById("height_input").value,
-        weight: document.getElementById("weight_input").value,
+        FIO: document.querySelector("#FIO_input").value,
+        eyeColor: document.querySelector("#eyeColor_input").value,
+        hairColor: document.querySelector("#hairColor_input").value,
+        locationId: document.querySelector("#locationID").value,
+        locationName: document.querySelector("#locationName_input").value,
+        locationCoordinateX: document.querySelector("#locationCoordinateX_input").value,
+        locationCoordinateY: document.querySelector("#locationCoordinateY_input").value,
+        birthday: document.querySelector("#birthday_input").value,
+        height: document.querySelector("#height_input").value,
+        weight: document.querySelector("#weight_input").value,
     })
 
     await create(newPerson, Type.PERSON.description).then(result => {
             if (result.ok) {
-                document.getElementById("popup_create_stud").classList.add("display_none")
-                document.getElementById("dark_overlay").classList.add("display_none")
-                document.getElementById("popup_create_stud_error").innerHTML = ""
+                document.querySelector("#popup_create_stud").classList.add("display_none")
+                document.querySelector("#dark_overlay").classList.add("display_none")
+                document.querySelector("#popup_create_stud_error").innerHTML = ""
             } else {
-                document.getElementById("popup_create_stud_error").innerHTML = "Ошибка"
+                document.querySelector("#popup_create_stud_error").innerHTML = "Ошибка"
             }
         }
     )

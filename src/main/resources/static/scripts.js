@@ -80,6 +80,7 @@ async function stud_coord_checkbox(){
                 '                        <p class="place">'+value.name+'</p>\n' +
                 '                        <p class="coord_X">'+value.x+'</p>\n' +
                 '                        <p class="coord_Y">'+value.y+'</p>\n' +
+                '                        <p class="coord_Y">'+value.id+'</p>\n' +
                 '                    </div>'
             document.querySelector("#select_location_list").insertAdjacentHTML("beforeend", location)
         })
@@ -96,14 +97,15 @@ function setLocation(location){
     let place = location.children[0].textContent;
     let coord_X = location.children[1].textContent;
     let coord_Y = location.children[2].textContent;
+    let coord_id = location.children[3].textContent;
 
-    document.getElementById('locationName_input').value = place;
-    document.getElementById('locationCoordinateX_input').value = coord_X;
-    document.getElementById('locationCoordinateY_input').value = coord_Y;
+    document.querySelector("#locationName_input").value = place;
+    document.querySelector("#locationCoordinateX_input").value = coord_X;
+    document.querySelector("#locationCoordinateY_input").value = coord_Y;
+    document.querySelector("#locationID").value = coord_id;
 
     document.getElementById("select_location").classList.add("display_none")
     document.getElementById("seagal").style.transform = "rotate(0deg)";
-    document.getElementById("location_ID_wr").classList.add("display_none")
 }
 async function select_visible(){
     /*Появление галочки для селекта*/
@@ -128,14 +130,14 @@ function clear_location(){
 
 async function tables_check() {
     var e = document.getElementById("DB");
-    var value = e.value;
 
     if (e.value === "stud") {
+        removeByClass(".person_tab")
         setValue(storageVocabulary.type, Type.PERSON.description)
-        document.getElementById("table_stud").classList.remove("display_none")
-        document.getElementById("table_group").classList.add("display_none")
-        document.getElementById(" table_location").classList.add("display_none")
-        document.getElementById("table_coordinate").classList.add("display_none")
+        document.querySelector("#table_stud").classList.remove("display_none")
+        document.querySelector("#table_group").classList.add("display_none")
+        document.querySelector("#table_location").classList.add("display_none")
+        document.querySelector("#table_coordinate").classList.add("display_none")
         let persons = await getEntity(Type.PERSON.description)
         persons.forEach(value => {
             let person = createPersonRowByTemplate(value)
@@ -144,12 +146,12 @@ async function tables_check() {
     }
 
     if (e.value === "group") {
-        removeByClass(".person_tab")
+        removeByClass(".group_tab")
         setValue(storageVocabulary.type, Type.GROUP.description)
-        document.getElementById("table_location").classList.add("display_none")
-        document.getElementById("table_coordinate").classList.add("display_none")
-        document.getElementById("table_group").classList.remove("display_none")
-        document.getElementById("table_stud").classList.add("display_none")
+        document.querySelector("#table_location").classList.add("display_none")
+        document.querySelector("#table_coordinate").classList.add("display_none")
+        document.querySelector("#table_group").classList.remove("display_none")
+        document.querySelector("#table_stud").classList.add("display_none")
         let groups = await getEntity(Type.GROUP.description)
         groups.forEach(value => {
             let group = createStudyGroupRowByTemplate(value)
@@ -157,11 +159,12 @@ async function tables_check() {
         })
     }
     if(e.value == "location"){
+        removeByClass(".location_tab")
         setValue(storageVocabulary.type, Type.LOCATION.description)
-        document.getElementById("table_location").classList.remove("display_none")
-        document.getElementById("table_coordinate").classList.add("display_none")
-        document.getElementById("table_group").classList.add("display_none")
-        document.getElementById("table_stud").classList.add("display_none")
+        document.querySelector("#table_location").classList.remove("display_none")
+        document.querySelector("#table_coordinate").classList.add("display_none")
+        document.querySelector("#table_group").classList.add("display_none")
+        document.querySelector("#table_stud").classList.add("display_none")
         let locations = await getEntity(Type.LOCATION.description)
         locations.forEach(value => {
             let location = createLocationRowByTemplate(value)
@@ -169,11 +172,12 @@ async function tables_check() {
         })
     }
     if(e.value == "coordinate"){
+        removeByClass(".coordinate_tab")
         setValue(storageVocabulary.type, Type.COORDINATE.description)
-        document.getElementById("table_location").classList.add("display_none")
-        document.getElementById("table_coordinate").classList.remove("display_none")
-        document.getElementById("table_group").classList.add("display_none")
-        document.getElementById("table_stud").classList.add("display_none")
+        document.querySelector("#table_location").classList.add("display_none")
+        document.querySelector("#table_coordinate").classList.remove("display_none")
+        document.querySelector("#table_group").classList.add("display_none")
+        document.querySelector("#table_stud").classList.add("display_none")
         let coordinates = await getEntity(Type.COORDINATE.description)
         coordinates.forEach(value => {
             let coordinate = createCoordinateRowByTemplate(value)

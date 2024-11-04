@@ -2,7 +2,7 @@
  * @param {StudyGroup} studyGroup
  */
 function createStudyGroupRowByTemplate(studyGroup) {
-    return "<tr>\n" +
+    return "<tr class='group_tab'>\n" +
         "        <td class=\"var_tab\"  id=" + studyGroup.id + ">" + studyGroup.id + "</td>\n" +
         "        <td class=\"var_tab\" >" + studyGroup.name + "</td>\n" +
         "        <td class=\"var_tab\" >" + studyGroup.coordinate.x + "</td>\n" +
@@ -32,7 +32,6 @@ function createStudyGroupRowByTemplate(studyGroup) {
 function createPersonRowByTemplate(person) {
     return "<tr class='person_tab'>\n" +
         "        <td class=\"var_tab\" >" + person.id + "</td>\n" +
-        "        <td class=\"var_tab\" >" + person.group + "</td>\n" +
         "        <td class=\"var_tab\" >" + person.FIO + "</td>\n" +
         "        <td class=\"var_tab\" >" + person.eyeColor + "</td>\n" +
         "        <td class=\"var_tab\" >" + person.hairColor + "</td>\n" +
@@ -75,7 +74,7 @@ function createLocationRowByTemplate(location){
  * @param {Coordinate} coordinate
  */
 function createCoordinateRowByTemplate(coordinate){
-    return "<tr class='location_tab'>\n" +
+    return "<tr class='coordinate_tab'>\n" +
         "        <td class=\"var_tab\" >" + coordinate.id + "</td>\n" +
         "        <td class=\"var_tab\" >" + coordinate.x + "</td>\n" +
         "        <td class=\"var_tab\" >" + coordinate.y + "</td>\n" +
