@@ -741,7 +741,7 @@ li, a, ul{
   background-color: #686868 !important;
   border: #686868 !important;
   color: #B2B0B0 !important;
-
+  animation: pulse 1.5s linear infinite; // Указываем название анимации, время, тип, и нужно ли её повторять
 }
 .shapka_wrapper{
   display: flex;
@@ -775,3 +775,14 @@ li, a, ul{
 
 
 
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
