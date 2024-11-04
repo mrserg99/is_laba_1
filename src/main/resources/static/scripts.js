@@ -111,7 +111,6 @@ async function select_visible(){
     document.getElementById("select_location").classList.remove("display_none")
     document.getElementById("seagal").style.transform = "rotate(180deg)";
     document.getElementById("location_ID_wr").classList.remove("display_none");
-
 }
 
 function close_select_coord(){
@@ -132,19 +131,54 @@ async function tables_check() {
     var value = e.value;
 
     if (e.value === "stud") {
+        setValue(storageVocabulary.type, Type.PERSON.description)
         document.getElementById("table_stud").classList.remove("display_none")
         document.getElementById("table_group").classList.add("display_none")
+        document.getElementById(" table_location").classList.add("display_none")
+        document.getElementById("table_coordinate").classList.add("display_none")
         let persons = await getEntity(Type.PERSON.description)
         persons.forEach(value => {
             let person = createPersonRowByTemplate(value)
             document.querySelector("#table_stud").insertAdjacentHTML("beforeend", person)
         })
-
     }
+
     if (e.value === "group") {
         removeByClass(".person_tab")
+        setValue(storageVocabulary.type, Type.GROUP.description)
+        document.getElementById("table_location").classList.add("display_none")
+        document.getElementById("table_coordinate").classList.add("display_none")
         document.getElementById("table_group").classList.remove("display_none")
         document.getElementById("table_stud").classList.add("display_none")
+        let groups = await getEntity(Type.GROUP.description)
+        groups.forEach(value => {
+            let group = createStudyGroupRowByTemplate(value)
+            document.querySelector("#table_group").insertAdjacentHTML("beforeend", group)
+        })
+    }
+    if(e.value == "location"){
+        setValue(storageVocabulary.type, Type.LOCATION.description)
+        document.getElementById("table_location").classList.remove("display_none")
+        document.getElementById("table_coordinate").classList.add("display_none")
+        document.getElementById("table_group").classList.add("display_none")
+        document.getElementById("table_stud").classList.add("display_none")
+        let locations = await getEntity(Type.LOCATION.description)
+        locations.forEach(value => {
+            let location = createLocationRowByTemplate(value)
+            document.querySelector("#table_location").insertAdjacentHTML("beforeend", location)
+        })
+    }
+    if(e.value == "coordinate"){
+        setValue(storageVocabulary.type, Type.COORDINATE.description)
+        document.getElementById("table_location").classList.add("display_none")
+        document.getElementById("table_coordinate").classList.remove("display_none")
+        document.getElementById("table_group").classList.add("display_none")
+        document.getElementById("table_stud").classList.add("display_none")
+        let coordinates = await getEntity(Type.COORDINATE.description)
+        coordinates.forEach(value => {
+            let coordinate = createCoordinateRowByTemplate(value)
+            document.querySelector("#table_coordinate").insertAdjacentHTML("beforeend", coordinate)
+        })
     }
 }
 

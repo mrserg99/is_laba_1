@@ -88,9 +88,44 @@ class Person {
 
 }
 
+class Location {
+    id;
+    x;
+    y;
+    name;
+
+    constructor({
+                    id = null,
+                    x,
+                    y,
+                    name
+                }) {
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.name = name
+    }
+}
+
+class Coordinate {
+    id;
+    x;
+    y;
+
+    constructor({
+                    id = null,
+                    x,
+                    y,
+                }) {
+        this.id = id;
+        this.x = x;
+        this.y = y;
+    }
+}
+
 const Type = Object.freeze({
-    GROUP:   Symbol("group"),
-    PERSON:  Symbol("person"),
+    GROUP: Symbol("group"),
+    PERSON: Symbol("person"),
     COORDINATE: Symbol("coordinate"),
     LOCATION: Symbol("location"),
     COLOR: Symbol("color"),
