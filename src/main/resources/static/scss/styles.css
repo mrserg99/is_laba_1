@@ -239,11 +239,6 @@ th, td {
   background: none;
   transition: 0.4s;
 }
-.to_first:hover, .one_left:hover, .one_right:hover, .to_last:hover {
-  cursor: pointer;
-  scale: 1.2;
-  transition: 0.4s;
-}
 
 .page_numb {
   padding-top: 5px;
@@ -560,6 +555,14 @@ th, td {
   width: 260px;
 }
 
+.w270 {
+  width: 270px;
+}
+
+.w35 {
+  width: 35px;
+}
+
 .w185 {
   width: 185px;
 }
@@ -851,6 +854,20 @@ th, td {
   stroke: #292929;
   transition: 0.2s;
   stroke-width: 3.5px;
+}
+
+.clear_btn_btn:hover {
+  cursor: pointer;
+}
+
+.disable_pagination {
+  color: #B2B0B0 !important;
+}
+
+.active_pagination:hover {
+  cursor: pointer;
+  scale: 1.2;
+  transition: 0.4s;
 }
 
 @keyframes pulse {

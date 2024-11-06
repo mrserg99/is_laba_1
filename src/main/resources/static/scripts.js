@@ -92,6 +92,20 @@ async function stud_coord_checkbox(){
     }
 }
 
+async function group_coord_checkbox(){
+    if (document.getElementById("new_coordinates").checked) {
+        document.getElementById("select_loc_btn_group").classList.remove("display_none")
+        document.getElementById("location_ID_wr").classList.remove("display_none");
+
+
+    } else {
+
+        document.getElementById("select_loc_btn_group").classList.add("display_none")
+        document.getElementById("location_ID_wr").classList.add("display_none");
+
+    }
+}
+
 function setLocation(location){
     /*появления селекта по локации на странице main*/
     let place = location.children[0].textContent;
@@ -108,11 +122,27 @@ function setLocation(location){
     document.getElementById("seagal").style.transform = "rotate(0deg)";
 }
 async function select_visible(){
-    /*Появление галочки для селекта*/
+    /*Появление галочки для селекта для локации студента*/
     document.getElementById("select_location_wrapper").classList.remove("display_none");
     document.getElementById("select_location").classList.remove("display_none")
     document.getElementById("seagal").style.transform = "rotate(180deg)";
     document.getElementById("location_ID_wr").classList.remove("display_none");
+}
+
+async function select_visible_group(){
+    /*Появление галочки для селекта для координат группы*/
+    document.getElementById("select_location_wrapper_group").classList.remove("display_none");
+    document.getElementById("select_location_group").classList.remove("display_none")
+    document.getElementById("seagal_group").style.transform = "rotate(180deg)";
+    document.getElementById("location_ID_wr_group").classList.remove("display_none");
+}
+
+async function select_visible_person(){
+    /*Появление галочки для селекта для выбора старосты*/
+    document.getElementById("select_location_wrapper_person").classList.remove("display_none");
+    document.getElementById("select_location_person").classList.remove("display_none")
+    document.getElementById("seagal_person").style.transform = "rotate(180deg)";
+    document.getElementById("location_ID_wr_person").classList.remove("display_none");
 }
 
 function close_select_coord(){
@@ -120,6 +150,18 @@ function close_select_coord(){
     document.getElementById("select_location").classList.add("display_none");
     document.getElementById("seagal").style.transform = "rotate(0deg)";
     document.getElementById("select_location_wrapper").classList.add("display_none");
+}
+function close_select_coord_group(){
+    /*Закрытие выбора локаций при нажатии во вне селекта*/
+    document.getElementById("select_location_group").classList.add("display_none");
+    document.getElementById("seagal_group").style.transform = "rotate(0deg)";
+    document.getElementById("select_location_wrapper_group").classList.add("display_none");
+}
+function close_select_coord_person(){
+    /*Закрытие выбора локаций при нажатии во вне селекта*/
+    document.getElementById("select_location_person").classList.add("display_none");
+    document.getElementById("seagal_person").style.transform = "rotate(0deg)";
+    document.getElementById("select_location_wrapper_person").classList.add("display_none");
 }
 function clear_location(){
     /*Очистка поля селекта */
@@ -129,7 +171,7 @@ function clear_location(){
 }
 
 function printFirstPage() {
-    // TODO задизейблить кнопку назад
+    disablePrevPageBtn()
     setValue(storageVocabulary.page, 1)
     setValue(storageVocabulary.max, 10)
 
@@ -141,22 +183,41 @@ function loadMain(){
 }
 
 function nextPage(){
-    // TODO раздизейблить кнопку назад
+    enablePrevPageBtn()
     /*Функция для пагинации на одну страницу вправо*/
     setValue(storageVocabulary.page, Number(getValue(storageVocabulary.page)) + 1)
 
     printTable()
 }
 function prevPage(){
-    // TODO раздизейблить кнопку вперёд
+    enableNextPageBtn();
     /*Функция для пагинации на одну страницу влево*/
     setValue(storageVocabulary.page, Number(getValue(storageVocabulary.page)) - 1)
     if (Number(getValue(storageVocabulary.page)) === 1) {
-        // TODO задизейблить кнопку назад
+        disablePrevPageBtn()
         return
     }
 
     printTable()
+}
+
+function enableNextPageBtn() {
+    document.querySelector("#next_page").classList.remove("disable_pagination")
+    document.querySelector("#next_page").classList.add("active_pagination")
+}
+
+function enablePrevPageBtn() {
+    document.querySelector("#prev_page").classList.remove("disable_pagination")
+    document.querySelector("#prev_page").classList.add("active_pagination")
+}
+function disableNextPageBtn() {
+    document.querySelector("#next_page").classList.add("disable_pagination")
+    document.querySelector("#next_page").classList.remove("active_pagination")
+}
+
+function disablePrevPageBtn() {
+    document.querySelector("#prev_page").classList.add("disable_pagination")
+    document.querySelector("#prev_page").classList.remove("active_pagination")
 }
 
 async function printTable(){
@@ -175,7 +236,7 @@ async function printTable(){
             document.querySelector("#table_stud").insertAdjacentHTML("beforeend", person)
         })
         if (persons.length + 1 < Number(getValue(storageVocabulary.max))) {
-            // TODO задизейблить кнопку вперёд
+            disableNextPageBtn();
         }
     }
 
@@ -192,7 +253,7 @@ async function printTable(){
             document.querySelector("#table_group").insertAdjacentHTML("beforeend", group)
         })
         if (groups.length < Number(getValue(storageVocabulary.max))) {
-            // TODO задизейблить кнопку вперёд
+            disableNextPageBtn();
         }
     }
     if(e.value == "location"){
@@ -208,7 +269,8 @@ async function printTable(){
             document.querySelector("#table_location").insertAdjacentHTML("beforeend", location)
         })
         if (locations.length < Number(getValue(storageVocabulary.max))) {
-            // TODO задизейблить кнопку вперёд
+
+            disableNextPageBtn();
         }
     }
     if(e.value == "coordinate"){
@@ -224,7 +286,7 @@ async function printTable(){
             document.querySelector("#table_coordinate").insertAdjacentHTML("beforeend", coordinate)
         })
         if (coordinates.length < Number(getValue(storageVocabulary.max))) {
-            // TODO задизейблить кнопку вперёд
+            disableNextPageBtn();
         }
     }
 
@@ -239,4 +301,70 @@ alert(value+" UP")
 function sort_down(value){
     alert(value+" Down")
     /* отсортировать от большего к меньшему*/
+}
+
+function clear_count_group(){
+    /*Очистка поля кол-во студентов*/
+    document.getElementById('numberOfStudents_input').value = "";
+}
+function clear_avr_mark(){
+    /*Очистка поля средняя оценка*/
+    document.getElementById('averageMark_input').value = "";
+}
+function clear_count_transferred(){
+    /*Очистка поля переведенных студентов*/
+    document.getElementById('numberOfTransferred_input').value = "";
+}
+
+function clear_numb_expelled(){
+    /*Очистка поля кол-во отчисленных*/
+    document.getElementById('numberOfExpelled_input').value = "";
+}
+
+function clear_name_group(){
+    /*Очистка поля название*/
+    document.getElementById('name_input').value = "";
+}
+
+function clear_form_edu(){
+    /*Очистка поля форма обучения*/
+    document.getElementById('formOfEducation_input').value = "";
+}
+
+function clear_fut_expelled(){
+    /*Очистка поля будут исключены*/
+    document.getElementById('shouldBeExpelled_input').value = "";
+}
+
+function clear_coord(){
+    /*Очистка поля координаты*/
+    document.getElementById('coordinateID_input').value = "";
+    document.getElementById('coordinateY_input').value = "";
+    document.getElementById('coordinateX_input').value = "";
+}
+
+function clear_star(){
+    /*Очистка поля староста*/
+    document.getElementById('person_input').value = "";
+    document.getElementById('person_id').value = "";
+}
+
+function clear_birth_day(){
+    /*Очистка дня рождения*/
+    document.getElementById('birthday_input').value = "";
+}
+
+function clear_FIO(){
+    /*Очистка дня рождения*/
+    document.getElementById('FIO_input').value = "";
+}
+
+function clear_height(){
+    /*Очистка Роста*/
+    document.getElementById('height_input').value = "";
+}
+
+function clear_weight(){
+    /*Очистка веса*/
+    document.getElementById('weight_input').value = "";
 }

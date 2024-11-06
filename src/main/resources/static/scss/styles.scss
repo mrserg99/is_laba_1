@@ -220,11 +220,6 @@ li, a, ul{
   border: none;
   background: none;
   transition: 0.4s;
-  &:hover{
-    cursor: pointer;
-    scale: 1.2;
-    transition: 0.4s;
-  }
 }
 .page_numb{
   padding-top: 5px;
@@ -517,6 +512,12 @@ li, a, ul{
 .w260{
   width: 260px;
 }
+.w270{
+  width: 270px;
+}
+.w35{
+  width: 35px;
+}
 .w185{
   width: 185px;
 }
@@ -772,7 +773,21 @@ li, a, ul{
     stroke-width: 3.5px;
   }
 }
+.clear_btn_btn:hover{
+  cursor: pointer;
 
+}
+.disable_pagination{
+  color: #B2B0B0 !important;
+}
+
+.active_pagination{
+  &:hover{
+    cursor: pointer;
+    scale: 1.2;
+    transition: 0.4s;
+  }
+}
 
 
 @keyframes pulse {
