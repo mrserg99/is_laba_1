@@ -338,14 +338,14 @@
     <div class="left_side">
         <h1 class="sub_header_base">База данных:</h1>
         <form class="sub_header_form">
-            <select onchange="tables_check()" name="DB" id="DB" class="sub_header_form_select">
+            <select onchange="printFirstPage()" name="DB" id="DB" class="sub_header_form_select">
                 <option value="group">Группы</option>
                 <option value="stud">Студенты</option>
                 <option value="location">Локации</option>
                 <option value="coordinate">Координаты</option>
             </select>
         </form>
-        <button id="create_object" class="sub_header_create button_light" onclick="create_obj()">Создать объект</button>
+        <button id="create_object" class="sub_header_create button_light" onclick="createEntity()">Создать объект</button>
     </div>
     <div class="right_side">
         <button class="sub_header_filter button_light">Фильтровать</button>
@@ -716,9 +716,9 @@
 
 <div class="pagination">
     <button class="to_first" onclick="pagination_all_left()"><<</button>
-    <button class="one_left" onclick="pagination_one_left()"><</button>
+    <button class="one_left" onclick="prevPage()"><</button>
     <p class="page_numb" id="pagination_numb">1</p>
-    <button class="one_right" onclick="pagination_one_right()">></button>
+    <button class="one_right" onclick="nextPage()">></button>
     <button class="to_last" onclick="pagination_all_right()">>></button>
 </div>
 
@@ -727,8 +727,8 @@
 <script src="scripts.js"></script>
 <script src="controllers.js"></script>
 <script src="change_data.js"></script>
-<script src="storage_utils.js"></script>
+<script src="storageUtils.js"></script>
 <script src="dto_classes.js"></script>
 <script src="core.js"></script>
-<script src="table_html_utils.js"></script>
+<script src="tableTemplates.js"></script>
 </html>

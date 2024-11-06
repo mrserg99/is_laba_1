@@ -22,6 +22,30 @@ async function create(person, type) {
     return await postRequest(url, {}, toJson(person))
 }
 
+async function getEntities(type) {
+    let param = []
+    let url = "/repository/get/" + type
+
+    if (typeof Number(getValue(storageVocabulary.page)) === "number" && Number(getValue(storageVocabulary.page)) > 0){
+        param.push(new URLSearchParams({
+            page: (Number(getValue(storageVocabulary.page)) - 1)
+        }))
+    }
+    if (typeof Number(getValue(storageVocabulary.max)) === "number" && Number(getValue(storageVocabulary.max)) > 0){
+        param.push(new URLSearchParams({
+            max: getValue(storageVocabulary.max)
+        }))
+    }
+    if (param.length > 0) {
+        url += "?" + param.join("&")
+    }
+    let result = await getRequest(url)
+
+    if (result.ok) {
+        return await result.json()
+    }
+}
+
 
 function del_stud(){
     /* Удаляет объект студент*/

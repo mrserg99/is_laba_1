@@ -43,11 +43,3 @@ function createGroup() {
     //TODO
 }
 
-async function getEntity(type) {
-    let url = "/repository/get/" + type
-    let result = await getRequest(url)
-
-    if (result.ok) {
-        return await result.json()
-    }
-}

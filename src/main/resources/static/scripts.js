@@ -1,16 +1,16 @@
 const removeByClass = (sel) => document.querySelectorAll(sel).forEach(el => el.remove());
 
-function clear_login(){
+function clearLogin(){
     /*Очистка поля логин в странице Login*/
         document.getElementById("login_txt").value = "";
 }
 
-function clear_password(){
+function clearPassword(){
     /*Очистка поля пароль в странице Login*/
     document.getElementById("password_txt").value = "";
 }
 
-async function create_obj(){
+async function createEntity(){
     /*Появление popup окна создания объекта*/
     document.getElementById("dark_overlay").classList.remove("display_none")
 
@@ -19,7 +19,7 @@ async function create_obj(){
 
     if (e.value === "stud"){
         document.getElementById("popup_create_stud").classList.remove("display_none")
-        let colors = await getEntity(Type.COLOR.description)
+        let colors = await getEntities(Type.COLOR.description)
         colors.forEach(value => {
             document.querySelector("#hairColor_input").insertAdjacentHTML("beforeend", '<option>'+value+'</option>')
             document.querySelector("#eyeColor_input").insertAdjacentHTML("beforeend", '<option>'+value+'</option>')
@@ -71,7 +71,7 @@ function checkbox_click(){
 
 async function stud_coord_checkbox(){
     if (document.getElementById('stud_coord_checkbox').checked) {
-        let locations = await getEntity(Type.LOCATION.description)
+        let locations = await getEntities(Type.LOCATION.description)
         document.getElementById("select_loc_btn").classList.remove("display_none")
         document.getElementById("location_ID_wr").classList.remove("display_none");
 
@@ -128,8 +128,39 @@ function clear_location(){
     document.getElementById('locationCoordinateY_input').value = "";
 }
 
-async function tables_check() {
-    var e = document.getElementById("DB");
+function printFirstPage() {
+    // TODO задизейблить кнопку назад
+    setValue(storageVocabulary.page, 1)
+    setValue(storageVocabulary.max, 10)
+
+    printTable()
+}
+
+function loadMain(){
+    document.getElementById("user_name_in_header").innerHTML = getValue(storageVocabulary.user)
+}
+
+function nextPage(){
+    // TODO раздизейблить кнопку назад
+    /*Функция для пагинации на одну страницу вправо*/
+    setValue(storageVocabulary.page, Number(getValue(storageVocabulary.page)) + 1)
+
+    printTable()
+}
+function prevPage(){
+    // TODO раздизейблить кнопку вперёд
+    /*Функция для пагинации на одну страницу влево*/
+    setValue(storageVocabulary.page, Number(getValue(storageVocabulary.page)) - 1)
+    if (Number(getValue(storageVocabulary.page)) === 1) {
+        // TODO задизейблить кнопку назад
+        return
+    }
+
+    printTable()
+}
+
+async function printTable(){
+    let e = document.getElementById("DB");
 
     if (e.value === "stud") {
         removeByClass(".person_tab")
@@ -138,11 +169,14 @@ async function tables_check() {
         document.querySelector("#table_group").classList.add("display_none")
         document.querySelector("#table_location").classList.add("display_none")
         document.querySelector("#table_coordinate").classList.add("display_none")
-        let persons = await getEntity(Type.PERSON.description)
+        let persons = await getEntities(Type.PERSON.description)
         persons.forEach(value => {
             let person = createPersonRowByTemplate(value)
             document.querySelector("#table_stud").insertAdjacentHTML("beforeend", person)
         })
+        if (persons.length + 1 < Number(getValue(storageVocabulary.max))) {
+            // TODO задизейблить кнопку вперёд
+        }
     }
 
     if (e.value === "group") {
@@ -152,11 +186,14 @@ async function tables_check() {
         document.querySelector("#table_coordinate").classList.add("display_none")
         document.querySelector("#table_group").classList.remove("display_none")
         document.querySelector("#table_stud").classList.add("display_none")
-        let groups = await getEntity(Type.GROUP.description)
+        let groups = await getEntities(Type.GROUP.description)
         groups.forEach(value => {
             let group = createStudyGroupRowByTemplate(value)
             document.querySelector("#table_group").insertAdjacentHTML("beforeend", group)
         })
+        if (groups.length < Number(getValue(storageVocabulary.max))) {
+            // TODO задизейблить кнопку вперёд
+        }
     }
     if(e.value == "location"){
         removeByClass(".location_tab")
@@ -165,11 +202,14 @@ async function tables_check() {
         document.querySelector("#table_coordinate").classList.add("display_none")
         document.querySelector("#table_group").classList.add("display_none")
         document.querySelector("#table_stud").classList.add("display_none")
-        let locations = await getEntity(Type.LOCATION.description)
+        let locations = await getEntities(Type.LOCATION.description)
         locations.forEach(value => {
             let location = createLocationRowByTemplate(value)
             document.querySelector("#table_location").insertAdjacentHTML("beforeend", location)
         })
+        if (locations.length < Number(getValue(storageVocabulary.max))) {
+            // TODO задизейблить кнопку вперёд
+        }
     }
     if(e.value == "coordinate"){
         removeByClass(".coordinate_tab")
@@ -178,34 +218,19 @@ async function tables_check() {
         document.querySelector("#table_coordinate").classList.remove("display_none")
         document.querySelector("#table_group").classList.add("display_none")
         document.querySelector("#table_stud").classList.add("display_none")
-        let coordinates = await getEntity(Type.COORDINATE.description)
+        let coordinates = await getEntities(Type.COORDINATE.description)
         coordinates.forEach(value => {
             let coordinate = createCoordinateRowByTemplate(value)
             document.querySelector("#table_coordinate").insertAdjacentHTML("beforeend", coordinate)
         })
+        if (coordinates.length < Number(getValue(storageVocabulary.max))) {
+            // TODO задизейблить кнопку вперёд
+        }
     }
+
+    document.querySelector("#pagination_numb").innerHTML = getValue(storageVocabulary.page)
 }
 
-function loadMain(){
-    document.getElementById("user_name_in_header").innerHTML = getValue(storageVocabulary.user)
-}
-
-function pagination_one_right(){
-    /*Функция для пагинации на одну страницу вправо*/
-
-}
-function pagination_one_left(){
-    /*Функция для пагинации на одну страницу влево*/
-
-}
-function pagination_all_right(){
-    /*Функция для пагинации на последнюю справа страницу*/
-
-}
-function pagination_all_left(){
-    /*Функция для пагинации на первую слева страницу*/
-
-}
 function sort_up(value){
 alert(value+" UP")
  /* отсортировать от меньшего к большему*/

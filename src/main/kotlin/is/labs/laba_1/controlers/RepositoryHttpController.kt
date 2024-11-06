@@ -28,8 +28,8 @@ class RepositoryHttpController @Autowired constructor(
     @GetMapping("/get/{type}")
     fun getData(
             @PathVariable type: String,
-            @RequestParam("limit") limit: Int? = null,
-            @RequestParam("offset") offset: Int? = null,
+            @RequestParam("page") page: Int = 0,
+            @RequestParam("max") max: Int = 10,
     ): String {
         when (type) {
             Type.COLOR.type -> {
@@ -48,7 +48,7 @@ class RepositoryHttpController @Autowired constructor(
             }
 
             else -> {
-                val result = service.getData(type)
+                val result = service.getData(type, page, max)
                 return result
             }
         }

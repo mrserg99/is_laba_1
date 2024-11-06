@@ -15,6 +15,7 @@ class StudyGroup {
 
     constructor(id,
                 name,
+                coordinateId,
                 coordinateX,
                 coordinateY,
                 numberOfStudents,
@@ -30,6 +31,7 @@ class StudyGroup {
         this.id = id;
         this.name = name;
         this.coordinate = {
+            id: coordinateId,
             x: coordinateX,
             y: coordinateY,
         }

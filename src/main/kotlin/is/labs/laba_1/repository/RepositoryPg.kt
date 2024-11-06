@@ -11,20 +11,20 @@ class RepositoryPg {
     companion object {
     }
 
-    fun <T> select(type: Class<T>, limit: Int? = null, offset: Int? = null): List<*> {
+    fun <T> select(type: Class<T>, page: Int? = null, max: Int? = null): List<*> {
         val sessionFactory: SessionFactory = HibernateSessionFactory.sessionFactory
 
         sessionFactory.openSession().use {
             val SELECT = "from ${type.name} "
             val query = it.createSelectionQuery(SELECT, type)
-            if (limit != null) {
-                if (limit > 0) {
-                    query.setFirstResult(limit)
+            if (page != null) {
+                if (page > 0) {
+                    query.setFirstResult(page * (max ?: 10))
                 }
             }
-            if (offset != null) {
-                if (offset > 0) {
-                    query.setMaxResults(offset)
+            if (max != null) {
+                if (max > 0) {
+                    query.setMaxResults(max)
                 }
             }
             return query.resultList
