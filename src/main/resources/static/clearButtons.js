@@ -96,3 +96,27 @@ function clearWeight(){
     /*Очистка веса*/
     document.getElementById('weight_input').value = "";
 }
+
+function clearXLoc(){
+    /*Очистка локации Х*/
+    document.getElementById('X_loc_input').value = "";
+}
+function clearYLoc(){
+    /*Очистка локации Y*/
+    document.getElementById('Y_loc_input').value = "";
+}
+
+function clearnameLoc(){
+    /*Очистка локации name*/
+    document.getElementById('name_loc_input').value = "";
+}
+
+function clearXcoord(){
+    /*Очистка coordinate id*/
+    document.getElementById('X_coord_input').value = "";
+}
+
+function clearYcoord(){
+    /*Очистка coordinate id*/
+    document.getElementById('Y_coord_input').value = "";
+}

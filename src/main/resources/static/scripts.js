@@ -6,7 +6,13 @@ async function createEntity(){
 
     let e = document.getElementById("DB");
     let value = e.value;
+    if (e.value==="location"){
+        document.getElementById("popup_location").classList.remove("display_none")
 
+    }
+    if (e.value==="coordinate"){
+        document.getElementById("popup_coordinate").classList.remove("display_none")
+    }
     if (e.value === "stud"){
         document.getElementById("popup_create_stud").classList.remove("display_none")
         let colors = await getEntities(Type.COLOR.description, Number(getValue(storageVocabulary.page)), Number(getValue(storageVocabulary.max)))
@@ -20,6 +26,8 @@ async function createEntity(){
         document.getElementById("popup_create_group").classList.remove("display_none")
         document.getElementById("user_change_group").innerHTML = getValue(storageVocabulary.user)
     }
+
+
 }
 
 function close_popup(){
@@ -33,6 +41,12 @@ function close_popup(){
     }
     if (e.value === "group"){
         document.getElementById("popup_create_group").classList.add("display_none")
+    }
+    if (e.value === "location"){
+        document.getElementById("popup_location").classList.add("display_none")
+    }
+    if (e.value === "coordinate"){
+        document.getElementById("popup_coordinate").classList.add("display_none")
     }
     document.getElementById("dark_overlay").classList.add("display_none")
 
@@ -289,5 +303,4 @@ function approve_application(btn) {
 function cancel_application(btn){
     /*отменить заявку на становление админом*/
     btn.classList.add("disabled_button")
-
 }

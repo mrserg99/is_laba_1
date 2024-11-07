@@ -921,6 +921,11 @@ th, td {
   margin-bottom: 40px;
 }
 
+.popup_cross_loc {
+  height: 45px !important;
+  margin-top: 19px !important;
+}
+
 @keyframes pulse {
   0% {
     transform: scale(0.8);
