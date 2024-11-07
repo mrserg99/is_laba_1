@@ -68,11 +68,11 @@ li, a, ul {
   width: 200px;
   font-size: 18px;
   font-weight: 400;
-  margin-right: 50%;
+  margin-right: 45%;
 }
 .header_right {
   justify-content: space-between;
-  width: 500px;
+  width: 600px;
   display: flex;
 }
 .header_right_user_name {
@@ -868,6 +868,57 @@ th, td {
   cursor: pointer;
   scale: 1.2;
   transition: 0.4s;
+}
+
+.application {
+  display: flex;
+  gap: 42px;
+  margin-bottom: 15px;
+}
+.application_name {
+  font-size: 20px;
+  font-weight: 400;
+}
+.application_date {
+  font-size: 18px;
+  font-weight: 300;
+}
+.application_approve {
+  margin-top: -5px;
+  width: 135px;
+  height: 44px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  background-color: #292929;
+  color: #FFF;
+  transition: 0.4s;
+}
+.application_approve:hover {
+  cursor: pointer;
+  scale: 1.1;
+  transition: 0.4s;
+}
+.application_cancel {
+  margin-top: -5px;
+  width: 135px;
+  height: 44px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  border: #292929 1px solid;
+  transition: 0.4s;
+}
+.application_cancel:hover {
+  cursor: pointer;
+  scale: 1.1;
+  transition: 0.4s;
+}
+
+.mb40 {
+  margin-bottom: 40px;
 }
 
 @keyframes pulse {

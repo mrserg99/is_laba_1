@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Заявки</title>
+  <link rel="stylesheet" href="./scss/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+<div class="header" id="bar">
+  <h3 class="header_logo">ЛР1 Лесных С. И.</h3>
+  <div class="header_right">
+    <a class="header_right_sp_func_btn button_dark" href="main.html">База данных</a>
+    <a class="header_right_sp_func_btn button_dark" href="spech_func.html">Спец функции</a>
+    <h4 class="header_right_user_name">Jennifer</h4>
+    <h4 class="header_right_user_job">Пользователь</h4>
+    <button onclick="exit()" id="exit_btn" class="button_dark exit">Выйти</button>
+  </div>
+</div>
+<body class="body">
+<div class="wrapper">
+  <h1 class="mb40">Заявки</h1>
+
+  <div class="application_wrapper">
+    <div class="application">
+      <h3 class="application_name">Щвшт_1</h3>
+      <div class="application_date">19.03.2024 12:24</div>
+      <button class="application_approve br15" onclick="approve_application(this)">одобрить</button>
+      <button class="application_cancel br15" onclick="cancel_application(this)">отменить</button>
+    </div>
+    <div class="application">
+      <h3 class="application_name">Щвшт_1</h3>
+      <div class="application_date">19.03.2024 12:24</div>
+      <button class="application_approve br15" onclick="approve_application(this)">одобрить</button>
+      <button class="application_cancel br15" onclick="cancel_application(this)">отменить</button>
+    </div>
+  </div>
+
+</div>
+<script src="scripts.js"></script>
+<script src="controllers.js"></script>
+<script src="change_data.js"></script>
+<script src="storageUtils.js"></script>
+<script src="dto_classes.js"></script>
+<script src="core.js"></script>
+<script src="tableTemplates.js"></script>
+<script src="clearButtons.js"></script>
+<script src="listeners.js"></script>
+</body>
+</html>

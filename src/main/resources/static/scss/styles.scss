@@ -60,6 +60,8 @@ li, a, ul{
     transition: 0.4s;
   }
 }
+
+
 .header{
   display: flex;
   padding: 1%;
@@ -68,11 +70,11 @@ li, a, ul{
     width: 200px;
     font-size: 18px;
     font-weight: 400;
-    margin-right: 50%;
+    margin-right: 45%;
   }
   &_right{
     justify-content: space-between;
-    width: 500px;
+    width: 600px;
     display: flex;
     &_user_name{
       margin-top: 0.5em;
@@ -443,7 +445,6 @@ li, a, ul{
 .popup_five_line{
   margin-top: 20px;
   display: flex;
-  //width: 800px;
   gap: 83px;
 }
 #coordinate_stud{
@@ -453,8 +454,6 @@ li, a, ul{
   font: inherit;
   letter-spacing: inherit;
   word-spacing: 22px;
-  //display: flex;
-  //gap: 40px;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -480,15 +479,10 @@ li, a, ul{
   }
 }
 .popup_six_line_1{
-  //display: flex;
-  //justify-content: center;
-
   margin-top: 20px;
   margin-left: 11em;
 }
 .popup_six_line_2{
-  //display: flex;
-  //justify-content: center;
 
   margin-top: 20px;
   margin-left: 5em;
@@ -789,6 +783,56 @@ li, a, ul{
   }
 }
 
+.application{
+  display: flex;
+  gap: 42px;
+  margin-bottom: 15px;
+  &_name{
+    font-size: 20px;
+    font-weight: 400;
+  }
+  &_date{
+    font-size: 18px;
+    font-weight: 300;
+  }
+  &_approve{
+    margin-top: -5px;
+    width: 135px;
+    height: 44px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    background-color: #292929;
+    color: #FFF;
+    transition: 0.4s;
+    &:hover{
+      cursor: pointer;
+      scale: 1.1;
+      transition: 0.4s;
+    }
+  }
+  &_cancel{
+    margin-top: -5px;
+    width: 135px;
+    height: 44px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    border: #292929 1px solid;
+    transition: 0.4s;
+    &:hover{
+      cursor: pointer;
+      scale: 1.1;
+      transition: 0.4s;
+    }
+  }
+
+}
+.mb40{
+  margin-bottom: 40px;
+}
 
 @keyframes pulse {
   0% {

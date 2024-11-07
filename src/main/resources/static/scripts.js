@@ -113,7 +113,6 @@ async function select_visible_group(){
     document.getElementById("select_location_wrapper_group").classList.remove("display_none");
     document.getElementById("select_location_group").classList.remove("display_none")
     document.getElementById("seagal_group").style.transform = "rotate(180deg)";
-    document.getElementById("location_ID_wr_group").classList.remove("display_none");
 }
 
 async function select_visible_person(){
@@ -121,7 +120,6 @@ async function select_visible_person(){
     document.getElementById("select_location_wrapper_person").classList.remove("display_none");
     document.getElementById("select_location_person").classList.remove("display_none")
     document.getElementById("seagal_person").style.transform = "rotate(180deg)";
-    document.getElementById("location_ID_wr_person").classList.remove("display_none");
 }
 
 function close_select_coord(){
@@ -282,4 +280,14 @@ alert(value+" UP")
 function sort_down(value){
     alert(value+" Down")
     /* отсортировать от большего к меньшему*/
+}
+
+function approve_application(btn) {
+/*Одобрить заявку на становление админом*/
+    btn.classList.add("disabled_button")
+}
+function cancel_application(btn){
+    /*отменить заявку на становление админом*/
+    btn.classList.add("disabled_button")
+
 }
