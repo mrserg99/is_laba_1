@@ -88,9 +88,10 @@ async function group_coord_checkbox(){
     if (document.getElementById("new_coordinates").checked) {
         document.getElementById("select_loc_btn_group").classList.remove("display_none")
         document.getElementById("location_ID_wr").classList.remove("display_none");
-
+        document.getElementById("input_id_group").classList.remove("display_none")
 
     } else {
+        document.getElementById("input_id_group").classList.add("display_none")
 
         document.getElementById("select_loc_btn_group").classList.add("display_none")
         document.getElementById("location_ID_wr").classList.add("display_none");
