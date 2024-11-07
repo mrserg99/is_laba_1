@@ -22,18 +22,18 @@ async function create(person, type) {
     return await postRequest(url, {}, toJson(person))
 }
 
-async function getEntities(type) {
+async function getEntities(type, page, max) {
     let param = []
     let url = "/repository/get/" + type
 
-    if (typeof Number(getValue(storageVocabulary.page)) === "number" && Number(getValue(storageVocabulary.page)) > 0){
+    if (typeof page === "number" && page > 0){
         param.push(new URLSearchParams({
-            page: (Number(getValue(storageVocabulary.page)) - 1)
+            page: (Number(page) - 1)
         }))
     }
-    if (typeof Number(getValue(storageVocabulary.max)) === "number" && Number(getValue(storageVocabulary.max)) > 0){
+    if (typeof max === "number" && max > 0){
         param.push(new URLSearchParams({
-            max: getValue(storageVocabulary.max)
+            max: max
         }))
     }
     if (param.length > 0) {

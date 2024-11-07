@@ -9,7 +9,7 @@ async function createEntity(){
 
     if (e.value === "stud"){
         document.getElementById("popup_create_stud").classList.remove("display_none")
-        let colors = await getEntities(Type.COLOR.description)
+        let colors = await getEntities(Type.COLOR.description, Number(getValue(storageVocabulary.page)), Number(getValue(storageVocabulary.max)))
         colors.forEach(value => {
             document.querySelector("#hairColor_input").insertAdjacentHTML("beforeend", '<option>'+value+'</option>')
             document.querySelector("#eyeColor_input").insertAdjacentHTML("beforeend", '<option>'+value+'</option>')
@@ -49,7 +49,7 @@ function checkbox_click(){
 
 async function stud_coord_checkbox(){
     if (document.getElementById('stud_coord_checkbox').checked) {
-        let locations = await getEntities(Type.LOCATION.description)
+        let locations = await getEntities(Type.LOCATION.description, 1, 10)
         document.getElementById("select_loc_btn").classList.remove("display_none")
         document.getElementById("location_ID_wr").classList.remove("display_none");
 
@@ -211,7 +211,7 @@ async function printTable(){
         document.querySelector("#table_group").classList.add("display_none")
         document.querySelector("#table_location").classList.add("display_none")
         document.querySelector("#table_coordinate").classList.add("display_none")
-        let persons = await getEntities(Type.PERSON.description)
+        let persons = await getEntities(Type.PERSON.description, Number(getValue(storageVocabulary.page)), Number(getValue(storageVocabulary.max)))
         persons.forEach(value => {
             let person = createPersonRowByTemplate(value)
             document.querySelector("#table_stud").insertAdjacentHTML("beforeend", person)
@@ -228,7 +228,7 @@ async function printTable(){
         document.querySelector("#table_coordinate").classList.add("display_none")
         document.querySelector("#table_group").classList.remove("display_none")
         document.querySelector("#table_stud").classList.add("display_none")
-        let groups = await getEntities(Type.GROUP.description)
+        let groups = await getEntities(Type.GROUP.description, Number(getValue(storageVocabulary.page)), Number(getValue(storageVocabulary.max)))
         groups.forEach(value => {
             let group = createStudyGroupRowByTemplate(value)
             document.querySelector("#table_group").insertAdjacentHTML("beforeend", group)
@@ -244,7 +244,7 @@ async function printTable(){
         document.querySelector("#table_coordinate").classList.add("display_none")
         document.querySelector("#table_group").classList.add("display_none")
         document.querySelector("#table_stud").classList.add("display_none")
-        let locations = await getEntities(Type.LOCATION.description)
+        let locations = await getEntities(Type.LOCATION.description, Number(getValue(storageVocabulary.page)), Number(getValue(storageVocabulary.max)))
         locations.forEach(value => {
             let location = createLocationRowByTemplate(value)
             document.querySelector("#table_location").insertAdjacentHTML("beforeend", location)
@@ -261,7 +261,7 @@ async function printTable(){
         document.querySelector("#table_coordinate").classList.remove("display_none")
         document.querySelector("#table_group").classList.add("display_none")
         document.querySelector("#table_stud").classList.add("display_none")
-        let coordinates = await getEntities(Type.COORDINATE.description)
+        let coordinates = await getEntities(Type.COORDINATE.description, Number(getValue(storageVocabulary.page)), Number(getValue(storageVocabulary.max)))
         coordinates.forEach(value => {
             let coordinate = createCoordinateRowByTemplate(value)
             document.querySelector("#table_coordinate").insertAdjacentHTML("beforeend", coordinate)
