@@ -89,16 +89,30 @@ const locationMap = new Map()
     .set('Y', 'y')
     .set('Название', 'name')
 
-locationMap.forEach((value, key) => {
-        document.querySelector("same_name").insertAdjacentHTML("beforeend", '<option>' + key + '</option>')
-    }
-)
-//
-// function parseDate(date, separator) {
-//     let partsOfDate = date.split(separator)
-//     let day = partsOfDate[0]
-//     let month = partsOfDate[1]
-//     let year = partsOfDate[2]
-//
-//     return year + "-" +
-// }
+const coordinatesMap = new Map()
+    .set('ID', 'id')
+    .set('X', 'x')
+    .set('Y', 'y')
+
+const groupMap = new Map()
+    .set('ID', 'id')
+    .set('Название', 'name')
+    .set('Средняя оценка', 'average_mark')
+    .set('Дата создания', 'creation_date')
+    .set('Кол-во отчисленных', 'expelled_students')
+    .set('Форма обучения', 'form_of_education')
+    .set('Семестр', 'semester_enum')
+    .set('Будут исключены', 'should_be_expelled')
+    .set('Кол-во студентов', 'students_count')
+    .set('Кол-во переведенных', 'transferred_students')
+/*X, Y, староста*/
+
+
+const personMap = new Map()
+    .set('ID', 'id')
+    .set('ФИО', 'name')
+    .set('День рождения', 'birthday')
+    .set('Цвет глаз', 'eye_color')
+    .set('Цвет волос', 'hair_color')
+    .set('Рост', 'height')
+    .set('Вес', 'weight')

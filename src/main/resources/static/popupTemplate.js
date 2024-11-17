@@ -7,7 +7,7 @@ const groupPopup = '<div id="popup_create_group" class="popup">\n' +
     '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
     '            </button>\n' +
     '        </div>\n' +
-    '        <button class="popup_close" onclick="closePopup()">\n' +
+    '        <button class="popup_close" onclick="closePopup(this.parentElement.parentElement.id)">\n' +
     '            <img src="./pics/Frame%20202.png" alt="">\n' +
     '        </button>\n' +
     '    </div>\n' +
@@ -189,7 +189,7 @@ const studentPopup = '<div id="popup_create_stud" class="popup">\n' +
     '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
     '            </button>\n' +
     '        </div>\n' +
-    '        <button class="popup_close" onclick="closePopup()">\n' +
+    '        <button class="popup_close" onclick="closePopup(this.parentElement.parentElement.id)">\n' +
     '            <img src="./pics/Frame%20202.png" alt="">\n' +
     '        </button>\n' +
     '    </div>\n' +
@@ -247,7 +247,7 @@ const studentPopup = '<div id="popup_create_stud" class="popup">\n' +
     '        <div class="popup_input">\n' +
     '            <div class="popup_input_wrapper">\n' +
     '                <p class="popup_input_text">День рождения</p>\n' +
-    '                <input  id="birthday_input" class="popup_input_input w115 br150015 h44" type="date" name="trip-start" value="2002-07-22" min="2013-01-01" max="2018-12-31" />\n' +
+    '                <input  id="birthday_input" class="popup_input_input w115 br150015 h44" type="date" name="trip-start" value="yyyy-mm-dd" min="2013-01-01" max="2018-12-31" />\n' +
     '            </div>\n' +
     '            <button class="popup_input_del_btn br015150 h45 clear_btn_btn popup_cross_loc" onclick="clearBirthDay()">\n' +
     '                <img src="./pics/Frame%20202.png" alt="" class="">\n' +
@@ -323,7 +323,7 @@ const locationPopup = '<div id="popup_location" class="popup">\n' +
     '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
     '            </button>\n' +
     '        </div>\n' +
-    '        <button class="popup_close" onclick="closePopup()">\n' +
+    '        <button class="popup_close" onclick="closePopup(this.parentElement.parentElement.id)">\n' +
     '            <img src="./pics/Frame%20202.png" alt="">\n' +
     '        </button>\n' +
     '    </div>\n' +
@@ -383,7 +383,7 @@ const coordinatePopup = '<div id="popup_coordinate" class="popup">\n' +
     '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
     '            </button>\n' +
     '        </div>\n' +
-    '        <button class="popup_close" onclick="closePopup()">\n' +
+    '        <button class="popup_close" onclick="closePopup(this.parentElement.parentElement.id)">\n' +
     '            <img src="./pics/Frame%20202.png" alt="">\n' +
     '        </button>\n' +
     '    </div>\n' +
@@ -422,49 +422,39 @@ const coordinatePopup = '<div id="popup_coordinate" class="popup">\n' +
     '    </div>\n' +
     '</div>'
 
-const filterPopup = '<div id="popup_coordinate" class="popup">\n' +
+const filterPopup = '<div id="popup_create_filter" class="popup">\n' +
     '    <div class="popup_first_line">\n' +
     '        <div class="popup_first_line_wrapper">\n' +
-    '            <h2 class="popup_title" id="popup_coord_title">Задайте фильтр</h2>\n' +
-    '            <button class="popup_del_btn button_dark" onclick="del_stud()">\n' +
-    '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
-    '            </button>\n' +
+    '            <h2 class="popup_title" id="popup_stud_title">Создаем фильтр</h2>\n' +
     '        </div>\n' +
-    '        <button class="popup_close" onclick="closePopup()">\n' +
+    '        <button class="popup_close" onclick="closePopup(this.parentElement.parentElement.id)">\n' +
     '            <img src="./pics/Frame%20202.png" alt="">\n' +
     '        </button>\n' +
     '    </div>\n' +
-    '    <div class="popup_second_line">\n' +
-    '        <p class="popup_second_line_author">Автор</p>\n' +
-    '        <p id="user_change_coord" class="popup_second_line_nameAuthor"></p>\n' +
-    '    </div>\n' +
-    '\n' +
     '    <div class="popup_five_line">\n' +
     '        <div class="popup_input">\n' +
     '            <div class="popup_input_wrapper">\n' +
-    '                <p class="popup_input_text">X</p>\n' +
-    '                <input id="X_coord_input" class="popup_input_input w98 br150015" type="text" maxlength=90>\n' +
+    '                <p class="popup_input_text">Колонка сортировки</p>\n' +
+    '                <select id="filter_column_input" class="popup_input_input w185 br15" onclick="createFields()">\n' +
+    '                </select>\n' +
     '            </div>\n' +
-    '            <button class="popup_input_del_btn br015150 clear_btn_btn popup_cross_loc" onclick="clearXcoord()">\n' +
-    '                <img src="./pics/Frame%20202.png" alt="" class="">\n' +
-    '            </button>\n' +
     '        </div>\n' +
-    '\n' +
+
     '        <div class="popup_input">\n' +
     '            <div class="popup_input_wrapper">\n' +
-    '                <p class="popup_input_text">Y</p>\n' +
-    '                <input id="Y_coord_input" class="popup_input_input w98 br150015" type="text" maxlength=90>\n' +
+    '                <p class="popup_input_text">Значение</p>\n' +
+    '               <input id="filter_input" class="popup_input_input w98 br150015" type="text" maxlength=90>\n' +
     '            </div>\n' +
-    '            <button class="popup_input_del_btn br015150 clear_btn_btn popup_cross_loc" onclick="clearYcoord()">\n' +
+    '            <button id="filter_input_btn" class="popup_input_del_btn br015150 clear_btn_btn popup_cross_loc" onclick="clearYcoord()">\n' +
     '                <img src="./pics/Frame%20202.png" alt="" class="">\n' +
     '            </button>\n' +
+    '            </div>\n' +
     '        </div>\n' +
-    '    </div>\n' +
     '    <div class="popup_seven_line">\n' +
-    '        <p id="popup_create_coord_error" class="error_massage"></p>\n' +
+    '        <p id="popup_create_stud_error" class="error_massage"></p>\n' +
     '    </div>\n' +
     '    <div class="popup_six_line_2">\n' +
-    '        <button id="create_coord_btn" class="popup_btn_create button_dark" onclick="createCoord()">Создать</button>\n' +
-    '        <button id="return_coord_loc" class="popup_btn_del" onclick="closePopup()">Отмена</button>\n' +
+    '        <button id="create_stud_btn" class="popup_btn_create button_dark" onclick="createFilter()">Создать</button>\n' +
+    '        <button id="return_btn_stud" class="popup_btn_del" onclick="deleteFilter()">Удалить</button>\n' +
     '    </div>\n' +
     '</div>'

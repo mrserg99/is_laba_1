@@ -1,27 +1,24 @@
-const removeByClass = (sel) => document.querySelectorAll(sel).forEach(el => el.remove());
-const removeChildrenByClass = (sel) => document.querySelector(sel).children.forEach(el => el.remove());
-
 async function createEntity() {
     /*Появление popup окна создания объекта*/
-    if (getValue(storageVocabulary.type) === Type.LOCATION.description){
+    if (getValue(storageVocabulary.type) === Type.LOCATION.description) {
         document.querySelector('.body').insertAdjacentHTML("afterbegin", locationPopup)
     }
-    if (getValue(storageVocabulary.type) === Type.COORDINATE.description){
+    if (getValue(storageVocabulary.type) === Type.COORDINATE.description) {
         document.querySelector('.body').insertAdjacentHTML("afterbegin", coordinatePopup)
     }
-    if (getValue(storageVocabulary.type) === Type.PERSON.description){
+    if (getValue(storageVocabulary.type) === Type.PERSON.description) {
         document.querySelector('.body').insertAdjacentHTML("afterbegin", studentPopup)
         let colors = await getEntities(Type.COLOR.description)
         colors.forEach(value => {
             document.querySelector("#hairColor_input").insertAdjacentHTML("beforeend", '<option>' + value + '</option>')
             document.querySelector("#eyeColor_input").insertAdjacentHTML("beforeend", '<option>' + value + '</option>')
         })
-        document.getElementById("user_change_stud").innerHTML = getValue(storageVocabulary.user)
+        document.querySelector("#user_change_stud").innerHTML = getValue(storageVocabulary.user)
         createLocationElementListener()
     }
     if (getValue(storageVocabulary.type) === Type.GROUP.description) {
         document.querySelector('.body').insertAdjacentHTML("afterbegin", groupPopup)
-        document.getElementById("user_change_group").innerHTML = getValue(storageVocabulary.user)
+        document.querySelector("#user_change_group").innerHTML = getValue(storageVocabulary.user)
         let formsOfEducation = await getEntities(Type.FORM_OF_EDUCATION.description)
         let semesters = await getEntities(Type.SEMESTER.description)
         semesters.forEach(value => {
@@ -36,22 +33,10 @@ async function createEntity() {
     document.querySelector("#dark_overlay").classList.remove("display_none")
 }
 
-function closePopup() {
+function closePopup(id) {
     /*Закрытие popup окна*/
-    if (getValue(storageVocabulary.type) === Type.LOCATION.description){
-        document.querySelector('#popup_location').remove()
-    }
-    if (getValue(storageVocabulary.type) === Type.PERSON.description){
-        document.querySelector('#popup_create_stud').remove()
-    }
-    if (getValue(storageVocabulary.type) === Type.GROUP.description){
-        document.querySelector('#popup_create_group').remove()
-    }
-    if (getValue(storageVocabulary.type) === Type.COORDINATE.description){
-        document.querySelector("#popup_coordinate").remove()
-    }
+    document.querySelector('#' + id).remove()
     document.querySelector("#dark_overlay").classList.add("display_none")
-
 }
 
 function checkbox_click() {
@@ -367,7 +352,7 @@ function change(raw, type) {
     if (type === Type.PERSON) {
         let result = findById(type.description, id)
         result.then(async res => {
-            if (res.ok){
+            if (res.ok) {
                 document.querySelector("#stud_coord_checkbox").checked = true
                 select_visible()
                 let body = await res.json()
@@ -400,7 +385,36 @@ function change(raw, type) {
     }
 }
 
-function show_filter_popup(){
+function show_filter_popup() {
+    /*вставка окна с фильтрами*/
+    document.querySelector('.body').insertAdjacentHTML("afterbegin", filterPopup)
+    document.querySelector("#dark_overlay").classList.remove("display_none")
 
+}
 
+function createFilter() {
+    /*Создаем фильтр*/
+}
+
+function createFields() {
+    let keys = []
+    if (getValue(storageVocabulary.type) === Type.LOCATION.description) {
+        locationMap.forEach((value, key) => keys.push(key))
+    }
+    if (getValue(storageVocabulary.type) === Type.COORDINATE.description) {
+        coordinatesMap.forEach((value, key) => keys.push(key))
+    }
+    if (getValue(storageVocabulary.type) === Type.PERSON.description) {
+        personMap.forEach((value, key) => keys.push(key))
+    }
+    if (getValue(storageVocabulary.type) === Type.GROUP.description) {
+        groupMap.forEach((value, key) => keys.push(key))
+    }
+
+    removeChildrenByClass('#filter_column_input')
+    keys.forEach(value => document.querySelector("#filter_column_input").insertAdjacentHTML("beforeend", '<option>' + value + '</option>'))
+}
+
+function deleteFilter(){
+    //TODO
 }
