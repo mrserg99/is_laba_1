@@ -344,17 +344,16 @@ function cancel_application(btn) {
     btn.classList.add("disabled_button")
 }
 
-function change(raw, type) {
+function change(id, type) {
     /*Появление popup окна изменение объекта*/
     createEntity()
 
-    let id = raw.children[0].innerHTML
-    if (type === Type.PERSON) {
-        let result = findById(type.description, id)
+    if (type === Type.PERSON.description) {
+        let result = findById(type, id)
         result.then(async res => {
             if (res.ok) {
                 document.querySelector("#stud_coord_checkbox").checked = true
-                select_visible()
+                stud_coord_checkbox()
                 let body = await res.json()
                 document.querySelector("#FIO_input").value = body.FIO
                 document.querySelector("#eyeColor_input").value = body.eyeColor
@@ -369,19 +368,50 @@ function change(raw, type) {
             }
         })
     }
-    if (type === Type.GROUP) {
-        document.querySelector("#name_input").value = children[1].innerHTML
-        document.querySelector("#coordinateID_input").value = children[2].innerHTML
-        document.querySelector("#coordinateX_input").value = children[3].innerHTML
-        document.querySelector("#coordinateY_input").value = children[4].innerHTML
-        document.querySelector("#numberOfStudents_input").value = children[5].innerHTML
-        document.querySelector("#numberOfExpelled_input").value = children[6].innerHTML
-        document.querySelector("#numberOfTransferred_input").value = children[7].innerHTML
-        document.querySelector("#shouldBeExpelled_input").value = children[8].innerHTML
-        document.querySelector("#formOfEducation_input").value = children[9].innerHTML
-        document.querySelector("#averageMark_input").value = children[10].innerHTML
-        document.querySelector("#person_input").value = children[11].innerHTML
-        document.querySelector("#semester_input").value = children[12].innerHTML
+    if (type === Type.GROUP.description) {
+        let result = findById(type, id)
+        result.then(async res => {
+            if (res.ok) {
+                document.querySelector("#new_coordinates").checked = true
+                group_coord_checkbox()
+                let body = await res.json()
+                document.querySelector("#name_input").value = body.name
+                document.querySelector("#coordinateID_input").value = body.coordinate.id
+                document.querySelector("#coordinateX_input").value = body.coordinate.x
+                document.querySelector("#coordinateY_input").value = body.coordinate.y
+                document.querySelector("#numberOfStudents_input").value = body.numberOfStudents
+                document.querySelector("#numberOfExpelled_input").value = body.numberOfExpelled
+                document.querySelector("#numberOfTransferred_input").value = body.numberOfTransferred
+                document.querySelector("#shouldBeExpelled_input").value = body.shouldBeExpelled
+                document.querySelector("#formOfEducation_input").value = body.formOfEducation
+                document.querySelector("#averageMark_input").value = body.averageMark
+                document.querySelector("#semester_input").value = body.semester
+                //TODO
+            }
+        })
+    }
+    if (type === Type.LOCATION.description) {
+        let result = findById(type, id)
+        result.then(async res => {
+            if (res.ok) {
+                let body = await res.json()
+                document.querySelector("#X_loc_input").value = body.x
+                document.querySelector("#Y_loc_input").value = body.y
+                document.querySelector("#name_loc_input").value = body.name
+                //TODO
+            }
+        })
+    }
+    if (type === Type.COORDINATE.description) {
+        let result = findById(type, id)
+        result.then(async res => {
+            if (res.ok) {
+                let body = await res.json()
+                document.querySelector("#X_coord_input").value = body.x
+                document.querySelector("#Y_coord_input").value = body.y
+                //TODO
+            }
+        })
     }
 }
 
@@ -415,6 +445,6 @@ function createFields() {
     keys.forEach(value => document.querySelector("#filter_column_input").insertAdjacentHTML("beforeend", '<option>' + value + '</option>'))
 }
 
-function deleteFilter(){
+function deleteFilter() {
     //TODO
 }

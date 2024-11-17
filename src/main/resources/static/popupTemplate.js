@@ -175,7 +175,7 @@ const groupPopup = '<div id="popup_create_group" class="popup">\n' +
     '    </div>\n' +
     '    <div class="popup_six_line_1">\n' +
     '        <button id="create_group_btn" class="popup_btn_create button_dark" onclick="createGroup()">Создать</button>\n' +
-    '        <button id="return_btnArr" class="popup_btn_del" onclick="closePopup()">Отмена</button>\n' +
+    '        <button id="return_btnArr" class="popup_btn_del" onclick="closePopup(this.parentElement.parentElement.id)">Отмена</button>\n' +
     '    </div>\n' +
     '</div>'
 
@@ -307,7 +307,7 @@ const studentPopup = '<div id="popup_create_stud" class="popup">\n' +
     '    </div>\n' +
     '    <div class="popup_six_line_2">\n' +
     '        <button id="create_stud_btn" class="popup_btn_create button_dark" onclick="createPerson()">Создать</button>\n' +
-    '        <button id="return_btn_stud" class="popup_btn_del" onclick="closePopup()">Отмена</button>\n' +
+    '        <button id="return_btn_stud" class="popup_btn_del" onclick="closePopup(this.parentElement.parentElement.id)">Отмена</button>\n' +
     '    </div>\n' +
     '</div>'
 
@@ -365,7 +365,7 @@ const locationPopup = '<div id="popup_location" class="popup">\n' +
     '    </div>\n' +
     '    <div class="popup_six_line_2">\n' +
     '        <button id="create_loc_btn" class="popup_btn_create button_dark" onclick="createLoction()">Создать</button>\n' +
-    '        <button id="return_btn_loc" class="popup_btn_del" onclick="closePopup()">Отмена</button>\n' +
+    '        <button id="return_btn_loc" class="popup_btn_del" onclick="closePopup(this.parentElement.parentElement.id)">Отмена</button>\n' +
     '    </div>\n' +
     '</div>'
 
@@ -410,7 +410,7 @@ const coordinatePopup = '<div id="popup_coordinate" class="popup">\n' +
     '    </div>\n' +
     '    <div class="popup_six_line_2">\n' +
     '        <button id="create_coord_btn" class="popup_btn_create button_dark" onclick="createCoord()">Создать</button>\n' +
-    '        <button id="return_coord_loc" class="popup_btn_del" onclick="closePopup()">Отмена</button>\n' +
+    '        <button id="return_coord_loc" class="popup_btn_del" onclick="closePopup(this.parentElement.parentElement.id)">Отмена</button>\n' +
     '    </div>\n' +
     '</div>'
 

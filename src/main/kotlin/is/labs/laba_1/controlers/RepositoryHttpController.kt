@@ -151,8 +151,7 @@ class RepositoryHttpController @Autowired constructor(
     fun delete(
             @PathVariable type: String,
             @RequestParam("id") id: Int,
-    ): String {
-        service.delete(id, type)
-        return "OK" //TODO
+    ): Boolean {
+        return service.delete(id, type)
     }
 }

@@ -59,11 +59,12 @@ class RepositoryPg {
         sessionFactory.openSession().use {
             try {
                 val trans = it.beginTransaction()
-                val deleteEntity = it.merge(id.toString(), type)
+                val deleteEntity = it.find(type, id)
                 it.remove(deleteEntity)
                 trans.commit()
             } catch (ex: Exception) {
                 ex.stackTrace
+                return false
             }
         }
         return true

@@ -51,6 +51,16 @@ async function findById(type, id){
     return await getRequest(url)
 }
 
+function deleteRow(id, type) {
+    let url = "/repository/delete/" + type
+    let param = new URLSearchParams({
+        id: id
+    })
+
+    url += "?" + param
+    return deleteRequest(url)
+}
+
 
 function del_stud(){
     /* Удаляет объект студент*/
