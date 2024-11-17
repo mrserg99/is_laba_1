@@ -24,9 +24,10 @@ async function createPerson() {
     )
 }
 
-function createGroup() {
+async function createGroup() {
     let newGroup = new StudyGroup({
         name: document.getElementById("name_input").value,
+        coordinateId: document.getElementById("coordinateID_input").value,
         coordinateX: document.getElementById("coordinateX_input").value,
         coordinateY: document.getElementById("coordinateY_input").value,
         numberOfStudents: document.getElementById("numberOfStudents_input").value,
@@ -35,11 +36,20 @@ function createGroup() {
         shouldBeExpelled: document.getElementById("shouldBeExpelled_input").value,
         creationDate: Date.now(),
         formOfEducation: document.getElementById("formOfEducation_input").value,
-        user: getValue(storageVocabulary.user),
         averageMark: document.getElementById("averageMark_input").value,
         groupAdmin: document.getElementById("person_input").value,
         semester: document.getElementById("semester_input").value,
     })
-    //TODO
+
+    await create(newGroup, Type.GROUP.description).then(result => {
+            if (result.ok) {
+                document.querySelector("#popup_create_stud").classList.add("display_none")
+                document.querySelector("#dark_overlay").classList.add("display_none")
+                document.querySelector("#popup_create_stud_error").innerHTML = ""
+            } else {
+                document.querySelector("#popup_create_stud_error").innerHTML = "Ошибка"
+            }
+        }
+    )
 }
 

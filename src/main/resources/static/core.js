@@ -81,3 +81,12 @@ function textToColumnName(text){
         case 'Вес (кг)': return 'weight'
     }
 }
+//
+// function parseDate(date, separator) {
+//     let partsOfDate = date.split(separator)
+//     let day = partsOfDate[0]
+//     let month = partsOfDate[1]
+//     let year = partsOfDate[2]
+//
+//     return year + "-" +
+// }

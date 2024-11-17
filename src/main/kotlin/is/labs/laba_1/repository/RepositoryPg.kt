@@ -69,6 +69,19 @@ class RepositoryPg {
         return true
     }
 
+    fun <T> find(java: Class<T>, id: Int): T? {
+        val sessionFactory: SessionFactory = HibernateSessionFactory.sessionFactory
+
+        sessionFactory.openSession().use {
+            try {
+                return it.find(java, id)
+            } catch (ex: Exception) {
+                ex.stackTrace
+            }
+        }
+        return null
+    }
+
 //    fun checkRelation(id: Int, ): Boolean {
 //        val sessionFactory: SessionFactory = HibernateSessionFactory.sessionFactory
 //

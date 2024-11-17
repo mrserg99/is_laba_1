@@ -1,104 +1,110 @@
 const removeByClass = (sel) => document.querySelectorAll(sel).forEach(el => el.remove());
+const removeChildrenByClass = (sel) => document.querySelector(sel).children.forEach(el => el.remove());
 
-async function createEntity(){
+async function createEntity() {
     /*Появление popup окна создания объекта*/
-    document.getElementById("dark_overlay").classList.remove("display_none")
+    // document.getElementById("dark_overlay").classList.remove("display_none")
 
     let e = document.getElementById("DB");
     let value = e.value;
-    if (e.value==="location"){
+    if (getValue(storageVocabulary.type) === Type.LOCATION.description){
         document.getElementById("popup_location").classList.remove("display_none")
 
     }
-    if (e.value==="coordinate"){
+    if (getValue(storageVocabulary.type) === Type.COORDINATE.description){
         document.getElementById("popup_coordinate").classList.remove("display_none")
     }
-    if (e.value === "stud"){
-        document.getElementById("popup_create_stud").classList.remove("display_none")
-        let colors = await getEntities(Type.COLOR.description, Number(getValue(storageVocabulary.page)), Number(getValue(storageVocabulary.max)))
+    if (getValue(storageVocabulary.type) === Type.PERSON.description){
+        document.querySelector('#body').insertAdjacentHTML("beforeend", studentPopup)
+        let colors = await getEntities(Type.COLOR.description)
         colors.forEach(value => {
-            document.querySelector("#hairColor_input").insertAdjacentHTML("beforeend", '<option>'+value+'</option>')
-            document.querySelector("#eyeColor_input").insertAdjacentHTML("beforeend", '<option>'+value+'</option>')
+            document.querySelector("#hairColor_input").insertAdjacentHTML("beforeend", '<option>' + value + '</option>')
+            document.querySelector("#eyeColor_input").insertAdjacentHTML("beforeend", '<option>' + value + '</option>')
         })
         document.getElementById("user_change_stud").innerHTML = getValue(storageVocabulary.user)
     }
-    if (e.value === "group"){
-        document.getElementById("popup_create_group").classList.remove("display_none")
+    if (getValue(storageVocabulary.type) === Type.GROUP.description) {
+        document.querySelector('.body').insertAdjacentHTML("afterbegin", groupPopup)
         document.getElementById("user_change_group").innerHTML = getValue(storageVocabulary.user)
+        let formsOfEducation = await getEntities(Type.FORM_OF_EDUCATION.description)
+        let semesters = await getEntities(Type.SEMESTER.description)
+        semesters.forEach(value => {
+            document.querySelector("#semester_input").insertAdjacentHTML("beforeend", '<option>' + value + '</option>')
+        })
+        formsOfEducation.forEach(value => {
+            document.querySelector("#formOfEducation_input").insertAdjacentHTML("beforeend", '<option>' + value + '</option>')
+        })
     }
-
-
 }
 
-function close_popup(){
+function closePopup() {
+    document.querySelector('#popup_place').innerHTML = ""
     /*Закрытие popup окна*/
-
-    var e = document.getElementById("DB");
-    var value = e.value;
-
-    if (e.value === "stud"){
-        document.getElementById("popup_create_stud").classList.add("display_none")
+    if (getValue(storageVocabulary.type) === Type.LOCATION.description){
+        document.querySelector("#popup_location").classList.add("display_none")
     }
-    if (e.value === "group"){
-        document.getElementById("popup_create_group").classList.add("display_none")
+    if (getValue(storageVocabulary.type) === Type.COORDINATE.description){
+        document.querySelector("#popup_coordinate").classList.add("display_none")
     }
-    if (e.value === "location"){
-        document.getElementById("popup_location").classList.add("display_none")
-    }
-    if (e.value === "coordinate"){
-        document.getElementById("popup_coordinate").classList.add("display_none")
-    }
-    document.getElementById("dark_overlay").classList.add("display_none")
+    document.querySelector("#dark_overlay").classList.add("display_none")
 
 }
 
-function checkbox_click(){
+function checkbox_click() {
     /*Появление второстепенных параметров на странице Регистрации для админа*/
-    if(document.getElementById("admin").checked){
-        document.getElementById("registrationFill").classList.remove("display_none")
-    }else{
-        document.getElementById("registrationFill").classList.add("display_none")
+    if (document.querySelector("#admin").checked) {
+        document.querySelector("#registrationFill").classList.remove("display_none")
+    } else {
+        document.querySelector("#registrationFill").classList.add("display_none")
     }
 }
 
-async function stud_coord_checkbox(){
+async function stud_coord_checkbox() {
     if (document.getElementById('stud_coord_checkbox').checked) {
         let locations = await getEntities(Type.LOCATION.description, 1, 10)
         document.getElementById("select_loc_btn").classList.remove("display_none")
         document.getElementById("location_ID_wr").classList.remove("display_none");
 
         locations.forEach(value => {
-            let location = '<div id = '+value.id+' class="select_coord_child" onclick="setLocation(this)">\n' +
-                '                        <p class="place">'+value.name+'</p>\n' +
-                '                        <p class="coord_X">'+value.x+'</p>\n' +
-                '                        <p class="coord_Y">'+value.y+'</p>\n' +
-                '                        <p class="coord_Y">'+value.id+'</p>\n' +
+            let location = '<div id = ' + value.id + ' class="select_coord_child" onclick="setLocation(this)">\n' +
+                '                        <p class="place">' + value.name + '</p>\n' +
+                '                        <p class="coord_X">' + value.x + '</p>\n' +
+                '                        <p class="coord_Y">' + value.y + '</p>\n' +
+                '                        <p class="coord_Y">' + value.id + '</p>\n' +
                 '                    </div>'
             document.querySelector("#select_location_list").insertAdjacentHTML("beforeend", location)
         })
     } else {
         document.querySelector("#select_location_list").innerHTML = ''
-        document.getElementById("select_loc_btn").classList.add("display_none")
-        document.getElementById("location_ID_wr").classList.add("display_none");
+        document.querySelector("#select_loc_btn").classList.add("display_none")
+        document.querySelector("#location_ID_wr").classList.add("display_none");
 
     }
 }
 
-async function group_coord_checkbox(){
+async function group_coord_checkbox() {
     if (document.getElementById("new_coordinates").checked) {
         document.getElementById("select_loc_btn_group").classList.remove("display_none")
         document.getElementById("location_ID_wr").classList.remove("display_none");
+        let coordinates = await getEntities(Type.COORDINATE.description, 1, 10)
 
-
+        coordinates.forEach(value => {
+            let coordinate = '<div id = ' + value.id + ' class="select_coord_child" onclick="setCoordinate(this)">\n' +
+                '                        <p class="coord_X">' + value.x + '</p>\n' +
+                '                        <p class="coord_Y">' + value.y + '</p>\n' +
+                '                        <p class="coord_Y">' + value.id + '</p>\n' +
+                '                    </div>'
+            document.querySelector("#select_location_list_group").insertAdjacentHTML("beforeend", coordinate)
+        })
     } else {
 
-        document.getElementById("select_loc_btn_group").classList.add("display_none")
-        document.getElementById("location_ID_wr").classList.add("display_none");
+        document.querySelector("#select_loc_btn_group").classList.add("display_none")
+        document.querySelector("#location_ID_wr").classList.add("display_none");
 
     }
 }
 
-function setLocation(location){
+function setLocation(location) {
     /*появления селекта по локации на странице main*/
     let place = location.children[0].textContent;
     let coord_X = location.children[1].textContent;
@@ -110,11 +116,36 @@ function setLocation(location){
     document.querySelector("#locationCoordinateY_input").value = coord_Y;
     document.querySelector("#locationID").value = coord_id;
 
-    document.getElementById("select_location").classList.add("display_none")
-    document.getElementById("seagal").style.transform = "rotate(0deg)";
+    document.querySelector("#select_location").classList.add("display_none")
+    document.querySelector("#seagal").style.transform = "rotate(0deg)";
 }
 
-async function select_visible(){
+function setPerson(person) {
+    let name = person.children[0].textContent;
+    let id = person.children[1].textContent;
+
+    document.querySelector("#person_input").value = name
+    document.querySelector("#person_id").value = id
+
+    document.querySelector("#select_location_wrapper_person").classList.add("display_none");
+    document.querySelector("#select_location_person").classList.add("display_none")
+    document.querySelector("#seagal_person").style.transform = "rotate(0deg)";
+}
+
+function setCoordinate(coordinate) {
+    let x = coordinate.children[0].textContent;
+    let y = coordinate.children[1].textContent;
+    let id = coordinate.children[2].textContent;
+
+    document.querySelector("#coordinateX_input").value = x
+    document.querySelector("#coordinateY_input").value = y
+    document.querySelector("#coordinateID_input").value = id
+
+    document.querySelector("#select_location_wrapper_group").classList.add("display_none")
+    document.querySelector("#seagal_group").style.transform = "rotate(0deg)";
+}
+
+async function select_visible() {
     /*Появление галочки для селекта для локации студента*/
     document.getElementById("select_location_wrapper").classList.remove("display_none");
     document.getElementById("select_location").classList.remove("display_none")
@@ -122,33 +153,45 @@ async function select_visible(){
     document.getElementById("location_ID_wr").classList.remove("display_none");
 }
 
-async function select_visible_group(){
+async function select_visible_group() {
     /*Появление галочки для селекта для координат группы*/
     document.getElementById("select_location_wrapper_group").classList.remove("display_none");
     document.getElementById("select_location_group").classList.remove("display_none")
     document.getElementById("seagal_group").style.transform = "rotate(180deg)";
 }
 
-async function select_visible_person(){
+async function select_visible_person() {
     /*Появление галочки для селекта для выбора старосты*/
-    document.getElementById("select_location_wrapper_person").classList.remove("display_none");
-    document.getElementById("select_location_person").classList.remove("display_none")
-    document.getElementById("seagal_person").style.transform = "rotate(180deg)";
+    document.querySelector("#select_location_wrapper_person").classList.remove("display_none");
+    document.querySelector("#select_location_person").classList.remove("display_none")
+    document.querySelector("#seagal_person").style.transform = "rotate(180deg)";
+
+    let persons = await getEntities(Type.PERSON.description, 1, 10)
+
+    persons.forEach(value => {
+        let person = '<div id = ' + value.id + ' class="select_coord_child" onclick="setPerson(this)">\n' +
+            '                        <p class="place">' + value.name + '</p>\n' +
+            '                        <p class="coord_X">' + value.id + '</p>\n' +
+            '                    </div>'
+        document.querySelector("#select_location_list_person").insertAdjacentHTML("beforeend", person)
+    })
 }
 
-function close_select_coord(){
+function close_select_coord() {
     /*Закрытие выбора локаций при нажатии во вне селекта*/
     document.getElementById("select_location").classList.add("display_none");
     document.getElementById("seagal").style.transform = "rotate(0deg)";
     document.getElementById("select_location_wrapper").classList.add("display_none");
 }
-function close_select_coord_group(){
+
+function close_select_coord_group() {
     /*Закрытие выбора локаций при нажатии во вне селекта*/
     document.getElementById("select_location_group").classList.add("display_none");
     document.getElementById("seagal_group").style.transform = "rotate(0deg)";
     document.getElementById("select_location_wrapper_group").classList.add("display_none");
 }
-function close_select_coord_person(){
+
+function close_select_coord_person() {
     /*Закрытие выбора локаций при нажатии во вне селекта*/
     document.getElementById("select_location_person").classList.add("display_none");
     document.getElementById("seagal_person").style.transform = "rotate(0deg)";
@@ -164,20 +207,21 @@ function printFirstPage() {
     printTable()
 }
 
-function loadMain(){
+function loadMain() {
     document.getElementById("user_name_in_header").innerHTML = getValue(storageVocabulary.user)
 
     printFirstPage()
 }
 
-function nextPage(){
+function nextPage() {
     enablePrevPageBtn()
     /*Функция для пагинации на одну страницу вправо*/
     setValue(storageVocabulary.page, Number(getValue(storageVocabulary.page)) + 1)
 
     printTable()
 }
-function prevPage(){
+
+function prevPage() {
     enableNextPageBtn();
     /*Функция для пагинации на одну страницу влево*/
     setValue(storageVocabulary.page, Number(getValue(storageVocabulary.page)) - 1)
@@ -201,6 +245,7 @@ function enablePrevPageBtn() {
     document.querySelector("#prev_page").setAttribute("onclick", "prevPage()");
 
 }
+
 function disableNextPageBtn() {
     document.querySelector("#next_page").classList.add("disable_pagination")
     document.querySelector("#next_page").classList.remove("active_pagination")
@@ -213,7 +258,7 @@ function disablePrevPageBtn() {
     document.querySelector("#prev_page").setAttribute("onclick", null);
 }
 
-async function printTable(){
+async function printTable() {
     let e = document.getElementById("DB");
 
     if (e.value === "stud") {
@@ -249,7 +294,7 @@ async function printTable(){
             disableNextPageBtn();
         }
     }
-    if(e.value == "location"){
+    if (e.value == "location") {
         removeByClass(".location_tab")
         setValue(storageVocabulary.type, Type.LOCATION.description)
         document.querySelector("#table_location").classList.remove("display_none")
@@ -266,7 +311,7 @@ async function printTable(){
             disableNextPageBtn();
         }
     }
-    if(e.value == "coordinate"){
+    if (e.value == "coordinate") {
         removeByClass(".coordinate_tab")
         setValue(storageVocabulary.type, Type.COORDINATE.description)
         document.querySelector("#table_location").classList.add("display_none")
@@ -286,21 +331,63 @@ async function printTable(){
     document.querySelector("#pagination_numb").innerHTML = getValue(storageVocabulary.page)
 }
 
-function sort_up(value){
-alert(value+" UP")
- /* отсортировать от меньшего к большему*/
+function sort_up(value) {
+    alert(value + " UP")
+    /* отсортировать от меньшего к большему*/
 
 }
-function sort_down(value){
-    alert(value+" Down")
+
+function sort_down(value) {
+    alert(value + " Down")
     /* отсортировать от большего к меньшему*/
 }
 
 function approve_application(btn) {
-/*Одобрить заявку на становление админом*/
+    /*Одобрить заявку на становление админом*/
     btn.classList.add("disabled_button")
 }
-function cancel_application(btn){
+
+function cancel_application(btn) {
     /*отменить заявку на становление админом*/
     btn.classList.add("disabled_button")
+}
+
+function change(raw, type) {
+    /*Появление popup окна изменение объекта*/
+    createEntity()
+
+    let id = raw.children[0].innerHTML
+    if (type === Type.PERSON) {
+        let result = findById(type.description, id)
+        result.then(async res => {
+            if (res.ok){
+                document.querySelector("#stud_coord_checkbox").checked = true
+                let body = await res.json()
+                document.querySelector("#FIO_input").value = body.FIO
+                document.querySelector("#eyeColor_input").value = body.eyeColor
+                document.querySelector("#hairColor_input").value = body.hairColor
+                document.querySelector("#locationID").value = body.location.id
+                document.querySelector("#locationName_input").value = body.location.name
+                document.querySelector("#locationCoordinateX_input").value = body.location.x
+                document.querySelector("#locationCoordinateY_input").value = body.location.y
+                document.querySelector("#birthday_input").value = body.birthday
+                document.querySelector("#height_input").value = body.height
+                document.querySelector("#weight_input").value = body.weight
+            }
+        })
+    }
+    if (type === Type.GROUP) {
+        document.querySelector("#name_input").value = children[1].innerHTML
+        document.querySelector("#coordinateID_input").value = children[2].innerHTML
+        document.querySelector("#coordinateX_input").value = children[3].innerHTML
+        document.querySelector("#coordinateY_input").value = children[4].innerHTML
+        document.querySelector("#numberOfStudents_input").value = children[5].innerHTML
+        document.querySelector("#numberOfExpelled_input").value = children[6].innerHTML
+        document.querySelector("#numberOfTransferred_input").value = children[7].innerHTML
+        document.querySelector("#shouldBeExpelled_input").value = children[8].innerHTML
+        document.querySelector("#formOfEducation_input").value = children[9].innerHTML
+        document.querySelector("#averageMark_input").value = children[10].innerHTML
+        document.querySelector("#person_input").value = children[11].innerHTML
+        document.querySelector("#semester_input").value = children[12].innerHTML
+    }
 }

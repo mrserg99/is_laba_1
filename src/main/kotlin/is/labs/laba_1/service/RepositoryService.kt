@@ -97,4 +97,26 @@ class RepositoryService @Autowired constructor(
             else -> throw UnsupportedTypeException("Не поддерживаемый тип")
         }
     }
+
+    fun findById(type: String, id: Int): String {
+        return when(type) {
+            Type.PERSON.type -> {
+                val result = repositoryPg.find(PersonEntity::class.java, id)
+                Json.encodeToString<PersonEntity>(result as PersonEntity)
+            }
+            Type.GROUP.type -> {
+                val result = repositoryPg.find(StudyGroupEntity::class.java, id)
+                Json.encodeToString<StudyGroupEntity>(result as StudyGroupEntity)
+            }
+            Type.COORDINATE.type -> {
+                val result = repositoryPg.find(CoordinatesEntity::class.java, id)
+                Json.encodeToString<CoordinatesEntity>(result as CoordinatesEntity)
+            }
+            Type.LOCATION.type -> {
+                val result = repositoryPg.find(LocationEntity::class.java, id)
+                Json.encodeToString<LocationEntity>(result as LocationEntity)
+            }
+            else -> throw UnsupportedTypeException("Не поддерживаемый тип")
+        }
+    }
 }

@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter
 
 object KOffsetDateTimeSerializer : KSerializer<OffsetDateTime> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("OffsetDateTime", PrimitiveKind.STRING)
-    private val format = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+    private val format = DateTimeFormatter.ofPattern("yyyy-MM-dd")
     override fun serialize(encoder: Encoder, value: OffsetDateTime) {
         val string = format.format(value)
         encoder.encodeString(string)

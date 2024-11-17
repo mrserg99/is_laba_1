@@ -14,12 +14,12 @@ async function registrationRequest(isAdmin, user, password){
 }
 
 /**
- * @param {Person} person
+ * @param newObject
  * @param type - Person, Group, Coordinate, Location
  */
-async function create(person, type) {
+async function create(newObject, type) {
     let url = "/repository/create/"+type
-    return await postRequest(url, {}, toJson(person))
+    return await postRequest(url, {}, toJson(newObject))
 }
 
 async function getEntities(type, page, max) {
@@ -44,6 +44,11 @@ async function getEntities(type, page, max) {
     if (result.ok) {
         return await result.json()
     }
+}
+
+async function findById(type, id){
+    let url = "/repository/find/" + type + "/" + id
+    return await getRequest(url)
 }
 
 

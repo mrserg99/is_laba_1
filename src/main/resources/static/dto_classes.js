@@ -13,21 +13,23 @@ class StudyGroup {
     groupAdmin;
     semester;
 
-    constructor(id,
-                name,
-                coordinateId,
-                coordinateX,
-                coordinateY,
-                numberOfStudents,
-                numberOfExpelled,
-                numberOfTransferred,
-                shouldBeExpelled,
-                creationDate,
-                formOfEducation,
-                user,
-                averageMark,
-                groupAdmin,
-                semester) {
+    constructor({
+                    id = null,
+                    name,
+                    coordinateId,
+                    coordinateX,
+                    coordinateY,
+                    numberOfStudents,
+                    numberOfExpelled,
+                    numberOfTransferred,
+                    shouldBeExpelled,
+                    creationDate,
+                    formOfEducation,
+                    user,
+                    averageMark,
+                    groupAdmin,
+                    semester
+                }) {
         this.id = id;
         this.name = name;
         this.coordinate = {

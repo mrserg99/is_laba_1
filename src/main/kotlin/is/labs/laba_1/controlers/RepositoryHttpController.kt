@@ -54,6 +54,34 @@ class RepositoryHttpController @Autowired constructor(
         }
     }
 
+    @GetMapping("find/{type}/{id}")
+    fun findById(
+            @PathVariable type: String,
+            @PathVariable id: Int,
+    ): String {
+        when (type) {
+            Type.COLOR.type -> {
+                val result = Json.encodeToString(Color.entries.map { it.colorValue }[id])
+                return result
+            }
+
+            Type.SEMESTER.type -> {
+                val result = Json.encodeToString(Semester.entries.map { it.semester }[id])
+                return result
+            }
+
+            Type.FORM_OF_EDUCATION.type -> {
+                val result = Json.encodeToString(FormOfEducation.entries.map { it.form }[id])
+                return result
+            }
+
+            else -> {
+                val result = service.findById(type, id)
+                return result
+            }
+        }
+    }
+
     @PostMapping("/create/{type}")
     fun create(
             @PathVariable type: String,

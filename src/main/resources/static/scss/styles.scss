@@ -849,3 +849,10 @@ li, a, ul{
     transform: scale(0.8);
   }
 }
+
+.popup_place_class {
+  width: 135px;
+  height: 44px;
+  position: absolute;
+  //overflow: hidden;
+}
