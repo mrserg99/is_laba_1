@@ -399,3 +399,8 @@ function change(raw, type) {
         document.querySelector("#semester_input").value = children[12].innerHTML
     }
 }
+
+function show_filter_popup(){
+
+
+}
