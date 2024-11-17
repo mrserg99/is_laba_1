@@ -86,8 +86,9 @@ async function group_coord_checkbox() {
     if (document.getElementById("new_coordinates").checked) {
         document.getElementById("select_loc_btn_group").classList.remove("display_none")
         document.getElementById("location_ID_wr").classList.remove("display_none");
-        let coordinates = await getEntities(Type.COORDINATE.description, 1, 10)
+        document.getElementById("input_id_group").classList.remove("display_none")
 
+        let coordinates = await getEntities(Type.COORDINATE.description, 1, 10)
         coordinates.forEach(value => {
             let coordinate = '<div id = ' + value.id + ' class="select_coord_child" onclick="setCoordinate(this)">\n' +
                 '                        <p class="coord_X">' + value.x + '</p>\n' +
@@ -96,7 +97,9 @@ async function group_coord_checkbox() {
                 '                    </div>'
             document.querySelector("#select_location_list_group").insertAdjacentHTML("beforeend", coordinate)
         })
+
     } else {
+        document.getElementById("input_id_group").classList.add("display_none")
 
         document.querySelector("#select_loc_btn_group").classList.add("display_none")
         document.querySelector("#location_ID_wr").classList.add("display_none");
