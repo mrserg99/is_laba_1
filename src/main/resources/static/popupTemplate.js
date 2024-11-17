@@ -7,7 +7,7 @@ const groupPopup = '<div id="popup_create_group" class="popup display_none">\n' 
     '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
     '            </button>\n' +
     '        </div>\n' +
-    '        <button class="popup_close" onclick="closePopup()">\n' +
+    '        <button class="popup_close" onclick="close_popup()">\n' +
     '            <img src="./pics/Frame%20202.png" alt="">\n' +
     '        </button>\n' +
     '    </div>\n' +
@@ -55,7 +55,7 @@ const groupPopup = '<div id="popup_create_group" class="popup display_none">\n' 
     '                    <p class="popup_input_text">Координата Y</p>\n' +
     '                    <input id="coordinateY_input" class="popup_input_input w74" type="text" maxlength=10>\n' +
     '                </div>\n' +
-    '                <div class="popup_input_wrapper">\n' +
+    '                <div id="input_id_group" class="popup_input_wrapper display_none">\n' +
     '                    <p class="popup_input_text">ID</p>\n' +
     '                    <input id="coordinateID_input" class="popup_input_input w35" type="text" maxlength=10>\n' +
     '                </div>\n' +
@@ -177,7 +177,7 @@ const groupPopup = '<div id="popup_create_group" class="popup display_none">\n' 
     '    </div>\n' +
     '    <div class="popup_six_line_1">\n' +
     '        <button id="create_group_btn" class="popup_btn_create button_dark" onclick="createGroup()">Создать</button>\n' +
-    '        <button id="return_btnArr" class="popup_btn_del" onclick="closePopup()">Отмена</button>\n' +
+    '        <button id="return_btnArr" class="popup_btn_del" onclick="close_popup()">Отмена</button>\n' +
     '    </div>\n' +
     '</div>'
 
@@ -189,7 +189,7 @@ const studentPopup = '<div id="popup_create_stud" class="popup display_none">\n'
     '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
     '            </button>\n' +
     '        </div>\n' +
-    '        <button class="popup_close" onclick="closePopup()">\n' +
+    '        <button class="popup_close" onclick="close_popup()">\n' +
     '            <img src="./pics/Frame%20202.png" alt="">\n' +
     '        </button>\n' +
     '    </div>\n' +
@@ -311,6 +311,6 @@ const studentPopup = '<div id="popup_create_stud" class="popup display_none">\n'
     '    </div>\n' +
     '    <div class="popup_six_line_2">\n' +
     '        <button id="create_stud_btn" class="popup_btn_create button_dark" onclick="createPerson()">Создать</button>\n' +
-    '        <button id="return_btn_stud" class="popup_btn_del" onclick="closePopup()">Отмена</button>\n' +
+    '        <button id="return_btn_stud" class="popup_btn_del" onclick="close_popup()">Отмена</button>\n' +
     '    </div>\n' +
     '</div>'
