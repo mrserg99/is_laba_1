@@ -123,7 +123,7 @@ const groupPopup = '<div id="popup_create_group" class="popup">\n' +
     '            </button>\n' +
     '        </div>\n' +
     '        <div class="popup_input">\n' +
-    '            <div class="popup_input_wrapper ml15">\n' +
+    '            <div class="popup_input_wrapper w170">\n' +
     '                <p class="popup_input_text">Семестр</p>\n' +
     '\n' +
     '                <select id="semester_input" class="popup_input_input w170 br15">\n' +
@@ -137,7 +137,7 @@ const groupPopup = '<div id="popup_create_group" class="popup">\n' +
     '\n' +
     '        <div class="popup_input">\n' +
     '            <div class="popup_input">\n' +
-    '                <div class="popup_input_wrapper ml15">\n' +
+    '                <div class="popup_input_wrapper w195">\n' +
     '                    <p class="popup_input_text">Форма обучения</p>\n' +
     '\n' +
     '                    <select id="formOfEducation_input" class="popup_input_input w170 br15">\n' +
@@ -169,6 +169,7 @@ const groupPopup = '<div id="popup_create_group" class="popup">\n' +
     '                <img src="./pics/Frame%20202.png" alt="" class="">\n' +
     '            </button>\n' +
     '        </div>\n' +
+
     '\n' +
     '\n' +
     '    </div>\n' +

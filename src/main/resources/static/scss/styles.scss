@@ -834,8 +834,8 @@ li, a, ul{
   margin-bottom: 40px;
 }
 .popup_cross_loc{
-  height: 45px !important;
-  margin-top: 19px !important;
+  //height: 45px !important;
+  //margin-top: 19px !important;
 }
 
 @keyframes pulse {
@@ -855,6 +855,12 @@ li, a, ul{
   height: 44px;
   position: absolute;
   //overflow: hidden;
+}
+.w185{
+  width: 185px;
+}
+.w195{
+  width: 195px;
 }
 .h42{
   padding: 4px !important;

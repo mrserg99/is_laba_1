@@ -921,11 +921,6 @@ th, td {
   margin-bottom: 40px;
 }
 
-.popup_cross_loc {
-  height: 45px !important;
-  margin-top: 19px !important;
-}
-
 @keyframes pulse {
   0% {
     transform: scale(0.8);
@@ -941,6 +936,27 @@ th, td {
   width: 135px;
   height: 44px;
   position: absolute;
+}
+
+.w185 {
+  width: 185px;
+}
+
+.w195 {
+  width: 195px;
+}
+
+.h42 {
+  padding: 4px !important;
+  height: 42px !important;
+}
+
+.ml23 {
+  margin-left: 23px !important;
+}
+
+#btn_del_filter {
+  height: 42px;
 }
 
 /*# sourceMappingURL=styles.css.map */
