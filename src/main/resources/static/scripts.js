@@ -3,25 +3,21 @@ const removeChildrenByClass = (sel) => document.querySelector(sel).children.forE
 
 async function createEntity() {
     /*Появление popup окна создания объекта*/
-    // document.getElementById("dark_overlay").classList.remove("display_none")
-
-    let e = document.getElementById("DB");
-    let value = e.value;
     if (getValue(storageVocabulary.type) === Type.LOCATION.description){
-        document.getElementById("popup_location").classList.remove("display_none")
-
+        document.querySelector('.body').insertAdjacentHTML("afterbegin", locationPopup)
     }
     if (getValue(storageVocabulary.type) === Type.COORDINATE.description){
-        document.getElementById("popup_coordinate").classList.remove("display_none")
+        document.querySelector('.body').insertAdjacentHTML("afterbegin", coordinatePopup)
     }
     if (getValue(storageVocabulary.type) === Type.PERSON.description){
-        document.querySelector('#body').insertAdjacentHTML("beforeend", studentPopup)
+        document.querySelector('.body').insertAdjacentHTML("afterbegin", studentPopup)
         let colors = await getEntities(Type.COLOR.description)
         colors.forEach(value => {
             document.querySelector("#hairColor_input").insertAdjacentHTML("beforeend", '<option>' + value + '</option>')
             document.querySelector("#eyeColor_input").insertAdjacentHTML("beforeend", '<option>' + value + '</option>')
         })
         document.getElementById("user_change_stud").innerHTML = getValue(storageVocabulary.user)
+        createLocationElementListener()
     }
     if (getValue(storageVocabulary.type) === Type.GROUP.description) {
         document.querySelector('.body').insertAdjacentHTML("afterbegin", groupPopup)
@@ -34,17 +30,25 @@ async function createEntity() {
         formsOfEducation.forEach(value => {
             document.querySelector("#formOfEducation_input").insertAdjacentHTML("beforeend", '<option>' + value + '</option>')
         })
+        createCoordinateElementListener()
+        createPersonElementListener()
     }
+    document.querySelector("#dark_overlay").classList.remove("display_none")
 }
 
 function closePopup() {
-    document.querySelector('#popup_place').innerHTML = ""
     /*Закрытие popup окна*/
     if (getValue(storageVocabulary.type) === Type.LOCATION.description){
-        document.querySelector("#popup_location").classList.add("display_none")
+        document.querySelector('#popup_location').remove()
+    }
+    if (getValue(storageVocabulary.type) === Type.PERSON.description){
+        document.querySelector('#popup_create_stud').remove()
+    }
+    if (getValue(storageVocabulary.type) === Type.GROUP.description){
+        document.querySelector('#popup_create_group').remove()
     }
     if (getValue(storageVocabulary.type) === Type.COORDINATE.description){
-        document.querySelector("#popup_coordinate").classList.add("display_none")
+        document.querySelector("#popup_coordinate").remove()
     }
     document.querySelector("#dark_overlay").classList.add("display_none")
 
@@ -365,6 +369,7 @@ function change(raw, type) {
         result.then(async res => {
             if (res.ok){
                 document.querySelector("#stud_coord_checkbox").checked = true
+                select_visible()
                 let body = await res.json()
                 document.querySelector("#FIO_input").value = body.FIO
                 document.querySelector("#eyeColor_input").value = body.eyeColor

@@ -81,6 +81,18 @@ function textToColumnName(text){
         case 'Вес (кг)': return 'weight'
     }
 }
+
+//TODO example
+const locationMap = new Map()
+    .set('ID', 'id')
+    .set('X', 'x')
+    .set('Y', 'y')
+    .set('Название', 'name')
+
+locationMap.forEach((value, key) => {
+        document.querySelector("same_name").insertAdjacentHTML("beforeend", '<option>' + key + '</option>')
+    }
+)
 //
 // function parseDate(date, separator) {
 //     let partsOfDate = date.split(separator)

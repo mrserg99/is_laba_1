@@ -1,4 +1,4 @@
-const groupPopup = '<div id="popup_create_group" class="popup display_none">\n' +
+const groupPopup = '<div id="popup_create_group" class="popup">\n' +
     '    <div class="popup_first_line">\n' +
     '        <div class="popup_first_line_wrapper">\n' +
     '            <h2 class="popup_title" id="popup_group_title">Создаем группу</h2>\n' +
@@ -7,7 +7,7 @@ const groupPopup = '<div id="popup_create_group" class="popup display_none">\n' 
     '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
     '            </button>\n' +
     '        </div>\n' +
-    '        <button class="popup_close" onclick="close_popup()">\n' +
+    '        <button class="popup_close" onclick="closePopup()">\n' +
     '            <img src="./pics/Frame%20202.png" alt="">\n' +
     '        </button>\n' +
     '    </div>\n' +
@@ -177,11 +177,11 @@ const groupPopup = '<div id="popup_create_group" class="popup display_none">\n' 
     '    </div>\n' +
     '    <div class="popup_six_line_1">\n' +
     '        <button id="create_group_btn" class="popup_btn_create button_dark" onclick="createGroup()">Создать</button>\n' +
-    '        <button id="return_btnArr" class="popup_btn_del" onclick="close_popup()">Отмена</button>\n' +
+    '        <button id="return_btnArr" class="popup_btn_del" onclick="closePopup()">Отмена</button>\n' +
     '    </div>\n' +
     '</div>'
 
-const studentPopup = '<div id="popup_create_stud" class="popup display_none">\n' +
+const studentPopup = '<div id="popup_create_stud" class="popup">\n' +
     '    <div class="popup_first_line">\n' +
     '        <div class="popup_first_line_wrapper">\n' +
     '            <h2 class="popup_title" id="popup_stud_title">Создаем студента</h2>\n' +
@@ -189,7 +189,7 @@ const studentPopup = '<div id="popup_create_stud" class="popup display_none">\n'
     '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
     '            </button>\n' +
     '        </div>\n' +
-    '        <button class="popup_close" onclick="close_popup()">\n' +
+    '        <button class="popup_close" onclick="closePopup()">\n' +
     '            <img src="./pics/Frame%20202.png" alt="">\n' +
     '        </button>\n' +
     '    </div>\n' +
@@ -311,6 +311,113 @@ const studentPopup = '<div id="popup_create_stud" class="popup display_none">\n'
     '    </div>\n' +
     '    <div class="popup_six_line_2">\n' +
     '        <button id="create_stud_btn" class="popup_btn_create button_dark" onclick="createPerson()">Создать</button>\n' +
-    '        <button id="return_btn_stud" class="popup_btn_del" onclick="close_popup()">Отмена</button>\n' +
+    '        <button id="return_btn_stud" class="popup_btn_del" onclick="closePopup()">Отмена</button>\n' +
+    '    </div>\n' +
+    '</div>'
+
+const locationPopup = '<div id="popup_location" class="popup">\n' +
+    '    <div class="popup_first_line">\n' +
+    '        <div class="popup_first_line_wrapper">\n' +
+    '            <h2 class="popup_title" id="popup_loc_title">Создаем Локацию</h2>\n' +
+    '            <button class="popup_del_btn button_dark" onclick="del_stud()">\n' +
+    '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
+    '            </button>\n' +
+    '        </div>\n' +
+    '        <button class="popup_close" onclick="closePopup()">\n' +
+    '            <img src="./pics/Frame%20202.png" alt="">\n' +
+    '        </button>\n' +
+    '    </div>\n' +
+    '    <div class="popup_second_line">\n' +
+    '        <p class="popup_second_line_author">Автор</p>\n' +
+    '        <p id="user_change_loc" class="popup_second_line_nameAuthor"></p>\n' +
+    '    </div>\n' +
+    '    <div class="popup_five_line">\n' +
+    '        <div class="popup_input">\n' +
+    '            <div class="popup_input_wrapper">\n' +
+    '                <p class="popup_input_text">X</p>\n' +
+    '                <input id="X_loc_input" class="popup_input_input w98 br150015" type="text" maxlength=90>\n' +
+    '            </div>\n' +
+    '            <button class="popup_input_del_btn br015150 clear_btn_btn popup_cross_loc" onclick="clearXLoc()">\n' +
+    '                <img src="./pics/Frame%20202.png" alt="" class="">\n' +
+    '            </button>\n' +
+    '        </div>\n' +
+    '\n' +
+    '        <div class="popup_input">\n' +
+    '            <div class="popup_input_wrapper">\n' +
+    '                <p class="popup_input_text">Y</p>\n' +
+    '                <input id="Y_loc_input" class="popup_input_input w98 br150015" type="text" maxlength=90>\n' +
+    '            </div>\n' +
+    '            <button class="popup_input_del_btn br015150 clear_btn_btn popup_cross_loc" onclick="clearYLoc()">\n' +
+    '                <img src="./pics/Frame%20202.png" alt="" class="">\n' +
+    '            </button>\n' +
+    '        </div>\n' +
+    '    </div>\n' +
+    '    <div class="popup_five_line">\n' +
+    '        <div class="popup_input">\n' +
+    '            <div class="popup_input_wrapper">\n' +
+    '                <p class="popup_input_text">Название</p>\n' +
+    '                <input id="name_loc_input" class="popup_input_input w98 br150015" type="text" maxlength=90>\n' +
+    '            </div>\n' +
+    '            <button class="popup_input_del_btn br015150 clear_btn_btn popup_cross_loc" onclick="clearnameLoc()">\n' +
+    '                <img src="./pics/Frame%20202.png" alt="" class="">\n' +
+    '            </button>\n' +
+    '        </div>\n' +
+    '\n' +
+    '    </div>\n' +
+    '\n' +
+    '\n' +
+    '    <div class="popup_seven_line">\n' +
+    '        <p id="popup_create_loc_error" class="error_massage"></p>\n' +
+    '    </div>\n' +
+    '    <div class="popup_six_line_2">\n' +
+    '        <button id="create_loc_btn" class="popup_btn_create button_dark" onclick="createLoction()">Создать</button>\n' +
+    '        <button id="return_btn_loc" class="popup_btn_del" onclick="closePopup()">Отмена</button>\n' +
+    '    </div>\n' +
+    '</div>'
+
+const coordinatePopup = '<div id="popup_coordinate" class="popup">\n' +
+    '    <div class="popup_first_line">\n' +
+    '        <div class="popup_first_line_wrapper">\n' +
+    '            <h2 class="popup_title" id="popup_coord_title">Создаем Координаты</h2>\n' +
+    '            <button class="popup_del_btn button_dark" onclick="del_stud()">\n' +
+    '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
+    '            </button>\n' +
+    '        </div>\n' +
+    '        <button class="popup_close" onclick="closePopup()">\n' +
+    '            <img src="./pics/Frame%20202.png" alt="">\n' +
+    '        </button>\n' +
+    '    </div>\n' +
+    '    <div class="popup_second_line">\n' +
+    '        <p class="popup_second_line_author">Автор</p>\n' +
+    '        <p id="user_change_coord" class="popup_second_line_nameAuthor"></p>\n' +
+    '    </div>\n' +
+    '\n' +
+    '    <div class="popup_five_line">\n' +
+    '        <div class="popup_input">\n' +
+    '            <div class="popup_input_wrapper">\n' +
+    '                <p class="popup_input_text">X</p>\n' +
+    '                <input id="X_coord_input" class="popup_input_input w98 br150015" type="text" maxlength=90>\n' +
+    '            </div>\n' +
+    '            <button class="popup_input_del_btn br015150 clear_btn_btn popup_cross_loc" onclick="clearXcoord()">\n' +
+    '                <img src="./pics/Frame%20202.png" alt="" class="">\n' +
+    '            </button>\n' +
+    '        </div>\n' +
+    '\n' +
+    '        <div class="popup_input">\n' +
+    '            <div class="popup_input_wrapper">\n' +
+    '                <p class="popup_input_text">Y</p>\n' +
+    '                <input id="Y_coord_input" class="popup_input_input w98 br150015" type="text" maxlength=90>\n' +
+    '            </div>\n' +
+    '            <button class="popup_input_del_btn br015150 clear_btn_btn popup_cross_loc" onclick="clearYcoord()">\n' +
+    '                <img src="./pics/Frame%20202.png" alt="" class="">\n' +
+    '            </button>\n' +
+    '        </div>\n' +
+    '    </div>\n' +
+    '    <div class="popup_seven_line">\n' +
+    '        <p id="popup_create_coord_error" class="error_massage"></p>\n' +
+    '    </div>\n' +
+    '    <div class="popup_six_line_2">\n' +
+    '        <button id="create_coord_btn" class="popup_btn_create button_dark" onclick="createCoord()">Создать</button>\n' +
+    '        <button id="return_coord_loc" class="popup_btn_del" onclick="closePopup()">Отмена</button>\n' +
     '    </div>\n' +
     '</div>'
