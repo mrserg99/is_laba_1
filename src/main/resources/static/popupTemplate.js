@@ -3,9 +3,6 @@ const groupPopup = '<div id="popup_create_group" class="popup">\n' +
     '        <div class="popup_first_line_wrapper">\n' +
     '            <h2 class="popup_title" id="popup_group_title">Создаем группу</h2>\n' +
     '            <p class="popup_date">19/03/2024 12:24:11</p>\n' +
-    '            <button class="popup_del_btn button_dark" onclick="del_group()">\n' +
-    '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
-    '            </button>\n' +
     '        </div>\n' +
     '        <button class="popup_close" onclick="closePopup(this.parentElement.parentElement.id)">\n' +
     '            <img src="./pics/Frame%20202.png" alt="">\n' +
@@ -186,9 +183,7 @@ const studentPopup = '<div id="popup_create_stud" class="popup">\n' +
     '    <div class="popup_first_line">\n' +
     '        <div class="popup_first_line_wrapper">\n' +
     '            <h2 class="popup_title" id="popup_stud_title">Создаем студента</h2>\n' +
-    '            <button class="popup_del_btn button_dark" onclick="del_stud()">\n' +
-    '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
-    '            </button>\n' +
+
     '        </div>\n' +
     '        <button class="popup_close" onclick="closePopup(this.parentElement.parentElement.id)">\n' +
     '            <img src="./pics/Frame%20202.png" alt="">\n' +
@@ -320,9 +315,7 @@ const locationPopup = '<div id="popup_location" class="popup">\n' +
     '    <div class="popup_first_line">\n' +
     '        <div class="popup_first_line_wrapper">\n' +
     '            <h2 class="popup_title" id="popup_loc_title">Создаем Локацию</h2>\n' +
-    '            <button class="popup_del_btn button_dark" onclick="del_stud()">\n' +
-    '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
-    '            </button>\n' +
+
     '        </div>\n' +
     '        <button class="popup_close" onclick="closePopup(this.parentElement.parentElement.id)">\n' +
     '            <img src="./pics/Frame%20202.png" alt="">\n' +
@@ -380,9 +373,7 @@ const coordinatePopup = '<div id="popup_coordinate" class="popup">\n' +
     '    <div class="popup_first_line">\n' +
     '        <div class="popup_first_line_wrapper">\n' +
     '            <h2 class="popup_title" id="popup_coord_title">Создаем Координаты</h2>\n' +
-    '            <button class="popup_del_btn button_dark" onclick="del_stud()">\n' +
-    '                <img class="rubbish" src="./pics/Mask%20group.png" alt="">\n' +
-    '            </button>\n' +
+
     '        </div>\n' +
     '        <button class="popup_close" onclick="closePopup(this.parentElement.parentElement.id)">\n' +
     '            <img src="./pics/Frame%20202.png" alt="">\n' +
