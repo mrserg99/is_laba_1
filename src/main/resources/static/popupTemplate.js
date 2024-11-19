@@ -450,3 +450,8 @@ const filterPopup = '<div id="popup_create_filter" class="popup">\n' +
     '        <button id="return_btn_stud" class="popup_btn_del" onclick="deleteFilter()">Удалить</button>\n' +
     '    </div>\n' +
     '</div>'
+
+const loadingOverlay = '<svg class="loading" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">\n' +
+    '    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>\n' +
+    '</svg>\n' +
+    '<div id="dark_overlay_loading" class="dark_shade"></div>'

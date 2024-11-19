@@ -959,4 +959,52 @@ th, td {
   height: 42px;
 }
 
+.loading {
+  animation: rotator 1.4s linear infinite;
+  position: absolute;
+  margin-left: 50%;
+  margin-top: 20%;
+  z-index: 10;
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@keyframes colors {
+  0% {
+    stroke: #97BAFF;
+  }
+  50% {
+    stroke: #89D8F7;
+  }
+  100% {
+    stroke: #E1FF00;
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    transform: rotate(450deg);
+  }
+}
+
 /*# sourceMappingURL=styles.css.map */
