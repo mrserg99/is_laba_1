@@ -16,22 +16,26 @@ import org.springframework.stereotype.Service
 class RepositoryService @Autowired constructor(
     private val repositoryPg: RepositoryPg
 ) {
-    fun getData(type: String, page: Int? = null, max: Int? = null): String {
+    fun getData(type: String,
+                page: Int? = null,
+                max: Int? = null,
+                sortedBy: String? = "id",
+                isAsc: Boolean? = true,): String {
         return when(type) {
             Type.PERSON.type -> {
-                val result = repositoryPg.select(PersonEntity::class.java, page, max)
+                val result = repositoryPg.select(PersonEntity::class.java, page, max, sortedBy, isAsc)
                 Json.encodeToString<List<PersonEntity>>(result as List<PersonEntity>)
             }
             Type.GROUP.type -> {
-                val result = repositoryPg.select(StudyGroupEntity::class.java, page, max)
+                val result = repositoryPg.select(StudyGroupEntity::class.java, page, max, sortedBy, isAsc)
                 Json.encodeToString<List<StudyGroupEntity>>(result as List<StudyGroupEntity>)
             }
             Type.COORDINATE.type -> {
-                val result = repositoryPg.select(CoordinatesEntity::class.java, page, max)
+                val result = repositoryPg.select(CoordinatesEntity::class.java, page, max, sortedBy, isAsc)
                 Json.encodeToString<List<CoordinatesEntity>>(result as List<CoordinatesEntity>)
             }
             Type.LOCATION.type -> {
-                val result = repositoryPg.select(LocationEntity::class.java, page, max)
+                val result = repositoryPg.select(LocationEntity::class.java, page, max, sortedBy, isAsc)
                 Json.encodeToString<List<LocationEntity>>(result as List<LocationEntity>)
             }
             else -> throw UnsupportedTypeException("Не поддерживаемый тип")

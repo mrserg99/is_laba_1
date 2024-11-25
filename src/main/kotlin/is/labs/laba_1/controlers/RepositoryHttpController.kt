@@ -30,6 +30,8 @@ class RepositoryHttpController @Autowired constructor(
             @PathVariable type: String,
             @RequestParam("page") page: Int = 0,
             @RequestParam("max") max: Int = 10,
+            @RequestParam("sortedBy") sortedBy: String? = "id",
+            @RequestParam("isAsc") isAsc: Boolean? = true,
     ): String {
         when (type) {
             Type.COLOR.type -> {
@@ -48,7 +50,7 @@ class RepositoryHttpController @Autowired constructor(
             }
 
             else -> {
-                val result = service.getData(type, page, max)
+                val result = service.getData(type, page, max, sortedBy, isAsc)
                 return result
             }
         }

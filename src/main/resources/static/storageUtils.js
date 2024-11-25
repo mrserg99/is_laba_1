@@ -4,6 +4,8 @@ const storageVocabulary = {
     type: "type",
     page: "page",
     max: "max",
+    sortedBy: "sortedBy",
+    isAsc: "isAsc"
 }
 
 // возвращает куки с указанным name,

@@ -2,6 +2,7 @@ package `is`.labs.laba_1.repository
 
 import `is`.labs.laba_1.utils.HibernateSessionFactory
 import org.hibernate.SessionFactory
+import org.hibernate.query.Order
 import org.springframework.stereotype.Repository
 
 
@@ -11,12 +12,22 @@ class RepositoryPg {
     companion object {
     }
 
-    fun <T> select(type: Class<T>, page: Int? = null, max: Int? = null): List<*> {
+    fun <T> select(type: Class<T>,
+                   page: Int? = null,
+                   max: Int? = null,
+                   sortedBy: String? = "id",
+                   isAsc: Boolean? = true ): List<*> {
         val sessionFactory: SessionFactory = HibernateSessionFactory.sessionFactory
 
         sessionFactory.openSession().use {
-            val SELECT = "from ${type.name} "
-            val query = it.createSelectionQuery(SELECT, type)
+            val selectQuery = it.criteriaBuilder.createQuery(type)
+            selectQuery.from(type)
+            val query = it.createSelectionQuery(selectQuery)
+            if (isAsc == true) {
+                query.setOrder(listOf(Order.asc(type, sortedBy)))
+            } else {
+                query.setOrder(listOf(Order.desc(type, sortedBy)))
+            }
             if (page != null) {
                 if (page > 0) {
                     query.setFirstResult(page * (max ?: 10))

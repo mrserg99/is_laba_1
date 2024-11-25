@@ -57,28 +57,16 @@ function fromJson(json){
     return JSON.parse(json)
 }
 
-function textToColumnName(text){
-    switch (text) {
-        case 'ID': return 'id'
-        case 'ФИО':
-        case 'Название': return 'name'
-        case 'Кол-во студентов': return 'students_count'
-        case 'Кол-во отчисленных': return 'expelled_students'
-        case 'Кол-во переведенных': return 'transferred_students'
-        case 'Будут исключены': return 'should_be_expelled'
-        case 'Дата создания': return 'creation_date'
-        case 'Форма обучения': return 'form_of_education'
-        case 'Староста': return 'groupadmin_id'
-        case 'Автор': return 'user_id'
-        case 'Средняя оценка': return 'average_mark'
-        case 'Семестр': return 'semester_enum'
-        case 'X': return 'x'
-        case 'Y': return 'y'
-        case 'Цвет глаз': return 'eye_color'
-        case 'Цвет волос': return 'hair_color'
-        case 'День рождения': return 'birthday'
-        case 'Рост(см)': return 'height'
-        case 'Вес (кг)': return 'weight'
+function getSortedByValue(value){
+    switch (getValue(storageVocabulary.type)) {
+        case Type.COORDINATE.description:
+            return coordinatesMap.get(value)
+        case Type.LOCATION.description:
+            return locationMap.get(value)
+        case Type.GROUP.description:
+            return groupMap.get(value)
+        case Type.PERSON.description:
+            return personMap.get(value)
     }
 }
 
@@ -97,22 +85,22 @@ const coordinatesMap = new Map()
 const groupMap = new Map()
     .set('ID', 'id')
     .set('Название', 'name')
-    .set('Средняя оценка', 'average_mark')
-    .set('Дата создания', 'creation_date')
-    .set('Кол-во отчисленных', 'expelled_students')
-    .set('Форма обучения', 'form_of_education')
-    .set('Семестр', 'semester_enum')
-    .set('Будут исключены', 'should_be_expelled')
-    .set('Кол-во студентов', 'students_count')
-    .set('Кол-во переведенных', 'transferred_students')
+    .set('Средняя оценка', 'averageMark')
+    .set('Дата создания', 'creationDate')
+    .set('Кол-во отчисленных', 'expelledStudents')
+    .set('Форма обучения', 'formOfEducation')
+    .set('Семестр', 'semesterEnum')
+    .set('Будут исключены', 'shouldBeExpelled')
+    .set('Кол-во студентов', 'studentsCount')
+    .set('Кол-во переведенных', 'transferredStudents')
 /*X, Y, староста*/
 
 
 const personMap = new Map()
     .set('ID', 'id')
-    .set('ФИО', 'name')
+    .set('ФИО', 'FIO')
     .set('День рождения', 'birthday')
-    .set('Цвет глаз', 'eye_color')
-    .set('Цвет волос', 'hair_color')
-    .set('Рост', 'height')
-    .set('Вес', 'weight')
+    .set('Цвет глаз', 'eyeColor')
+    .set('Цвет волос', 'hairColor')
+    .set('Рост(см)', 'height')
+    .set('Вес(кг)', 'weight')

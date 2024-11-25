@@ -22,7 +22,7 @@ async function create(newObject, type) {
     return await postRequest(url, {}, toJson(newObject))
 }
 
-async function getEntities(type, page, max) {
+async function getEntities(type, page, max, sortedBy, isAsc) {
     let param = []
     let url = "/repository/get/" + type
 
@@ -34,6 +34,16 @@ async function getEntities(type, page, max) {
     if (typeof max === "number" && max > 0){
         param.push(new URLSearchParams({
             max: max
+        }))
+    }
+    if (typeof sortedBy === "string" && !isBlank(sortedBy) && !isEmpty(sortedBy)) {
+        param.push(new URLSearchParams({
+            sortedBy: sortedBy
+        }))
+    }
+    if(typeof isAsc === "boolean") {
+        param.push(new URLSearchParams({
+            isAsc: isAsc
         }))
     }
     if (param.length > 0) {
